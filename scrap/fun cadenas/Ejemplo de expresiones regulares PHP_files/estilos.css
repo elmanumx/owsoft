@@ -1,0 +1,638 @@
+		/* CSS PHP6 quim */
+		/* CSS Document */
+
+@charset "utf-8";
+
+/* TIPOGRAFÍA Comfortaa per paràgrafs */
+@font-face {
+	font-family: "fontdisseny";
+	src: url(../../fonts/Comfortaa/Comfortaa-Regular.ttf), url(../../fonts/Comfortaa-Regular.eot);
+}
+/* TIPOGRAFÍA Litera per títols */
+@font-face {
+	font-family: "titols";
+	src: url(../../fonts/Litera%20Regular/Litera%20Regular.ttf), url(../../fonts/Litera%20Regular/Litera_Regular.eot);
+}
+
+body, html {
+	height: 100%;
+	background-color: #F2F2F2; /* GRAY */
+	padding-top: 0px;
+}
+
+/* ICONA FLETJA PUJAR */
+a.lliscar > img {
+	border: none;
+	position: fixed; 
+	text-align: right; 
+	bottom: 5px; 
+	right: 20px;
+}
+/* -------------- */
+
+.contenedor {
+	border: none;
+	width: 960px;
+	height: auto;
+	margin: 0 auto;
+	background-color: transparent !important;
+	padding-bottom: 10px;
+}
+	
+	.contenedor .navegador {
+		float: left;
+		margin-left: -10;
+		border: none;
+		width: 160px;
+		height: auto;
+	}
+	.contenedor .info {
+		float: left;
+		margin-left: 15px;
+		margin-bottom: 20px;
+		padding: 7px;
+		border: 1px solid #FFFFFF; /* WHITE */
+		width: 768px;
+		height: auto;
+		background-color: #F8F8F8; /* WHITE GHOST */
+		/* Redondear bordes */
+		-webkit-border-radius: 4px;
+		-moz-border-radius: 4px;
+		-o-border: 4px;
+		-ms-border-radius: 4px;
+		border-radius: 4px; 
+		/* Sombra */
+		/* Sombra hacia la derecha (-14) */
+		/* (4px) = posición: nº negativo hacia izquierda, nº positivo hacia derecha
+		** (5px) = posición: nº negativo hacia arriba, nº positivo hacia abajo
+		** (4px) = Difuminar sombra
+		** (2px) = grosor sombra
+		** (#cccccc) = color gris */
+		-webkit-box-shadow: 4px 5px 6px 2px #cccccc; /* Safari, Chrome */
+		-moz-box-shadow: 4px 5px 6px 2px #cccccc; /* Mozilla F. */
+		-ms-box-shadow: 4px 5px 6px 2px #cccccc; /* IE */
+		-o-box-shadow: 4px 5px 6px 2px #cccccc; /* Opera */
+		box-shadow: 4px 5px 6px 2px #cccccc; /* Genérico */
+	}
+
+/* IMAGEN CABECERA PHP */
+	.contenedor .info .cajahead {
+		margin: 0px auto ;
+		display: block;
+		padding-bottom: 20px;
+		border: none;
+		width: 769px;
+		height: 150px;
+		background-color: transparent;
+	}
+	.contenedor .info .cabphp {
+		width: 769px;
+		height: 150px;
+		padding: 0;
+		border: none;
+	}
+
+/* Archivo estructurasControl.php */
+	.bucles {
+		position: relative;
+		border: 1px solid #069;
+		width: 750px;
+		height: auto;
+		margin: -230px auto; /* Subir contenedor */
+		background-color: transparent !important;
+	}
+/* ------------------------------ */
+			/* Título página Inicio PHP6 */
+			h1.tituloPHP {
+				font-family: "titols";
+				font-weight: bold;
+				font-size: 22px;
+				text-align: center;
+				color: #069; /* BLUE */
+			}
+			/* Para subtítulos */
+			h5 { 
+				font-family: Tahoma, Geneva, sans-serif;
+				font-size: 14px;
+				text-align: left; 
+				color: #380B61; /* PURPLE */
+				padding-left: 20px;
+				text-decoration: underline;
+			}
+			/* Título encabezado */
+			h4 {
+				font-size: 18px;
+				text-align: center; 
+				color: #069; /* BLUE */
+			}
+			/* Títulos fondo gris */
+			h3 {
+				font-family: "titols";
+				font-size: 16px;
+				text-align: left; 
+				color: #304B76; /* BLUE */
+				margin-top: 40px;
+				margin-left: 5px;
+				padding-left: 30px;
+				/* Redondear bordes */
+				-webkit-border-radius: 2px 0px 0px 35px;
+				-moz-border-radius: 2px 0px 0px 35px;
+				-o-border: 2px 0px 0px 35px;
+				-ms-border-radius: 2px 0px 0px 35px;
+				border-radius: 2px 0px 0px 35px; 
+				/* DEGRADADO DE FONDO H3  ---  LILA/GRIS */
+	background: url(../images/fonsh3.png) repeat-x #cccccc; /* imagen.png */
+	background: -moz-linear-gradient(top, #A199A7, #cccccc 20px); /* Mozilla F. */
+	background: -webkit-gradient(linear, 0 0, 0 60%, from(#A199A7), to(#cccccc)); /* Safari, Chrome*/
+	background: -o-linear-gradient(top, #A199A7, #cccccc 8px); /* Opera */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFF', endColorstr='#A199A7');/* IE */
+				/* Sombra hacia la derecha (-14) */
+				/* (-2px) = posición: nº negativo hacia izquierda, nº positivo hacia derecha
+				** (2px) = posición: nº negativo hacia arriba, nº positivo hacia abajo
+				** (5px) = Difuminar sombra
+				** (1px) = grosor sombra
+				** (#585858) = color negro */
+				-webkit-box-shadow: -2px 2px 5px 1px #585858; /* Safari, Chrome */
+                -moz-box-shadow: -2px 2px 5px 1px #585858; /* Mozilla F. */
+				-ms-box-shadow: -2px 2px 5px 1px #585858; /* IE */
+				-o-box-shadow: -2px 2px 5px 1px #585858; /* Opera */
+				box-shadow: -2px 2px 5px 1px #585858; /* Genérico */
+				/*box-shadow: -2px 3px 3px rgba(0,0,0, 0.5);*/
+			}
+
+.contenedor p {
+	font-family: "fontdisseny";
+	font-size: 12px;
+	color: #666; /* GRAY */
+	padding: 10px;
+	line-height: 24px;
+}
+p.rslt {
+	font-weight: 600;
+	color: #369; /* BLUE */
+}
+p.error {
+	font-family: "fontdisseny";
+	font-size: 24px;
+	color: #900; /* RED */
+	background-color: #CF9; /* GREEN */
+}
+.contenedor p a {
+	text-decoration: none;
+	color: #03677B; /* BLUE */
+}
+.contenedor p a:hover {
+	text-decoration: none;
+	color: #1992AB; /* BLUE */
+}
+.contenedor ol li {
+	font-family: "fontdisseny";
+	font-size: 12px;
+	color: #666; /* GRAY */
+	padding: 10px;
+	line-height: 22px;
+}
+.contenedor ol li .textTaronja {
+	color: #F60; /* ORANGE */
+}
+
+/* LINKS */
+.contenedor a {
+	text-decoration: none;
+	font-family: "fontdisseny";
+	font-size: 12px;
+	color: #369; /* BLUE */
+}
+.contenedor a:hover {
+	color: #036; /* BLUE */
+}
+
+/* -----  MENÚ  ----- */
+		/* ENLACES ESTÁTICOS */
+		body a.enlacEstatico {
+			/* Texto no seleccionable */
+				user-select: none; /* Estandart */
+				-webkit-user-select: none; /* Safari */
+				-moz-user-select: -moz-none; /* Mozilla Firefox */ 
+			position: fixed;
+			border: 1px solid #FFF;
+			width: 160px;
+			margin-top: 10px;
+			margin-left: -10px;
+			padding: 0px;
+			padding-left: 3px;
+			line-height: 17px;
+			text-decoration: none;
+			font-family: "fontdisseny";
+			font-size: 10px;
+			color: #0B2161; /* BLUE */
+			background-color: #E0E6F8; /* BLUE */
+			z-index: 1001;
+		}
+		/* Pantallas con resolución "height" inferior a 825px */
+		body a.enlacRelativo {
+			/* Texto no seleccionable */
+				user-select: none; /* Estandart */
+				-webkit-user-select: none; /* Safari */
+				-moz-user-select: -moz-none; /* Mozilla Firefox */ 
+			position: absolute;
+			border: 1px solid #FFF;
+			width: 160px;
+			margin-top: 10px;
+			margin-left: -10px;
+			padding-bottom: 3px;
+			padding-top: 2px;
+			padding-right: 3px;
+			padding-left: 3px;
+			line-height: 12px;
+			text-decoration: none;
+			font-family: "fontdisseny";
+			font-size: 10px;
+			color: #0B2161; /* BLUE */
+			background-color: #E0E6F8; /* BLUE */
+			z-index: 1001;
+		}
+		body a.enlacEstatico:hover {
+			color: #036; /* BLUE */
+		}
+		/* Pantallas con resolución "height" inferior a 825px */
+		body a.enlacRelativo:hover {
+			color: #036; /* BLUE */
+		}
+		body a.cursophp {
+			padding-left: -5px;
+			font-family: "fontdisseny";
+			font-size: 14px;
+			color: #003; /* BLUE */
+		}
+
+/* LISTA ANIDADA OEDENADA */
+.contenedor ol li ul li {
+	list-style: none;
+	font-family: "fontdisseny";
+	font-size: 12px;
+	color: #666; /* GRAY */
+	padding: 10px;
+	line-height: 20px;
+}
+.contenedor ol li ul li .textTaronja {
+	color: #F60; /* ORANGE */
+}
+/* ----------------------------------- */
+
+.contenedor ul li {
+	list-style: none;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;
+	color: #666; /* GRAY */
+	padding: 10px;
+	line-height: 1.6em;
+}
+.contenedor ul li .textTaronja {
+	color: #F60; /* ORANGE */
+}
+/* LISTA ANIDADA DESORDENADA*/
+.contenedor ul li ul li {
+	list-style: none;
+	font-family: "fontdisseny";
+	font-size: 12px;
+	color: #666; /* GRAY */
+	padding: 10px;
+	line-height: 20px;
+}
+.contenedor ul li ul li .textTaronja {
+	color: #F60; /* ORANGE */
+}
+
+/* LISTA ECHO */
+.contenedor ul li.listarray {
+	padding: 5px;
+	color: #F60; /* ORANGE */
+}
+
+/* ---------------------------------- */
+
+/* TABLAS */
+table.tabla1 {
+	margin: 2px auto;
+	width: 70%;
+	border: 1px solid #930; /* BROWN */
+	padding: 2px;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 12px;
+	color: #FFF; /* WHITE */
+	background-color: #333; /* GRAY */
+}
+table.tabla1 tr th {
+	border: 1px solid #930; /* BROWN */
+	padding: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #FF9; /* YELLOW */
+	background-color: #036; /* BLUE */
+}
+table.tabla1 thead tr.tableHead {
+	text-align: center;
+}
+table.tabla1 tr td {
+	width: 130px;
+	border: 1px solid #FFF; /* WHITE */
+	padding: 5px;
+	background-color: #333; /* GRAY */
+}
+/* -------------------------- */
+
+.centrarTd {
+	text-align: left;
+}
+/* -------------------------- */
+
+/* Tabla Array mixto */
+.tablearraymixto {
+	width: 614px;
+	margin: 7px auto;
+}
+.headArrayMixto {
+	background-color: #069; /* BLUE */
+	color: #FFF; /* WHITE */
+}
+.headColspan {
+	background-color: #333; /* GRAY */
+	color: #FFF; /* WHITE */
+}
+.celdaMixto {
+	width: 200px;
+	padding: 4px;
+	background-color: #F7F8F8; /* GRAY */
+	color: #369; /* BLUE */
+}
+/* -------------------------- */
+
+/* Tabla Funciones de PHP */
+	table.funciones {
+		margin: 7px auto;
+		padding: 5px;
+		border: 1px solid #333; /* GRAY */
+		width: 95%;
+		font-family: Verdana;
+		font-size: 12px;
+		line-height: 18px;
+		color: #000;
+		background-color: #F8F8F8; /* GRAY */
+	}
+	table.funciones th {
+		padding: 7px 5px;
+		width: 15%;
+		background-color: #D9DCDE; /* GRAY */
+	}
+	table.funciones tr.cabecera td  {
+		font-weight:600;
+		text-align: center;
+		background-color: #D9DCDE !important; /* GRAY */
+	}
+	
+	table.funciones th em {
+		color: #036; /* BLUE */
+	}
+	table.funciones td {
+		padding: 5px;
+		width: 85%;
+		background-color: #ECF0F2; /* GRAY */
+	}
+	table.funciones caption {
+		padding: 15px;
+		font-size: 18px;
+	}
+	
+	/* ICONO FLECHA TABLA */
+	.iconoTablaAbajo {
+		z-index: 1001;
+		background: url(../images/flechaTablaOpen.png) 15px 7px no-repeat;
+	}
+	.iconoTablaArriba {
+		z-index: 1001;
+		background: url(../images/flechaTablaOff.png) 15px 7px no-repeat;
+	}
+/* -------------------------- */
+
+/* Tablas generales */
+table.general {
+	margin: auto;
+	padding: 3px;
+    border: 1px solid #333; /* GRAY */
+    width: 95%;
+    font-family: Verdana;
+    font-size: 12px;
+    color: #000;
+    background-color: #F8F8F8; /* GRAY */
+}
+table.general th {
+	padding: 5px;
+	width: 15%;
+	text-align: left;
+	color: #FFF;
+	background-color: #336; /* BLUE */
+}
+table.general td {
+	padding: 5px;
+	text-align: center;
+	background-color: #CCF; /* GRAY */
+}
+table.general td.left {
+	padding: 5px;
+	text-align: left;
+	background-color: #CCF; /* GRAY */
+}
+
+strong {
+	color: #036; /* BLUE */
+}
+
+/* -------------------------- */
+
+/* FORMULARIO */
+label {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;
+	color: #333; /* gris */
+}
+
+/* -------------------------- */
+
+pre {
+	margin: 20px auto;
+	border-left: none;
+	border-right: none;
+	border-bottom: 1px dashed #B153E8; /* LILA */
+	border-top: 1px dashed #B153E8; /* LILA */
+	border-color: #69F; /* BLUE */
+	padding: 10px 10px;
+	overflow: hidden;
+	height: auto; 
+	width: 700px;
+	font-family: "Courier New", Courier, monospace;
+	font-size: 12px;
+	color: #EAEAEA; /* GRAY */
+    background-color: #12394D; /* BLUE */
+	letter-spacing: 1px;
+}
+pre strong {
+	color: #79D3FF; /* BLUE */
+}
+pre span.coment {
+	font-family: "fontdisseny";
+	font-size: 12px;
+	color: #FFD63F; /* BEIG */
+}
+pre span.textTaronja {
+    color: #FF9100; /* ORANGE */
+}
+pre em {
+    color: #FFF; /* WHITE */
+}
+
+/* PRE ANIDADO */
+pre.preanidado {
+	margin: 20px auto;
+	border-left: none;
+	border-right: none;
+	border-bottom: 1px dashed #B153E8; /* LILA */
+	border-top: 1px dashed #B153E8; /* LILA */
+	border-color: #69F; /* BLUE */
+	padding: 10px 10px;
+	overflow: hidden;
+	height: auto; 
+	width: 615px;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 12px;
+	color: #EAEAEA; /* GRAY */
+    background-color: #2F2A31; /* BLUE */
+	letter-spacing: 1px;
+}
+pre.preanidado strong {
+	color: #79D3FF; /* BLUE */
+}
+pre.preanidado span.coment {
+	font-family: "fontdisseny";
+	font-size: 12px;
+	color: #FFD63F; /* BEIG */
+}
+pre.preanidado span.textTaronja {
+    color: #FF9100; /* ORANGE */
+}
+pre.preanidado em {
+    color: #FFF; /* WHITE */
+}
+
+/* RESALTAR TEXTO */
+p span.textTaronja {
+	color: #F60; /* ORANGE */
+}
+.textTaronja {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;
+	padding: 10px;
+	line-height: 24px;
+	color: #F60; /* ORANGE */
+}
+
+/* BLOCQUOTE y CITE (bloque de cita) */
+blockquote {
+	text-align: justify;
+	font-family: "fontdisseny";
+	font-size: 12px;
+	line-height: 20px;
+	color: #FFF; /* WHITE */
+	margin: 10px 20px;
+	padding: 7px;
+	background-color: #333; /* GRAY */
+}
+blockquote strong {
+	color: #6CC; /* BLUE */
+}
+blockquote em {
+	color: #FC0; /* ORANGE */
+}
+/*blockquote {
+	width: 90%;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 12px;
+	line-height: 1.5;*/
+	/*color: #537766; GRAY
+} */
+blockquote strong {
+	color: #488769; /* GREEN */
+}
+blockquote span.coment {
+	font-family: "fontdisseny";
+	font-size: 12px;
+	color: #A18E02; /* BEIG */
+}
+
+
+cite {
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 12px;
+	text-align: justify;
+	color: #848484; /* GRAY */
+	padding-left: 50px;
+	padding-right: 50px;
+}
+
+acronym {
+	color: #2A0A22; /* MARRÓ */
+	font-weight: 600;
+	text-decoration: underline;
+}
+
+/* COMENTARIOS */
+span.coment {
+	font-family: "fontdisseny";
+	font-size: 12px;
+	color: #A18E02; /* BEIG */
+}
+.comentVerd { /* comentarios de código */
+	font-family: "fontdisseny";
+	font-size: 12px;
+	color: #228B22; /* FORESTGREEN */
+}
+.verd {
+	color: #BBFFA4; /* GREEN */
+}
+
+/* EMFASIS ROJO */
+em {
+	color: #000;
+}
+em.emfasRed {
+	color: #900; /* RED */
+}
+em.emfasverd {
+	color: #BBFFA4; /* GREEN */
+}
+em.emblue {
+	color: #0FF; /* BLUE */
+}
+span.lila {
+	color: #FF95F3; /* LILA */
+}
+span.rosa {
+	color: #F9F; /* PINK */
+}
+span.blanco {
+	color: #FFFFFF; /* BLANCO */
+}
+span.negro {
+	color: #666666; /* GRIS */
+}
+span.rojo {
+	color: #F33; /* ROJO */
+}
+
+/* VARIS */
+.clear {
+	clear: both;
+}
+a.subir {
+	margin-left: 710px;
+}

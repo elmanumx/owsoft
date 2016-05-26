@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)http://www.anerbarrena.com/php-preg_match-2865/ -->
+<html lang="es-ES" prefix="og: http://ogp.me/ns#" xmlns:fb="http://ogp.me/ns/fb#"><script src="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/cb=gapi.loaded_1" async=""></script><script src="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/cb=gapi.loaded_0" async=""></script><script type="text/javascript" async="" src="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/plusone.js" gapi_processed="true"></script><script id="twitter-wjs" src="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/widgets.js"></script><script type="text/javascript" async="" src="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/ga.js"></script><script id="tinyhippos-injected">if (window.top.ripple) { window.top.ripple("bootstrap").inject(window, document); }</script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<title>PHP preg_match(): buscar o comparar cadenas con expresiones regulares</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="author" href="https://plus.google.com/100521238980519601840">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="">
+<link rel="alternate" type="application/rss+xml" title="Aner Barrena » Feed" href="http://www.anerbarrena.com/feed/">
+      <script type="text/javascript">
+        var wpdk_i18n = {"ajaxURL":"http:\/\/www.anerbarrena.com\/wp-admin\/admin-ajax.php","messageUnLockField":"Please confirm before unlock this form field.\nDo you want unlock this form field?","timeOnlyTitle":"Choose Time","timeText":"Time","hourText":"Hour","minuteText":"Minute","secondText":"Seconds","currentText":"Now","dayNamesMin":"Su,Mo,Tu,We,Th,Fr,Sa","monthNames":"January,February,March,April,May,June,July,August,September,October,November,December","monthNamesShort":"Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec","closeText":"Close","dateFormat":"d M yy","timeFormat":"HH:mm"};
+      </script>
+    <meta name="generator" content="WordPress 4.4.2">
+<meta name="template" content=" ">
+
+<!-- This site is optimized with the Yoast SEO plugin v3.0.7 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="description" content="Con PHP preg_match() podremos comparar y buscar cadenas de texto con expresiones regulares. Guardar el resultado en array y elegir el caracter de comienzo.">
+<meta name="robots" content="noodp,noydir">
+<meta name="keywords" content="PHP preg_match, PHP, PHP buscar cadenas, comparar cadenas">
+<link rel="canonical" href="http://www.anerbarrena.com/php-preg_match-2865/">
+<link rel="publisher" href="https://plus.google.com/100521238980519601840">
+<meta property="og:locale" content="es_ES">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP preg_match(): buscar o comparar cadenas con expresiones regulares">
+<meta property="og:description" content="Con PHP preg_match() podremos comparar y buscar cadenas de texto con expresiones regulares. Guardar el resultado en array y elegir el caracter de comienzo.">
+<meta property="og:url" content="http://www.anerbarrena.com/php-preg_match-2865/">
+<meta property="og:site_name" content="Aner Barrena">
+<meta property="article:publisher" content="https://www.facebook.com/Anerbarrenaweb">
+<meta property="article:tag" content="expresiones regulares">
+<meta property="article:section" content="Funciones de cadenas en PHP">
+<meta property="article:published_time" content="2013-10-21T14:09:05+00:00">
+<meta property="article:modified_time" content="2015-04-03T00:27:12+00:00">
+<meta property="og:updated_time" content="2015-04-03T00:27:12+00:00">
+<meta property="og:image" content="http://www.anerbarrena.com/wp-content/uploads/2012/12/php.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="Con PHP preg_match() podremos comparar y buscar cadenas de texto con expresiones regulares. Guardar el resultado en array y elegir el caracter de comienzo.">
+<meta name="twitter:title" content="PHP preg_match(): buscar o comparar cadenas con expresiones regulares">
+<meta name="twitter:site" content="@anerbarrena">
+<meta name="twitter:image" content="http://www.anerbarrena.com/wp-content/uploads/2012/12/php.jpg">
+<meta name="twitter:creator" content="@anerbarrena">
+<!-- / Yoast SEO plugin. -->
+
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"http:\/\/www.anerbarrena.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.4.2"}};
+			!function(a,b,c){function d(a){var c,d=b.createElement("canvas"),e=d.getContext&&d.getContext("2d"),f=String.fromCharCode;return e&&e.fillText?(e.textBaseline="top",e.font="600 32px Arial","flag"===a?(e.fillText(f(55356,56806,55356,56826),0,0),d.toDataURL().length>3e3):"diversity"===a?(e.fillText(f(55356,57221),0,0),c=e.getImageData(16,16,1,1).data.toString(),e.fillText(f(55356,57221,55356,57343),0,0),c!==e.getImageData(16,16,1,1).data.toString()):("simple"===a?e.fillText(f(55357,56835),0,0):e.fillText(f(55356,57135),0,0),0!==e.getImageData(16,16,1,1).data[0])):!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g;c.supports={simple:d("simple"),flag:d("flag"),unicode8:d("unicode8"),diversity:d("diversity")},c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.simple&&c.supports.flag&&c.supports.unicode8&&c.supports.diversity||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/wp-emoji-release.min.js" type="text/javascript"></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="yarppWidgetCss-css" href="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/widget.css" type="text/css" media="all">
+<link rel="stylesheet" id="crayon-css" href="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/crayon.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="crayon-theme-classic-css" href="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/classic.css" type="text/css" media="all">
+<link rel="stylesheet" id="crayon-font-monaco-css" href="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/monaco.css" type="text/css" media="all">
+<link rel="stylesheet" id="25px-css" href="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/25px.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="gallery-css" href="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/gallery.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="style-css" href="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/style.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="front-estilos-css" href="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/estilos.css" type="text/css" media="all">
+<link rel="stylesheet" id="cptch_stylesheet-css" href="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="dashicons-css" href="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/dashicons.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="cptch_desktop_style-css" href="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/desktop_style.css" type="text/css" media="all">
+<link rel="stylesheet" id="theme-fonts-css" href="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/css" type="text/css" media="all">
+<script type="text/javascript" src="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/jquery.js"></script>
+<script type="text/javascript" src="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/jquery-migrate.min.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"http:\/\/www.anerbarrena.com\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"Presiona %s para copiar y %s para pegar","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/crayon.min.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var cdp_cookies_info = {"url_plugin":"http:\/\/www.anerbarrena.com\/wp-content\/plugins\/asesor-cookies-para-la-ley-en-espana\/plugin.php","url_admin_ajax":"http:\/\/www.anerbarrena.com\/wp-admin\/admin-ajax.php","comportamiento":"aceptar","posicion":"inferior","layout":"ventana"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/principal.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var cptch_vars = {"nonce":"fd2d1a361e","ajaxurl":"http:\/\/www.anerbarrena.com\/wp-admin\/admin-ajax.php","enlarge":"0"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/front_end_script.js"></script>
+<link rel="https://api.w.org/" href="http://www.anerbarrena.com/wp-json/">
+<link rel="alternate" type="application/json+oembed" href="http://www.anerbarrena.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.anerbarrena.com%2Fphp-preg_match-2865%2F">
+<link rel="alternate" type="text/xml+oembed" href="http://www.anerbarrena.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.anerbarrena.com%2Fphp-preg_match-2865%2F&amp;format=xml">
+
+<style type="text/css" id="custom-colors-css">a, pre, code, .breadcrumb-trail a, .format-link .entry-title a .meta-nav, #respond label .required, #footer a:hover { color: #cb5700; } #branding, li.comment .comment-reply-link { background-color: #cb5700; } body { border-top-color: #cb5700; } .breaadcrumb-trail a:hover, .sticky.hentry, .loop-meta, .page-template-portfolio .hentry.page { border-bottom-color: #cb5700; } pre { border-left-color: #cb5700; } #site-title a, .entry-title, .entry-title a, .loop-title, #menu-portfolio li.current-cat a, #menu-portfolio li.current-menu-item a, .page-numbers.current { color: #050505; } .breadcrumb-trail, li.comment .comment-reply-link:hover, #footer { background-color: #050505; } .hentry, .loop-meta, .attachment-meta, #comments-template, .page-template-portfolio .hentry.page { border-top-color: #050505; } body { border-bottom-color: #050505; } #menu-primary li a { color: #00393e; } #menu-primary li li a:hover, #menu-primary li li:hover > a { background-color: #00393e; } #menu-primary li a:hover, #menu-primary li:hover > a, #menu-primary li.current-menu-item > a { color: #cc4a00; } #menu-primary li li a { background-color: #cc4a00; } #menu-primary-items ul li:first-child > a::after { border-bottom-color: #cc4a00; } #menu-primary-items ul ul li:first-child a::after { border-right-color: #cc4a00; }</style>
+
+<style type="text/css" id="theme-fonts-rules-css">h1, h2, h3, h4, h5, h6, th, #menu-primary li a, #menu-portfolio li a, .breadcrumb-trail, .page-links, .loop-pagination, .loop-nav, #respond input[type="submit"], #footer { font-family: 'Open Sans', sans-serif; font-weight: 400; font-style: normal; }</style>
+<style type="text/css" id="custom-background-css">
+body.custom-background { background-image: url('http://www.anerbarrena.com/wp-content/uploads/2013/09/bkg_smoky_noise.jpg'); background-repeat: repeat; background-position: top left; background-attachment: fixed; }
+</style>
+		
+<!-- Responsive Select CSS 
+================================================================ -->
+<style type="text/css" id="responsive-select-css">
+.responsiveSelectContainer select.responsiveMenuSelect, select.responsiveMenuSelect{
+	display:none;
+}
+
+@media (max-width: 960px) {
+	.responsiveSelectContainer{
+		border:none !important;
+		background:none !important;
+		box-shadow:none !important;
+		height:auto !important;
+		max-height:none !important;
+		visibility:visible !important;
+	}
+	.responsiveSelectContainer ul, ul.responsiveSelectFullMenu, #megaMenu ul.megaMenu.responsiveSelectFullMenu{
+		display: none !important;
+	}
+	.responsiveSelectContainer select.responsiveMenuSelect, select.responsiveMenuSelect { 
+		display: inline-block; 
+		width:100%;
+	}
+}	
+</style>
+<!-- end Responsive Select CSS -->
+
+<!-- Responsive Select JS
+================================================================ -->
+<script type="text/javascript">
+jQuery(document).ready( function($){
+	$( '.responsiveMenuSelect' ).change(function() {
+		var loc = $(this).find( 'option:selected' ).val();
+		if( loc != '' && loc != '#' ) window.location = loc;
+	});
+	//$( '.responsiveMenuSelect' ).val('');
+});
+</script>
+<!-- end Responsive Select JS -->
+		
+
+<!-- semilla GA -->
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- NO COPIAR ESTE CODIGO, DONT COPY THIS CODE -->
+	<!-- NO COPIAR ESTE CODIGO, DONT COPY THIS CODE-->
+	<!-- NO COPIAR ESTE CODIGO, DONT COPY THIS CODE -->
+	<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-30749552-1']);
+	_gaq.push(['_trackPageview']);
+	(function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+	</script>
+	<!-- NO COPIAR ESTE CODIGO, DONT COPY THIS CODE -->
+	<!-- NO COPIAR ESTE CODIGO, DONT COPY THIS CODE-->
+	<!-- NO COPIAR ESTE CODIGO, DONT COPY THIS CODE -->
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+<script type="text/javascript" async="" src="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/embed.js"></script><script async="" type="text/javascript" src="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/count.js"></script><script type="text/javascript" charset="utf-8" async="" src="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/timeline.2882a7de8e36646e5c190a115fa5eda7.js"></script><script src="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/count-data.js"></script></head>
+
+<body class="wordpress ltr es_ES parent-theme y2016 m03 d04 h19 friday logged-out custom-background singular singular-post singular-post-2865 post-format-standard layout-2c-l custom-colors">
+	
+	
+	<div id="container">
+
+		<div class="wrap">
+
+			<header id="header">
+
+				<hgroup id="branding">
+					<h1 id="site-title"><a href="http://www.anerbarrena.com/" title="Aner Barrena">Aner Barrena</a></h1>
+					<h2 id="site-description">Ejemplos y tutoriales de PHP, jQuery, HTML5 y WordPress</h2>
+				</hgroup><!-- #branding -->
+
+			</header><!-- #header -->
+
+			<nav id="menu-primary" class="menu responsiveSelectContainer"><ul id="menu-primary-items" class="menu-items responsiveSelectFullMenu"><li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-has-children menu-item-41"><a href="http://www.anerbarrena.com/programacion/php/">PHP y MySQL</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-45"><a href="http://www.anerbarrena.com/programacion/php/mysql/">MySQL</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-2250"><a href="http://www.anerbarrena.com/programacion/php/cadenas-string/">Funciones de cadenas en PHP</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1093"><a href="http://www.anerbarrena.com/programacion/php/fechas/">Funciones de fechas en PHP</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-42"><a href="http://www.anerbarrena.com/programacion/html5/">HTML5</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1125"><a href="http://www.anerbarrena.com/programacion/html5/nuevas-etiquetas-y-atributos/">Nuevos input, etiquetas y atributos en HTML5</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2398"><a href="http://www.anerbarrena.com/programacion/html5/device-api-dispositivo/">Ejemplos y programación de la API de HTML5</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1001"><a href="http://www.anerbarrena.com/programacion/html5/form-html5/">Formularios en HTML5</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-44"><a href="http://www.anerbarrena.com/programacion/jquery/">jQuery</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-568"><a href="http://www.anerbarrena.com/programacion/recursos/wordpress/">WordPress</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-46"><a href="http://www.anerbarrena.com/programacion/recursos/">Recursos</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-43"><a href="http://www.anerbarrena.com/programacion/htaccess-apache/">.htaccess</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1252"><a href="http://www.anerbarrena.com/programacion/recursos/google/">Google y Youtube</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-299"><a href="http://www.anerbarrena.com/programacion/recursos/facebook-recursos/">Facebook</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2054"><a href="http://www.anerbarrena.com/programacion/recursos/twitter/">Twitter</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-378"><a href="http://www.anerbarrena.com/programacion/recursos/seo/">SEO</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2914"><a href="http://www.anerbarrena.com/contactar/">Contactar</a></li>
+</ul><select class="responsiveMenuSelect"><option value="" selected="selected">⇒ Menú</option><option id="menu-item-41" value="http://www.anerbarrena.com/programacion/php/">PHP y MySQL</option>
+	<option id="menu-item-45" value="http://www.anerbarrena.com/programacion/php/mysql/">– MySQL</option>
+	<option id="menu-item-2250" value="http://www.anerbarrena.com/programacion/php/cadenas-string/">– Funciones de cadenas en PHP</option>
+	<option id="menu-item-1093" value="http://www.anerbarrena.com/programacion/php/fechas/">– Funciones de fechas en PHP</option>
+<option id="menu-item-42" value="http://www.anerbarrena.com/programacion/html5/">HTML5</option>
+	<option id="menu-item-1125" value="http://www.anerbarrena.com/programacion/html5/nuevas-etiquetas-y-atributos/">– Nuevos input, etiquetas y atributos en HTML5</option>
+	<option id="menu-item-2398" value="http://www.anerbarrena.com/programacion/html5/device-api-dispositivo/">– Ejemplos y programación de la API de HTML5</option>
+	<option id="menu-item-1001" value="http://www.anerbarrena.com/programacion/html5/form-html5/">– Formularios en HTML5</option>
+<option id="menu-item-44" value="http://www.anerbarrena.com/programacion/jquery/">jQuery</option>
+<option id="menu-item-568" value="http://www.anerbarrena.com/programacion/recursos/wordpress/">WordPress</option>
+<option id="menu-item-46" value="http://www.anerbarrena.com/programacion/recursos/">Recursos</option>
+	<option id="menu-item-43" value="http://www.anerbarrena.com/programacion/htaccess-apache/">– .htaccess</option>
+	<option id="menu-item-1252" value="http://www.anerbarrena.com/programacion/recursos/google/">– Google y Youtube</option>
+	<option id="menu-item-299" value="http://www.anerbarrena.com/programacion/recursos/facebook-recursos/">– Facebook</option>
+	<option id="menu-item-2054" value="http://www.anerbarrena.com/programacion/recursos/twitter/">– Twitter</option>
+	<option id="menu-item-378" value="http://www.anerbarrena.com/programacion/recursos/seo/">– SEO</option>
+<option id="menu-item-2914" value="http://www.anerbarrena.com/contactar/">Contactar</option>
+</select></nav>			
+			 
+
+<span style="margin:0 0 0 10px;"><img src="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/publicidad.png" style="display: none !important;"></span>
+<div style="text-align:center; margin-bottom:5px;">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-5475373752870298";
+/* 728x90 skyscraper horizontal */
+google_ad_slot = "6294765257";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript" src="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/">
+</script>
+</div>
+			<div id="main">
+
+				<nav class="breadcrumb-trail breadcrumbs" itemprop="breadcrumb"><span class="trail-before">Estás en:</span> <span class="trail-begin"><a href="http://www.anerbarrena.com/" title="Aner Barrena" rel="home" class="trail-begin">Home</a></span> <span class="sep">&gt;</span> <span class="trail-end">PHP preg_match(): buscar o comparar cadenas con expresiones regulares</span></nav>				
+				
+	<div id="content">
+
+		<div class="hfeed">
+
+				
+			
+				
+					<article id="post-2865" class="hentry post publish post-1 odd  format-standard category-cadenas-string category-php post_tag-expresiones-regulares">
+
+	
+				
+		<header class="entry-header">
+			<h1 class="entry-title">PHP preg_match(): buscar o comparar cadenas con expresiones regulares</h1>			<div class="entry-byline">
+				Publicado por <span class="author vcard"><a class="url fn n" target="_blank" rel="author" href="https://plus.google.com/100521238980519601840" title="Aner Barrena">Aner Barrena</a></span> el <abbr class="published" title="Lunes, octubre 21st, 2013, 2:09 pm">21 octubre, 2013</abbr>   |  
+								<a href="http://www.anerbarrena.com/php-preg_match-2865/#disqus_thread">16 comentarios</a>
+								</div>
+			
+
+		<script src="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/platform.js" gapi_processed="true"></script>
+
+<div style="display:inline; width:205px;">
+	<span style="float:left;">
+		<div id="___ytsubscribe_0" style="position: absolute; width: 450px; left: -10000px;"><iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position:absolute;top:-10000px;width:450px;margin:0px;border-style:none" tabindex="0" vspace="0" width="100%" id="I0_1457115813220" name="I0_1457115813220" src="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/subscribe_embed.html" data-gapiattached="true"></iframe></div><div class="g-ytsubscribe" data-channelid="UCcW1UbJOtTeESOZtpCVoc2g" data-layout="default" data-count="yes" data-gapiscan="true" data-onload="true" data-gapistub="true"></div>
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		<div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 90px; height: 20px; background: transparent;"><iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 90px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" tabindex="0" vspace="0" width="100%" id="I1_1457115813631" name="I1_1457115813631" src="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/fastbutton.html" data-gapiattached="true" title="+1"></iframe></div>
+		
+	</span>
+	<span style="bottom:-3px; position:relative;">
+		<iframe src="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/like.html" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:190px; height:21px;" allowtransparency="true"></iframe>
+	
+		<iframe allowtransparency="true" frameborder="0" scrolling="no" src="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/tweet_button.html" style="width:110px; height:20px;"></iframe>
+	
+		<iframe allowtransparency="true" frameborder="0" scrolling="no" src="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/follow_button.html" style="width:150px; height:20px;"></iframe>
+	</span>
+</div>		
+		</header><!-- .entry-header -->
+
+		
+		<div class="entry-content">
+			<p>Vamos a ver la función de <strong>PHP preg_match()</strong>,su funcionalidad nos permite buscar o comparar cadenas mediante <a title="Expresiones regulares" href="http://www.anerbarrena.com/etiquetas/expresiones-regulares/">expresiones regulares</a>.</p>
+<p><span id="more-2865"></span></p>
+<p>Otras funciones con que nos pueden parecer interesantes son:</p>
+<ul>
+<li><a title="Buscar palabras en una cadena de texto con PHP strpos y strrpos" href="http://www.anerbarrena.com/php-strpos-strrpos-2081/">PHP strpos()</a> y <a title="Buscar palabras en una cadena de texto con PHP strpos y strrpos" href="http://www.anerbarrena.com/php-strpos-strrpos-2081/">strrpos()</a>: Buscan palabras y letras en una cadena de text.</li>
+</ul>
+<p>La definicón oficial de <strong>PHP preg_match()</strong> es:</p>
+<blockquote><p>Realiza una comparación con una expresión regular</p></blockquote>
+<h2>Sintaxis PHP preg_match()</h2>
+<p>Veamos la sintaxis de esta función extraída de su <a href="http://php.net/manual/es/function.preg-match.php" target="_blank">web oficial</a>:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d9d267c466a044879077" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Mostrar/ocultar números de línea"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Cambiar a texto plano"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code" style="display: none;"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Abrir el código en una nueva ventana"><div class="crayon-button-icon"></div></div><span class="crayon-language">PHP</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="" readonly="" style="tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;">entero preg_match (exp_regular , cadena [, coincidencias[, flags [, comienzo ]]])</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d9d267c466a044879077-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d9d267c466a044879077-1"><span class="crayon-e">entero </span><span class="crayon-e">preg_match</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-i">exp_regular</span><span class="crayon-h"> </span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">cadena</span><span class="crayon-h"> </span><span class="crayon-sy">[</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">coincidencias</span><span class="crayon-sy">[</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">flags</span><span class="crayon-h"> </span><span class="crayon-sy">[</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">comienzo</span><span class="crayon-h"> </span><span class="crayon-sy">]</span><span class="crayon-sy">]</span><span class="crayon-sy">]</span><span class="crayon-sy">)</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0017 seconds] -->
+<p>Esta es la sintaxis de la función de <a title="Programación PHP" href="http://www.anerbarrena.com/programacion/php/">PHP</a>, ahora os detallo cada uno de los parámetros:</p>
+<ul>
+<li><strong>entero</strong>: La función devuelve un número entero. El valor será ‘1’ en caso de coincidencia, ‘0’ si no la hay, también puede devolver FALSE si hay algún error en la función.</li>
+<li><strong>exp_regular (Obligatorio)</strong>: Expresión regular que usaremos para la comparación.</li>
+<li><strong>cadena (Obligatorio)</strong>: Cadena de texto comparada.</li>
+<li><strong>coincidencias (Opcional)</strong>: Es un <a title="PHP array(): Tipos y ejemplos para recorrer arrays" href="http://www.anerbarrena.com/php-array-tipos-ejemplos-3876/">array</a> con información de las partes de la cadena que coinciden con la expresión regular.</li>
+<li><strong>flags (Opcional)</strong>: Si se pasa el parametro ‘PREG_OFFSET_CAPTURE’ en el&nbsp;<a title="PHP array(): Tipos y ejemplos para recorrer arrays" href="http://www.anerbarrena.com/php-array-tipos-ejemplos-3876/">array</a> de coincidencias también vendrá el índice de comienzo de cada coincidencia.</li>
+<li><strong>comienzo (Opcional)</strong>: Posición de comienzo dentro de la ‘<span style="text-decoration: underline;">cadena</span>‘ de la comparación.</li>
+</ul>
+<p>Hay varios caracteres que son delimitadores del patrón::</p>
+<ul>
+<li><strong>i</strong>: Indica que el patrón de búsqueda no diferencia entre mayúsculas y minúsculas.</li>
+<li><strong>b</strong>: Delimita el final de la condición estricta de un patrón, es decir, sin comparamos ‘/compara/b’ con ‘/comparador/’ la búsqueda dará FALSE.</li>
+</ul>
+<h2>Ejemplo de PHP preg_match() con delimitador ‘i’</h2>
+<p><a title="Ejemplo de PHP preg_match() con delimitador &#39;i&#39;" href="http://www.anerbarrena.com/demos/2013/28-php-preg-match-delimitador.php" target="_blank">Primer ejemplo</a> con el <strong>delimitador ‘i’</strong>:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d9d267c467e018216921" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-mixed-highlight" title="Contiene lenguajes combinados"></span><div class="crayon-button crayon-nums-button crayon-pressed" title="Mostrar/ocultar números de línea"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Cambiar a texto plano"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code" style="display: none;"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Abrir el código en una nueva ventana"><div class="crayon-button-icon"></div></div><span class="crayon-language">PHP</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="" readonly="" style="tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;">&lt;?php
+//Demilitador 'i' para no diferenciar mayus y minus
+if (preg_match("/PRUEBA/i", "esto es una prueba")) 
+    {
+    echo "HAY COINCIDENCIA";
+    }else 
+	    {
+        echo "NO HAY COINCIDENCIA";
+	    }
+?&gt;</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d9d267c467e018216921-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d9d267c467e018216921-2">2</div><div class="crayon-num" data-line="crayon-56d9d267c467e018216921-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d9d267c467e018216921-4">4</div><div class="crayon-num" data-line="crayon-56d9d267c467e018216921-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d9d267c467e018216921-6">6</div><div class="crayon-num" data-line="crayon-56d9d267c467e018216921-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d9d267c467e018216921-8">8</div><div class="crayon-num" data-line="crayon-56d9d267c467e018216921-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d9d267c467e018216921-10">10</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d9d267c467e018216921-1"><span class="crayon-ta">&lt;?php</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d9d267c467e018216921-2"><span class="crayon-c">//Demilitador 'i' para no diferenciar mayus y minus</span></div><div class="crayon-line" id="crayon-56d9d267c467e018216921-3"><span class="crayon-st">if</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-e">preg_match</span><span class="crayon-sy">(</span><span class="crayon-s">"/PRUEBA/i"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">"esto es una prueba"</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span><span class="crayon-h"> </span></div><div class="crayon-line crayon-striped-line" id="crayon-56d9d267c467e018216921-4"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-56d9d267c467e018216921-5"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-k ">echo</span><span class="crayon-h"> </span><span class="crayon-s">"HAY COINCIDENCIA"</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d9d267c467e018216921-6"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span><span class="crayon-st">else</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-56d9d267c467e018216921-7"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d9d267c467e018216921-8"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-k ">echo</span><span class="crayon-h"> </span><span class="crayon-s">"NO HAY COINCIDENCIA"</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d9d267c467e018216921-9"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d9d267c467e018216921-10"><span class="crayon-ta">?&gt;</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0015 seconds] -->
+<p>Explico el código superior:</p>
+<ul>
+<li>Busco ‘PRUEBA’ en ‘esto es una prueba’.</li>
+<li>Como usamos el delimitador ‘i’ no se diferencian mayúsculas y minúsculas.</li>
+<li>Por lo que hay coincidencia.</li>
+</ul>
+<h2>Ejemplo de PHP preg_match() con delimitador ‘b’</h2>
+<p><a title="Ejemplo de PHP preg_match() con delimitador &#39;b&#39;" href="http://www.anerbarrena.com/demos/2013/28-php-preg-match-delimitador-b.php" target="_blank">Segundo ejemplo</a> con el <strong>delimitador ‘b’:</strong></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d9d267c4684787842083" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-mixed-highlight" title="Contiene lenguajes combinados"></span><div class="crayon-button crayon-nums-button crayon-pressed" title="Mostrar/ocultar números de línea"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Cambiar a texto plano"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code" style="display: none;"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Abrir el código en una nueva ventana"><div class="crayon-button-icon"></div></div><span class="crayon-language">PHP</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="" readonly="" style="tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;">&lt;?php
+//Demilitador 'b'
+if (preg_match("/compara\b/", "vamos a comparar código")) 
+    {
+    echo "HAY COINCIDENCIA";
+    } else 
+	    {
+	    echo "NO HAY COINCIDENCIA";
+	    }
+?&gt;</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d9d267c4684787842083-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d9d267c4684787842083-2">2</div><div class="crayon-num" data-line="crayon-56d9d267c4684787842083-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d9d267c4684787842083-4">4</div><div class="crayon-num" data-line="crayon-56d9d267c4684787842083-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d9d267c4684787842083-6">6</div><div class="crayon-num" data-line="crayon-56d9d267c4684787842083-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d9d267c4684787842083-8">8</div><div class="crayon-num" data-line="crayon-56d9d267c4684787842083-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d9d267c4684787842083-10">10</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d9d267c4684787842083-1"><span class="crayon-ta">&lt;?php</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d9d267c4684787842083-2"><span class="crayon-c">//Demilitador 'b'</span></div><div class="crayon-line" id="crayon-56d9d267c4684787842083-3"><span class="crayon-st">if</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-e">preg_match</span><span class="crayon-sy">(</span><span class="crayon-s">"/compara\b/"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">"vamos a comparar código"</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span><span class="crayon-h"> </span></div><div class="crayon-line crayon-striped-line" id="crayon-56d9d267c4684787842083-4"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-56d9d267c4684787842083-5"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-k ">echo</span><span class="crayon-h"> </span><span class="crayon-s">"HAY COINCIDENCIA"</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d9d267c4684787842083-6"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span><span class="crayon-h"> </span><span class="crayon-st">else</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-56d9d267c4684787842083-7"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d9d267c4684787842083-8"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-k ">echo</span><span class="crayon-h"> </span><span class="crayon-s">"NO HAY COINCIDENCIA"</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d9d267c4684787842083-9"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d9d267c4684787842083-10"><span class="crayon-ta">?&gt;</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0014 seconds] -->
+<p>Explico el código superior:</p>
+<ul>
+<li>Busco ‘compara’ en ‘vamos a comparar código’.</li>
+<li>Como usamos el delimitador ‘b’ realizamos una búsqueda estricta.</li>
+<li>Por lo que NO hay coincidencia, ‘compara’ no es la mismo cadena que ‘comparar’.</li>
+</ul>
+<p>Ya hemos visto ejemplos con delimitadores de <strong>PHP preg_match()</strong>, probad a cambiar los ejemplos para ver el efecto contrario.</p>
+<h2>Ejemplo de búsqueda con preg_match() usando expresión regular</h2>
+<p><a title="Ejemplo de PHP preg_match() usando expresión regular" href="http://www.anerbarrena.com/demos/2013/28-php-preg-match-delimitador-expresion-regular.php" target="_blank">Tercer ejemplo</a> usando expresión regular para que se busque al menos 2 números seguidos en la cadena:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d9d267c4689015148901" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Mostrar/ocultar números de línea"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Cambiar a texto plano"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code" style="display: none;"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Abrir el código en una nueva ventana"><div class="crayon-button-icon"></div></div><span class="crayon-language">PHP</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="" readonly="" style="tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;">//buscando al menos 2 numeros seguidos en la cadena
+if (preg_match('/[0-9]{2}/',"miemail22@email.com 45")) 
+	{
+	echo "HAY COINCIDENCIA";
+	} else 
+		{
+		echo "NO HAY COINCIDENCIA";
+		}</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d9d267c4689015148901-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d9d267c4689015148901-2">2</div><div class="crayon-num" data-line="crayon-56d9d267c4689015148901-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d9d267c4689015148901-4">4</div><div class="crayon-num" data-line="crayon-56d9d267c4689015148901-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d9d267c4689015148901-6">6</div><div class="crayon-num" data-line="crayon-56d9d267c4689015148901-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d9d267c4689015148901-8">8</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d9d267c4689015148901-1"><span class="crayon-c">//buscando al menos 2 numeros seguidos en la cadena</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d9d267c4689015148901-2"><span class="crayon-st">if</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-e">preg_match</span><span class="crayon-sy">(</span><span class="crayon-s">'/[0-9]{2}/'</span><span class="crayon-sy">,</span><span class="crayon-s">"miemail22@email.com 45"</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-56d9d267c4689015148901-3"><span class="crayon-h">	</span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d9d267c4689015148901-4"><span class="crayon-h">	</span><span class="crayon-k ">echo</span><span class="crayon-h"> </span><span class="crayon-s">"HAY COINCIDENCIA"</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d9d267c4689015148901-5"><span class="crayon-h">	</span><span class="crayon-sy">}</span><span class="crayon-h"> </span><span class="crayon-st">else</span><span class="crayon-h"> </span></div><div class="crayon-line crayon-striped-line" id="crayon-56d9d267c4689015148901-6"><span class="crayon-h">		</span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-56d9d267c4689015148901-7"><span class="crayon-h">		</span><span class="crayon-k ">echo</span><span class="crayon-h"> </span><span class="crayon-s">"NO HAY COINCIDENCIA"</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d9d267c4689015148901-8"><span class="crayon-h">		</span><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0016 seconds] -->
+<p>Explico el código:</p>
+<ul>
+<li>Se realiza la búsqueda de 2 números seguidos en la cadena pasada.</li>
+<li>Se usa una expresión regular para realizar la búsqueda o comparación.</li>
+<li>Hay coincidencia por el ’45’. El 22 está integrado dentro de una cadena.</li>
+</ul>
+<h2>Ejemplo de preg_match() guardando las coincidencias en un array</h2>
+<p><a title="Ejemplo de PHP preg_match() guardando las coincidencias en un array" href="http://www.anerbarrena.com/demos/2013/28-php-preg-match-array.php" target="_blank">Cuarto ejemplo</a> para <strong>guardar las coincidencias en un array</strong> y mostrar su valor por pantalla:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d9d267c468e327350212" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Mostrar/ocultar números de línea"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Cambiar a texto plano"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code" style="display: none;"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Abrir el código en una nueva ventana"><div class="crayon-button-icon"></div></div><span class="crayon-language">PHP</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="" readonly="" style="tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;">//guardamos las coincidencias en un array
+if (preg_match('/nombre/',"nombres",$coincidencias)) 
+	{
+	echo "HAY COINCIDENCIA&lt;br&gt;";
+    //imprimo el array en pantalla
+	var_export ($coincidencias);
+    //seria lo mismo que
+	echo $coincidencias[0];
+	} else 
+		{
+		echo "NO HAY COINCIDENCIA";
+		}</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d9d267c468e327350212-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d9d267c468e327350212-2">2</div><div class="crayon-num" data-line="crayon-56d9d267c468e327350212-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d9d267c468e327350212-4">4</div><div class="crayon-num" data-line="crayon-56d9d267c468e327350212-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d9d267c468e327350212-6">6</div><div class="crayon-num" data-line="crayon-56d9d267c468e327350212-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d9d267c468e327350212-8">8</div><div class="crayon-num" data-line="crayon-56d9d267c468e327350212-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d9d267c468e327350212-10">10</div><div class="crayon-num" data-line="crayon-56d9d267c468e327350212-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d9d267c468e327350212-12">12</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d9d267c468e327350212-1"><span class="crayon-c">//guardamos las coincidencias en un array</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d9d267c468e327350212-2"><span class="crayon-st">if</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-e">preg_match</span><span class="crayon-sy">(</span><span class="crayon-s">'/nombre/'</span><span class="crayon-sy">,</span><span class="crayon-s">"nombres"</span><span class="crayon-sy">,</span><span class="crayon-v">$coincidencias</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-56d9d267c468e327350212-3"><span class="crayon-h">	</span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d9d267c468e327350212-4"><span class="crayon-h">	</span><span class="crayon-k ">echo</span><span class="crayon-h"> </span><span class="crayon-s">"HAY COINCIDENCIA&lt;br&gt;"</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d9d267c468e327350212-5"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-c">//imprimo el array en pantalla</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d9d267c468e327350212-6"><span class="crayon-h">	</span><span class="crayon-e">var_export</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">$coincidencias</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d9d267c468e327350212-7"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-c">//seria lo mismo que</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d9d267c468e327350212-8"><span class="crayon-h">	</span><span class="crayon-k ">echo</span><span class="crayon-h"> </span><span class="crayon-v">$coincidencias</span><span class="crayon-sy">[</span><span class="crayon-cn">0</span><span class="crayon-sy">]</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d9d267c468e327350212-9"><span class="crayon-h">	</span><span class="crayon-sy">}</span><span class="crayon-h"> </span><span class="crayon-st">else</span><span class="crayon-h"> </span></div><div class="crayon-line crayon-striped-line" id="crayon-56d9d267c468e327350212-10"><span class="crayon-h">		</span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-56d9d267c468e327350212-11"><span class="crayon-h">		</span><span class="crayon-k ">echo</span><span class="crayon-h"> </span><span class="crayon-s">"NO HAY COINCIDENCIA"</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d9d267c468e327350212-12"><span class="crayon-h">		</span><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0020 seconds] -->
+<p>Explico el código:</p>
+<ul>
+<li>Se realiza la búsqueda de la cadena ‘nombre’ en la cadena ‘nombres’.</li>
+<li>Se pasa como parámetro una variable para guardar un&nbsp;<a title="PHP array(): Tipos y ejemplos para recorrer arrays" href="http://www.anerbarrena.com/php-array-tipos-ejemplos-3876/">array</a> con las coincidencias</li>
+<li>Muestro con <a title="PHP var_export(): Cómo mostrar el valor de una variable u objeto" href="http://www.anerbarrena.com/php-var_export-4748/">var_export()</a> el <strong>array</strong> con las coincidencias.</li>
+<li>Hay coincidencia.</li>
+</ul>
+<h2>Ejemplo con el parámetro flags</h2>
+<p>A continuación usamos el mismo ejemplo que el anterior pero <strong>pasando el parámetro $flags</strong> para que nos devuelva el índice del <a title="PHP array(): Tipos y ejemplos para recorrer arrays" href="http://www.anerbarrena.com/php-array-tipos-ejemplos-3876/">array </a>de la ocurrencia.</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d9d267c4694724562547" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Mostrar/ocultar números de línea"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Cambiar a texto plano"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code" style="display: none;"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Abrir el código en una nueva ventana"><div class="crayon-button-icon"></div></div><span class="crayon-language">PHP</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="" readonly="" style="tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;">//guardamos las coincidencias en un array y pasamos el parametro flags
+	if (preg_match('/nombre/',"nombres",$coincidencias,PREG_OFFSET_CAPTURE)) 
+	    {
+	    echo "HAY COINCIDENCIA&lt;br&gt;";
+	    print_r ($coincidencias);
+	    } else 
+		    {
+		    echo "NO HAY COINCIDENCIA";
+		    }</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d9d267c4694724562547-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d9d267c4694724562547-2">2</div><div class="crayon-num" data-line="crayon-56d9d267c4694724562547-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d9d267c4694724562547-4">4</div><div class="crayon-num" data-line="crayon-56d9d267c4694724562547-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d9d267c4694724562547-6">6</div><div class="crayon-num" data-line="crayon-56d9d267c4694724562547-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d9d267c4694724562547-8">8</div><div class="crayon-num" data-line="crayon-56d9d267c4694724562547-9">9</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d9d267c4694724562547-1"><span class="crayon-c">//guardamos las coincidencias en un array y pasamos el parametro flags</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d9d267c4694724562547-2"><span class="crayon-h">	</span><span class="crayon-st">if</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-e">preg_match</span><span class="crayon-sy">(</span><span class="crayon-s">'/nombre/'</span><span class="crayon-sy">,</span><span class="crayon-s">"nombres"</span><span class="crayon-sy">,</span><span class="crayon-v">$coincidencias</span><span class="crayon-sy">,</span><span class="crayon-cn">PREG_OFFSET_CAPTURE</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-56d9d267c4694724562547-3"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d9d267c4694724562547-4"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-k ">echo</span><span class="crayon-h"> </span><span class="crayon-s">"HAY COINCIDENCIA&lt;br&gt;"</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d9d267c4694724562547-5"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">print_r</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">$coincidencias</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d9d267c4694724562547-6"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span><span class="crayon-h"> </span><span class="crayon-st">else</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-56d9d267c4694724562547-7"><span class="crayon-h">		&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d9d267c4694724562547-8"><span class="crayon-h">		&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-k ">echo</span><span class="crayon-h"> </span><span class="crayon-s">"NO HAY COINCIDENCIA"</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d9d267c4694724562547-9"><span class="crayon-h">		&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0017 seconds] -->
+<p></p>
+<h2>Ejemplo con el parámetro de inicio de la búsqueda</h2>
+<p>Último ejemplo pasando el parámetro <strong>$comienzo para definir el punto de partida de la comparación.</strong></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d9d267c4698662906772" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Mostrar/ocultar números de línea"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Cambiar a texto plano"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Abrir el código en una nueva ventana"><div class="crayon-button-icon"></div></div><span class="crayon-language">PHP</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="" readonly="" style="tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;">//guardamos las coincidencias en un array , pasamos el parametro flags, y decimos que empiece en el caracter 0 la comparacion
+if (preg_match('/nombre/',"nombres",$coincidencias,PREG_OFFSET_CAPTURE, 0))
+	{
+	echo "HAY COINCIDENCIA&lt;br&gt;";
+	print_r ($coincidencias);
+	} else 
+		{
+		echo "NO HAY COINCIDENCIA";
+		}</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d9d267c4698662906772-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d9d267c4698662906772-2">2</div><div class="crayon-num" data-line="crayon-56d9d267c4698662906772-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d9d267c4698662906772-4">4</div><div class="crayon-num" data-line="crayon-56d9d267c4698662906772-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d9d267c4698662906772-6">6</div><div class="crayon-num" data-line="crayon-56d9d267c4698662906772-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d9d267c4698662906772-8">8</div><div class="crayon-num" data-line="crayon-56d9d267c4698662906772-9">9</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d9d267c4698662906772-1"><span class="crayon-c">//guardamos las coincidencias en un array , pasamos el parametro flags, y decimos que empiece en el caracter 0 la comparacion</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d9d267c4698662906772-2"><span class="crayon-st">if</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-e">preg_match</span><span class="crayon-sy">(</span><span class="crayon-s">'/nombre/'</span><span class="crayon-sy">,</span><span class="crayon-s">"nombres"</span><span class="crayon-sy">,</span><span class="crayon-v">$coincidencias</span><span class="crayon-sy">,</span><span class="crayon-cn">PREG_OFFSET_CAPTURE</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">0</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-56d9d267c4698662906772-3"><span class="crayon-h">	</span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d9d267c4698662906772-4"><span class="crayon-h">	</span><span class="crayon-k ">echo</span><span class="crayon-h"> </span><span class="crayon-s">"HAY COINCIDENCIA&lt;br&gt;"</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d9d267c4698662906772-5"><span class="crayon-h">	</span><span class="crayon-e">print_r</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">$coincidencias</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d9d267c4698662906772-6"><span class="crayon-h">	</span><span class="crayon-sy">}</span><span class="crayon-h"> </span><span class="crayon-st">else</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-56d9d267c4698662906772-7"><span class="crayon-h">		</span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d9d267c4698662906772-8"><span class="crayon-h">		</span><span class="crayon-k ">echo</span><span class="crayon-h"> </span><span class="crayon-s">"NO HAY COINCIDENCIA"</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d9d267c4698662906772-9"><span class="crayon-h">		</span><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0018 seconds] -->
+<p></p>
+<div class="yarpp-related">
+
+
+<h3>POST RELACIONADOS</h3>
+<ul>
+		<li><a href="http://www.anerbarrena.com/php-preg_replace-3037/" rel="bookmark">PHP preg_replace(): Sustituir caracteres y cadenas con expresiones regulares</a><!-- (19.2)--></li>
+		<li><a href="http://www.anerbarrena.com/php-strpos-strrpos-2081/" rel="bookmark">Buscar palabras en una cadena de texto con PHP strpos() y strrpos()</a><!-- (15.9)--></li>
+		<li><a href="http://www.anerbarrena.com/php-str_replace-4695/" rel="bookmark">PHP str_replace(): Reemplazar cadenas y caracteres de un string</a><!-- (13.8)--></li>
+		<li><a href="http://www.anerbarrena.com/contar-numero-vocales-consonantes-cadena-php-3167/" rel="bookmark">Contar el número de vocales y consonantes de una cadena con PHP count_chars()</a><!-- (12.9)--></li>
+		<li><a href="http://www.anerbarrena.com/php-echo-4772/" rel="bookmark">PHP echo: Mostrar el contenido de variables y cadenas de texto</a><!-- (11.6)--></li>
+		<li><a href="http://www.anerbarrena.com/php-array-search-4831/" rel="bookmark">PHP array_search(): Buscar valores en arrays</a><!-- (11.6)--></li>
+	</ul>
+</div>
+
+						
+			
+			
+		</div><!-- .entry-content -->
+
+
+
+		<footer class="entry-footer">
+			<div class="entry-meta">
+				<span class="category"><span class="before">Categorías: </span><a href="http://www.anerbarrena.com/programacion/php/cadenas-string/" rel="tag">Funciones de cadenas en PHP</a>, <a href="http://www.anerbarrena.com/programacion/php/" rel="tag">PHP y MySQL</a></span> <span class="post_tag"><span class="before">Tags: </span><a href="http://www.anerbarrena.com/etiquetas/expresiones-regulares/" rel="tag">expresiones regulares</a></span>				Actualizado: <abbr class="updated">abril 3, 2015</abbr>
+			</div>
+		</footer><!-- .entry-footer -->
+
+	
+</article><!-- .hentry -->
+						
+
+<section id="comments">
+
+	<div id="disqus_thread"><iframe id="dsq-app2" name="dsq-app2" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" width="100%" src="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/saved_resource.html" style="width: 1px !important; min-width: 100% !important; border: none !important; overflow: hidden !important; height: 2669px !important;" horizontalscrolling="no" verticalscrolling="no"></iframe></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'anerbarrena'; // required: replace example with your forum shortname
+
+        /* no disqus var */
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the &lt;a href="http://disqus.com/?ref_noscript"&gt;comments powered by Disqus.&lt;/a&gt;</noscript>
+    
+    
+</section><!-- #comments -->
+
+
+				
+			
+		</div><!-- .hfeed -->
+
+			
+		<div class="loop-nav">
+			<a href="http://www.anerbarrena.com/date-input-html5-2829/" rel="prev"><span class="previous"><span class="meta-nav">←</span> Anterior</span></a>			<a href="http://www.anerbarrena.com/mostrar-numero-comentarios-post-wordpress-2933/" rel="next"><span class="next">Siguiente <span class="meta-nav">→</span></span></a>		</div><!-- .loop-nav -->
+
+	
+	</div><!-- #content -->
+
+			</div><!-- #main -->
+
+		</div><!-- .wrap -->
+
+				
+			<aside id="sidebar-primary" class="sidebar">
+				<section id="text-8" class="widget widget_text widget-widget_text">			<div class="textwidget"><div style="padding: 0 0 0 13px;">
+<a target="_blank" title="RSS anerbarrena.com" href="http://www.anerbarrena.com/feed/"><img style="padding:0; border:none;" alt="RSS anerbarrena.com" src="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/RSS_48px.png"></a>
+
+<a target="_blank" title="Facebook anerbarrena.com" href="https://www.facebook.com/Anerbarrenaweb"><img style="padding:0; border:none;" alt="Facebook anerbarrena.com" src="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/Facebook_48px.png"></a>
+
+<a target="_blank" title="Twitter anerbarrena.com" href="https://twitter.com/anerbarrena"><img style="padding:0; border:none;" alt="Twitter Aner Barrena" src="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/Twitter_48px.png"></a>
+
+<a rel="author" title="Google Plus anerbarrena.com" target="_blank" href="https://plus.google.com/100521238980519601840"><img style="padding:0; border:none;" alt="Google + anerbarrena.com" src="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/Google_48px.png"></a>
+
+<a target="_blank" title="Canal Youtube anerbarrena.com" href="http://www.youtube.com/user/anerbarrena"><img style="padding:0; border:none;" alt="Youtube anerbarrena.com" src="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/Youtube_48px.png"></a>
+</div>
+
+</div>
+		</section><section id="text-5" class="widget widget_text widget-widget_text">			<div class="textwidget"><span style="margin:0 0 0 0;"><img src="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/publicidad.png" style="display: none !important;"></span>
+
+<div style="position:relative;left:-10px;">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-5475373752870298";
+/* robapaginas */
+google_ad_slot = "4445721252";
+google_ad_width = 300;
+google_ad_height = 250;
+//-->
+</script>
+<script type="text/javascript" src="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/">
+</script>
+</div></div>
+		</section>		<section id="recent-posts-2" class="widget widget_recent_entries widget-widget_recent_entries">		<h3 class="widget-title">Últimos Post</h3>		<ul>
+					<li>
+				<a href="http://www.anerbarrena.com/options-php-wordpress-5140/">Repaso al archivo options.php de WordPress</a>
+						</li>
+					<li>
+				<a href="http://www.anerbarrena.com/jquery-width-5137/">jQuery width(): Modificar y obtener el ancho de los elementos</a>
+						</li>
+					<li>
+				<a href="http://www.anerbarrena.com/vistas-mysql-views-5133/">Sentencias para trabajar con vistas en MySQL</a>
+						</li>
+					<li>
+				<a href="http://www.anerbarrena.com/php-while-bucles-condicionales-control-5131/">PHP while: Bucles condicionales de control</a>
+						</li>
+					<li>
+				<a href="http://www.anerbarrena.com/etiqueta-template-html5-5127/">Etiqueta template HTML5: Declarar bloques de código</a>
+						</li>
+				</ul>
+		</section>		<section id="text-7" class="widget widget_text widget-widget_text">			<div class="textwidget"><span style="margin:0 0 0 0;"><img src="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/publicidad.png" style="display: none !important;"></span>
+
+<div style="position:relative;left:-10px;margin: 0 0 5px 0;">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-5475373752870298";
+/* robapaginas doble */
+google_ad_slot = "6746381652";
+google_ad_width = 300;
+google_ad_height = 600;
+//-->
+</script>
+<script type="text/javascript" src="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/">
+</script>
+</div></div>
+		</section><section id="hybrid-search-2" class="widget search widget-search"><h3 class="widget-title">Buscador</h3><form method="get" class="search-form" id="search-formhybrid-search" action="http://www.anerbarrena.com/"><div><input class="search-text" type="text" name="s" id="search-texthybrid-search" value="Busca y encontrarás..." onfocus="if(this.value==this.defaultValue)this.value=&#39;&#39;;" onblur="if(this.value==&#39;&#39;)this.value=this.defaultValue;"></div></form></section><section id="text-3" class="widget widget_text widget-widget_text">			<div class="textwidget"><iframe src="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/likebox.html" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:280px; height:220px;" allowtransparency="true"></iframe></div>
+		</section><section id="text-6" class="widget widget_text widget-widget_text"><h3 class="widget-title">Top post</h3>			<div class="textwidget"><ul>
+<li><a href="http://www.anerbarrena.com/jquery-load-html-div-460/" title="jQuery load(): cargar un html externo en un div">jQuery load()</a>,  
+<a href="http://www.anerbarrena.com/jquery-get-5049/" title="jQuery get(): Envío y carga de datos a una página externa">jQuery get()</a>, 
+<a href="http://www.anerbarrena.com/jquery-post-5064/" title="jQuery post(): Envío y carga de datos a una página externa">jQuery post()</a>, 
+<a href="http://www.anerbarrena.com/jquery-selectors-selectores-4768/" title="Selectores jQuery selectors: Cómo seleccionar o controlar elementos del DOM">jQuery selectors</a>
+</li>
+<li><a href="http://www.anerbarrena.com/value-radio-button-jquery-checked-1580/" title="Obtener el valor de un radio button con jQuery, comprobar si está seleccionado y checkearlo">Obtener el valor de un radio button con jQuery, comprobar si está seleccionado y checkearlo</a></li>
+<li><a href="http://www.anerbarrena.com/jquery-change-1879/" title="jQuery change(): Detectar cambios de valor en los elementos de tu web">jQuery change()</a>, 
+<a href="http://www.anerbarrena.com/jquery-toogle-mostrar-ocultar-divs-1728/" title="jQuery toggle(): Mostrar, ocultar y animar elementos en tu web">jQuery toggle()</a>, <a title="jQuery selectors" href="http://www.anerbarrena.com/jquery-selectors-selectores-4768/">Selectores jQuery</a>, <a title="Efectos jQuery" href="http://www.anerbarrena.com/efectos-en-jquery-5026/">Efectos jQuery</a>
+</li>
+<li><a href="http://www.anerbarrena.com/php-date-1018/" title="PHP date(): Obtener día, mes, año y hora actual con PHP">PHP date(): Obtener día, mes, año y hora actual con PHP</a></li>
+<li><a href="http://www.anerbarrena.com/date-input-html5-2829/" title="Date input HTML5: Un sencillo datepicker para tu formulario">Date input HTML5: Un sencillo datepicker para tu formulario</a></li>
+<li>
+<a title="Arrays en PHP" href="http://www.anerbarrena.com/php-array-tipos-ejemplos-3876/">PHP array(): Tipos y ejemplos para recorrer arrays</a>
+</li>
+<li>
+<a title="jQuery animate(), efectos con CSS" href="http://www.anerbarrena.com/jquery-animate-3787/">jQuery animate()</a>, <a title="jQuery css(): Obtener y cambiar las propiedades CSS" href="http://www.anerbarrena.com/jquery-css-4900/">jQuery css()</a>, <a title="jQuery on() y off()" href="http://www.anerbarrena.com/jquery-on-off-4767/">jQuery on() y off()</a>
+</li>
+</ul></div>
+		</section><section id="text-2" class="widget widget_text widget-widget_text">			<div class="textwidget"><iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" class="twitter-timeline twitter-timeline-rendered" style="position: static; visibility: visible; display: inline-block; width: 520px; height: 350px; padding: 0px; border: none; max-width: 100%; min-width: 180px; margin-top: 0px; margin-bottom: 0px; min-height: 200px;" data-widget-id="346901740383256578"></iframe>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div>
+		</section><section id="text-10" class="widget widget_text widget-widget_text"><h3 class="widget-title">Categorías</h3>			<div class="textwidget"><ul class="xoxo categories"><li class="cat-item cat-item-5"><a href="http://www.anerbarrena.com/programacion/php/" title="Ver todas las entradas archivadas en PHP y MySQL">PHP y MySQL</a><ul class="children"><li class="cat-item cat-item-9"><a href="http://www.anerbarrena.com/programacion/php/mysql/" title="Ver todas las entradas archivadas en MySQL">MySQL</a></li><li class="cat-item cat-item-40"><a href="http://www.anerbarrena.com/programacion/php/fechas/" title="Ver todas las entradas archivadas en Funciones de fechas en PHP">Funciones de fechas en PHP</a></li><li class="cat-item cat-item-46"><a href="http://www.anerbarrena.com/programacion/php/cadenas-string/" title="Ver todas las entradas archivadas en Funciones de cadenas en PHP">Funciones de cadenas en PHP</a></li></ul></li><li class="cat-item cat-item-7"><a href="http://www.anerbarrena.com/programacion/html5/" title="Ver todas las entradas archivadas en HTML5">HTML5</a><ul class="children"><li class="cat-item cat-item-38"><a href="http://www.anerbarrena.com/programacion/html5/form-html5/" title="Ver todas las entradas archivadas en Formularios en HTML5">Formularios en HTML5</a></li><li class="cat-item cat-item-41"><a href="http://www.anerbarrena.com/programacion/html5/nuevas-etiquetas-y-atributos/" title="Ver todas las entradas archivadas en Nuevos input, etiquetas y atributos en HTML5">Nuevos input, etiquetas y atributos en HTML5</a></li><li class="cat-item cat-item-47"><a href="http://www.anerbarrena.com/programacion/html5/device-api-dispositivo/" title="Ver todas las entradas archivadas en Apis de HTML5">Apis de HTML5</a></li></ul></li><li class="cat-item cat-item-10"><a href="http://www.anerbarrena.com/programacion/jquery/" title="Ver todas las entradas archivadas en jQuery">jQuery</a></li><li class="cat-item cat-item-11"><a href="http://www.anerbarrena.com/programacion/htaccess-apache/" title="Ver todas las entradas archivadas en .htaccess Apache">.htaccess Apache</a></li><li class="cat-item cat-item-12"><a href="http://www.anerbarrena.com/programacion/recursos/" title="Ver todas las entradas archivadas en Recursos">Recursos</a><ul class="children"><li class="cat-item cat-item-22"><a href="http://www.anerbarrena.com/programacion/recursos/facebook-recursos/" title="Ver todas las entradas archivadas en Facebook">Facebook</a></li><li class="cat-item cat-item-25"><a href="http://www.anerbarrena.com/programacion/recursos/seo/" title="Ver todas las entradas archivadas en SEO">SEO</a></li><li class="cat-item cat-item-32"><a href="http://www.anerbarrena.com/programacion/recursos/wordpress/" title="Ver todas las entradas archivadas en WordPress">WordPress</a></li><li class="cat-item cat-item-43"><a href="http://www.anerbarrena.com/programacion/recursos/google/" title="Ver todas las entradas archivadas en Google y Youtube">Google y Youtube</a></li><li class="cat-item cat-item-45"><a href="http://www.anerbarrena.com/programacion/recursos/twitter/" title="Ver todas las entradas archivadas en Twitter">Twitter</a></li></ul></li></ul></div>
+		</section><section id="text-9" class="widget widget_text widget-widget_text"><h3 class="widget-title">Webs Amigas</h3>			<div class="textwidget"><ul class="xoxo blogroll">
+<li>
+<a href="http://www.egocast.es/" rel="met co-worker colleague" title="Viajes &amp; Internet" target="_blank">Egocast</a>
+</li>
+<li>
+<a href="http://www.menecesitas.com/" rel="met co-worker colleague" title="Lesiones deportivas y dietas para adelgazar para mujeres deportistas" target="_blank">Lesiones deportivas y dietas para adelgazar</a>
+</li>
+
+</ul></div>
+		</section><section id="hybrid-tags-2" class="widget tags widget-tags"><h3 class="widget-title">Tags</h3><p class="term-cloud post_tag-cloud"><a href="http://www.anerbarrena.com/etiquetas/botones-compartir-en-redes-sociales/" class="tag-link-42" title="28 temas" style="font-size: 22pt;">botones compartir redes sociales</a> <a href="http://www.anerbarrena.com/etiquetas/escapar-caracteres-especiales/" class="tag-link-44" title="1 tema" style="font-size: 8pt;">escapar caracteres especiales</a> <a href="http://www.anerbarrena.com/etiquetas/expresiones-regulares/" class="tag-link-31" title="5 temas" style="font-size: 13.7931034483pt;">expresiones regulares</a> <a href="http://www.anerbarrena.com/etiquetas/redirect-301/" class="tag-link-30" title="2 temas" style="font-size: 10.1724137931pt;">redirect 301</a> <a href="http://www.anerbarrena.com/etiquetas/robots-txt/" class="tag-link-26" title="1 tema" style="font-size: 8pt;">robots.txt</a> <a href="http://www.anerbarrena.com/etiquetas/script/" class="tag-link-28" title="1 tema" style="font-size: 8pt;">script</a> <a href="http://www.anerbarrena.com/etiquetas/sistema-de-comentarios/" class="tag-link-21" title="3 temas" style="font-size: 11.6206896552pt;">Sistemas de comentarios para tu web o WordPress</a> <a href="http://www.anerbarrena.com/etiquetas/sitemap/" class="tag-link-27" title="3 temas" style="font-size: 11.6206896552pt;">Sitemap</a></p></section><section id="hybrid-calendar-2" class="widget calendar widget-calendar"><h3 class="widget-title">Calendario</h3><div class="calendar-wrap"><table id="wp-calendar"><caption>marzo 2016</caption><thead><tr><th scope="col" title="Lunes">Lun</th><th scope="col" title="Martes">Mar</th><th scope="col" title="Miércoles">Mie</th><th scope="col" title="Jueves">Jue</th><th scope="col" title="Viernes">Vie</th><th scope="col" title="Sábado">Sab</th><th scope="col" title="Domingo">Dom</th></tr></thead><tfoot><tr><td colspan="3" id="prev"><a href="http://www.anerbarrena.com/date/2016/02/">« Feb</a></td><td class="pad">&nbsp;</td><td colspan="3" id="next" class="pad">&nbsp;</td></tr></tfoot><tbody><tr><td colspan="1" class="pad">&nbsp;</td><td>1</td><td><a href="http://www.anerbarrena.com/date/2016/03/02/" aria-label="Entradas publicadas el 2 March, 2016">2</a></td><td>3</td><td id="today"><a href="http://www.anerbarrena.com/date/2016/03/04/" aria-label="Entradas publicadas el 4 March, 2016">4</a></td><td>5</td><td>6</td></tr><tr><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td></tr><tr><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td></tr><tr><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td></tr><tr><td>28</td><td>29</td><td>30</td><td>31</td><td class="pad" colspan="3">&nbsp;</td></tr></tbody></table></div><!-- .calendar-wrap --></section>		
+			</aside><!-- #sidebar-primary .aside -->
+
+		
+
+		
+
+		<footer id="footer">
+
+			<div class="footer-content">
+				<p class="credit">
+				Copyright @ 2012 - 2016 
+				<a class="site-link" href="http://www.anerbarrena.com/" title="Aner Barrena" rel="home"><span>Aner Barrena</span></a>
+				. Powered by <a class="wp-link" href="http://wordpress.org/" title="State-of-the-art semantic personal publishing platform"><span>WordPress</span></a>
+				 and 
+				 <a class="theme-link" href="http://wordpress.org/themes/chun" title=" WordPress Theme"><span>Chun theme</span></a>
+				  | Contactar: <a class="wp-link" href="http://www.anerbarrena.com/contactar/"><span>Contactar</span></a>
+				|  <a class="wp-link" href="http://www.anerbarrena.com/politica-de-cookies/"><span>Política de  cookies</span></a>
+				  
+				
+				</p>			</div><!-- .footer-content -->
+
+		</footer><!-- #footer -->
+
+	</div><!-- #container -->
+
+			
+
+		
+	<!-- HTML del pié de página -->
+<div class="cdp-cookies-alerta  cdp-cookies-layout-ventana cdp-cookies-pos-inferior cdp-cookies-tema-gris">
+	<div class="cdp-cookies-texto">
+		<h4 style="font-size:15px !important;line-height:15px !important">Uso de cookies</h4><p style="font-size:12px !important;line-height:12px !important">Este sitio web utiliza cookies para que usted tenga la mejor experiencia de usuario. Si continúa navegando está dando su consentimiento para la aceptación de las mencionadas cookies y la aceptación de nuestra <a href="http://www.anerbarrena.com/politica-de-cookies/" style="font-size:12px !important;line-height:12px !important">política de cookies</a>, pinche el enlace para mayor información.</p>
+		<a href="javascript:;" class="cdp-cookies-boton-cerrar">ACEPTAR</a>
+	</div>
+</div>
+<link rel="stylesheet" id="yarppRelatedCss-css" href="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/related.css" type="text/css" media="all">
+<script type="text/javascript" src="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/load-scripts.php"></script>
+	<!-- end wp_footer() -->
+
+
+
+
+<!-- Google plus boton -->
+<script type="text/javascript">
+  window.___gcfg = {lang: 'es'};
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+
+
+<!-- Disqus -->
+   <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'anerbarrena'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+    </script>
+
+<iframe name="oauth2relay850741062" id="oauth2relay850741062" src="./PHP preg_match()_ buscar o comparar cadenas con expresiones regulares_files/postmessageRelay.html" tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe><iframe id="rufous-sandbox" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: none;"></iframe></body></html>

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)http://meudiseny.com/miphp/ejmExpreRegul.php -->
+<html lang="es"><script id="tinyhippos-injected">if (window.top.ripple) { window.top.ripple("bootstrap").inject(window, document); }</script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta charset="utf-8">
+    <meta name="title" content="meudisseny">
+  	<meta http-equiv="Content-Language" content="es">
+  	<meta name="generator" content="Adobe Dreamweaver CS6">
+  	<meta name="author" content="Joaquim Medio">
+  	<meta name="Keywords" content="PHP, php, PHP 6, php 6, aprender php6, PROGRAMAR, Programacion, programar, programacio, codigo, codi, expresiones regulares PHP">
+  	<meta name="description" content="Les expressions regulars són patrons de text que permeten definir patrons de coincidència entre cadenes de text i inclús realitzen transformacions de la cadena.">
+    <meta name="description es" content="Las expresiones regulares son patrones de texto que permiten definir patrones de coincidencia entre cadenas de texto e incluso realizan transformaciones de la cadena.">
+ 	<meta http-equiv="Cache-Control" content="no-cache">
+  	<meta name="robots" content="all"> 
+	
+    <title>Ejemplo de expresiones regulares PHP</title>
+    
+	<!-- ICONA PUJAR SCROLL (FIXET) -->    
+    </head><body><a class="lliscar" href="http://meudiseny.com/miphp/ejmExpreRegul.php#subir"><img src="./Ejemplo de expresiones regulares PHP_files/subir.png" title="Subir" onmouseover="src=&quot;images/subirHover2.png&quot;" onmouseout="src=&quot;images/subir.png&quot;"></a>
+        
+	<link rel="stylesheet" href="./Ejemplo de expresiones regulares PHP_files/estilos.css" type="text/css" media="screen">
+
+<script type="text/javascript" src="./Ejemplo de expresiones regulares PHP_files/jquery.js"></script>
+<script type="text/javascript" src="./Ejemplo de expresiones regulares PHP_files/JQ.js"></script>
+<script type="text/javascript" src="./Ejemplo de expresiones regulares PHP_files/JS.js"></script>
+
+
+
+
+
+<div class="contenedor">
+
+<div class="navegador">
+
+<nav><a class="cursophp enlacRelativo">Curso PHP 6 </a> <br> <br><a class="enlacRelativo" href="http://meudiseny.com/miphp/VarConsOperadores.php" title="Inicio PHP 6 variables, constantes y operadores" target="_self">Inicio PHP 6, variables</a> <br><a class="enlacRelativo" href="http://meudiseny.com/miphp/arrays.php" title="Arrays" target="_self">Arrays</a> <br><a class="enlacRelativo" href="http://meudiseny.com/miphp/constantesMagicas.php" title="Constantes mágicas" target="_self">Constantes mágicas</a> <br><a class="enlacRelativo" href="http://meudiseny.com/miphp/constantesPredefinidas.php" title="Constantes predefinidas" target="_self">Constantes predefinidas</a> <br><a class="enlacRelativo" href="http://meudiseny.com/miphp/estructurasControl.php" title="Estructuras de control" target="_self">Estructuras de control</a> <br><a class="enlacRelativo" href="http://meudiseny.com/miphp/funcionesMatematicas.php" title="Funciones matemáticas" target="_self">Funciones matemáticas</a> <br><a class="enlacRelativo" href="http://meudiseny.com/miphp/funcionesMatrices.php" title="Funciones para matrices PHP" target="_self">Funciones Matrices PHP</a> <br><a class="enlacRelativo" href="http://meudiseny.com/miphp/funciones.php" title="Funciones PHP" target="_self">Funciones PHP</a> <br><a class="enlacRelativo" href="http://meudiseny.com/miphp/manipulCadenas.php" title="Manipulación de cadenas" target="_self">Manipulación de cadenas</a> <br><a class="enlacRelativo" href="http://meudiseny.com/miphp/variablePredServidor.php" title="Variables predefinidas del servidor" target="_self">Variables predefinidas</a> <br> <br></nav>
+</div><!--navegador-->
+
+<div class="info">
+
+<a name="pujar" id="subir"></a><div class="cajahead"><img class="cabphp" src="./Ejemplo de expresiones regulares PHP_files/fondoHeadPHP.png" title="Programación PHP"></div><h1 class="tituloPHP">Ejemplo de expresiones regulares PHP</h1><p>Las expresiones regulares son patrones de texto y permiten definir <strong>patrones de coincidencia</strong> y aplicarlos a cadenas de texto para conocer si esa cadena o parte de ella cumple el patrón al compararse, incluso realizan transformaciones de la cadena. </p><div id="ejemExpre"></div><a href="http://meudiseny.com/miphp/ejmExpreRegul.php#" name="ejemExpre"></a><h3 style="margin-left: 5px; width: 734px; padding: 12px; opacity: 1; overflow: hidden;">Ejemplo de expresiones regulares PHP</h3><ul>
+
+		<li><a class="lliscar" href="http://meudiseny.com/miphp/ejmExpreRegul.php#barra" title="Barras inicio y fin de patrón">Barras inicio y fin<strong>/ ... /</strong></a></li>
+		<li><a class="lliscar" href="http://meudiseny.com/miphp/ejmExpreRegul.php#posAncla" title="Posicionar carácter al inicio o fin">Posicionamiento o anclas <strong>^</strong>, <strong>$</strong> inicio/fin</a></li>
+		<li><a class="lliscar" href="http://meudiseny.com/miphp/ejmExpreRegul.php#barraInv" title="Barras invertida, escapar caracter">Barra invertida <strong>\</strong> escapar caracter</a></li>
+		<li><a class="lliscar" href="http://meudiseny.com/miphp/ejmExpreRegul.php#punto" title="Punto, representa cualquier carácter .">Punto <big><strong>.</strong></big> cualquier carácter</a></li>
+		<li><a class="lliscar" href="http://meudiseny.com/miphp/ejmExpreRegul.php#cuanti" title="Cuantificadores">Cuantificadores <strong>/...{0,}/</strong></a></li>
+		<li><a class="lliscar" href="http://meudiseny.com/miphp/ejmExpreRegul.php#rango" title="Metacarácter de rango">Metacarácter de rango <strong>[ ... ]</strong></a></li>
+		<li><a class="lliscar" href="http://meudiseny.com/miphp/ejmExpreRegul.php#nomHost" title="Ejemplo, obtener el nombre del host de una URL">Obtener el nombre del host de una URL</a></li>
+		
+	  </ul><div id="barra"></div><a href="http://meudiseny.com/miphp/ejmExpreRegul.php#" name="barra"></a><p><strong>Barra / ... /</strong></p><p>Si sabemos exáctamente la cadena que vamos a buscar, el patrón no será tan complicado, ya que únicamente <em>indicaremos entre barras el patrón</em> a buscar.</p><cite>Para realizar las comparacione utilizaré la función <strong>preg_match()</strong> que realiza una comparación entre la cadena y el patrón dado. Generalmente, la búsqueda empieza por el inicio de la cadena a comparar, pero existe un <em>parámetro opcional</em> <strong>offset</strong> que lo utilizaremos para especificar el lugar alternativo desde donde se va a empezar a buscar '<em>en bytes</em>'. </cite><pre><span class="coment">// Buscar una cadena dentro de otra (<strong>/</strong> ... <strong>/</strong>) </span>
+
+<span class="coment">// Función que mostrará si existe o no, el patrón indicado </span>
+function <strong>existeCadena</strong>( <em class="emfasverd">$valor</em> ) {
+   
+    if ( <em class="emfasverd">$valor</em> ){ <span class="coment">// si existe patrón ... </span>
+		
+        echo "Patron <em>existe</em> en cadena.";
+		
+    }else { <span class="coment">// si no existe patrón ... </span>
+	
+        echo "Patron <em>no existe</em> en cadena.";
+		
+	}
+		
+}
+
+<span class="coment">// Signo <strong>/ ... /</strong> (patrón entre barras) sin espacios </span>
+$patrCad=' <em>/ ab /</em> ';
+$cadena='<strong>aba</strong>';
+<strong>existeCadena</strong>(<em class="emfasverd">preg_match</em> ($patrCad, <span class="textTaronja">$cadena</span>));
+$patrCad=' <em>/ ab /</em> ';
+$cadena='<strong>bab</strong>';
+<strong>existeCadena</strong>(<em class="emfasverd">preg_match</em> ($patrCad, <span class="textTaronja">$cadena</span>));
+$patrCad=' <em>/ eb /</em> ';
+$cadena='<strong>baba</strong>';
+<strong>existeCadena</strong>(<em class="emfasverd">preg_match</em> ($patrCad, <span class="textTaronja">$cadena</span>));
+$patrCad=' <em>/ ab /</em> ';
+$cadena='<strong>ba</strong>';
+<strong>existeCadena</strong>(<em class="emfasverd">preg_match</em> ($patrCad, <span class="textTaronja">$cadena</span>)); </pre><em class="emfasRed">Patron <em>existe</em> en cadena.</em> <br> <br><em class="emfasRed">Patron <em>existe</em> en cadena.</em> <br> <br><em class="emfasRed">Patron <em>no existe</em> en cadena.</em> <br> <br><em class="emfasRed">Patron <em>no existe</em> en cadena.</em> <br> <br><pre><span class="coment">// Expresión como parámetro de preg_match()</span>	
+echo "Comparar cadena: <strong>JavaScript</strong>
+      Patrón comparación: <strong>/SCRI/i</strong>
+      ¿ Existe coincidencia ? ";
+	
+	<span class="coment">// '<strong>\i</strong>' indica que patrón será insensible a mayúsculas y minúsculas </span>	
+	<em>if</em> (<span class="textTaronja">preg_match</span>("<strong>/SCRI/i</strong>", " <em>JavaScript</em> " ) ) {
+		
+		echo "<em><strong>Sí</strong>, existe</em> una coincidencia."; <span class="coment">// Devuelve Sí </span>	
+		
+	} <em>else</em> {
+		
+		echo "<em><strong>No</strong>, no existe</em> ninguna coincidencia.";
+		
+	} </pre><p>Comparar cadena: <strong>JavaScript</strong> <br> 
+      Patrón comparación: <strong>/SCRI/i</strong> <br> 
+      ¿ Existe coincidencia ? </p><p><em><strong>Sí</strong>, existe</em> una coincidencia.</p><a class="subir lliscar" href="http://meudiseny.com/miphp/ejmExpreRegul.php#ejemExpre" title="Subir">Subir</a><div id="posAncla"></div><a href="http://meudiseny.com/miphp/ejmExpreRegul.php#" name="posAncla"></a><p><strong>Ancla inicio/fin ^ y $</strong></p><p><strong>Metacaracteres de posicionamiento o ancla</strong></p><p>Los símbolos <strong>^</strong>, <strong>$</strong> Indican donde debe estar situado el patrón que hemos indicado, dentro de la cadena para buscar sí existen coincidencias. <br>
+
+	Con el signo <strong>^</strong>: El patrón debe aparecer al inicio de la cadena de carácteres a comparar. <br>
+	Con el signo <strong>$</strong>: El patrón debe aparecer al final del conjunto de caracteres a comparar, o antes de un carácter de nueva linea.</p><pre><span class="coment">// Meta caracteres de posicionamiento, o anclas (^ circunflejo), ($ dolar)</span>
+
+<span class="coment">// Función que mostrará si existe o no, el patrón indicado </span>
+function <strong>existePatron</strong>( <em class="emfasverd">$valor</em> ) {
+   
+    if ( <em class="emfasverd">$valor</em> ){ <span class="coment">// si existe patrón ... </span>
+		
+        echo "Patron <em>existe</em> en cadena.";
+		
+    }else { <span class="coment">// si no existe patrón ... </span>
+	
+        echo "Patron <em>no existe</em> en cadena.";
+		
+	}
+		
+}
+
+<span class="coment">// Signo <strong>^</strong> (patrón al inicio de cadena de caracteres) </span>
+$patrAncla=' <em>/^ab/</em> ';
+$cadena='<strong>aba</strong>';
+<strong>existePatron</strong>(<em class="emfasverd">preg_match</em> ($patrAncla, <span class="textTaronja">$cadena</span>));
+$patrAncla=' <em>/^ab/</em> ';
+$cadena='<strong>bab</strong>';
+<strong>existePatron</strong>(<em class="emfasverd">preg_match</em> ($patrAncla, <span class="textTaronja">$cadena</span>));
+$patrAncla=' <em>/^ab/</em> ';
+$cadena='<strong>baba</strong>';
+<strong>existePatron</strong>(<em class="emfasverd">preg_match</em> ($patrAncla, <span class="textTaronja">$cadena</span>));
+
+<span class="coment">// Signo <strong>$</strong> (patrón al final del conjunto de caracteres) </span>
+$patrAncla=' <em>/ab$/</em> ';
+$cadena='<strong>aba</strong>';
+<strong>existePatron</strong>(<em class="emfasverd">preg_match</em> ($patrAncla, <span class="textTaronja">$cadena</span>));
+$patrAncla=' <em>/ab$/</em> ';
+$cadena='<strong>bab</strong>';
+<strong>existePatron</strong>(<em class="emfasverd">preg_match</em> ($patrAncla, <span class="textTaronja">$cadena</span>));
+$patrAncla=' <em>/ab$/</em> ';
+$cadena='<strong>baba</strong>';
+<strong>existePatron</strong>(<em class="emfasverd">preg_match</em> ($patrAncla, <span class="textTaronja">$cadena</span>)); </pre><em class="emfasRed">Patron <em>existe</em> en cadena.</em> <br> <br><em class="emfasRed">Patron <em>no existe</em> en cadena.</em> <br> <br><em class="emfasRed">Patron <em>no existe</em> en cadena.</em> <br> <br><em class="emfasRed">Patron <em>no existe</em> en cadena.</em> <br> <br><em class="emfasRed">Patron <em>existe</em> en cadena.</em> <br> <br><em class="emfasRed">Patron <em>no existe</em> en cadena.</em> <br> <br><a class="subir lliscar" href="http://meudiseny.com/miphp/ejmExpreRegul.php#ejemExpre" title="Subir">Subir</a><div id="barraInv"></div><a href="http://meudiseny.com/miphp/ejmExpreRegul.php#" name="barraInv"></a><p><strong>Barra invertida (\)</strong> </p>
+
+	<p>Si necesitamos incluir en nuestro patrón cualquier metacarácter como un <em>signo literal</em>, usaremos el carácter de escape ( <strong>\</strong> ), la barra invertida. De esta forma si incluimos por jemplo el símbolo <strong>dolar</strong> (<strong>$</strong>) como significado literal de moneda, debemos incluir delante de este, la <strong>barra invertida</strong> (<strong>\</strong>). <br> <br>
+	
+	Otros caracteres que requieren la <strong>barra invertida</strong> para ser usados con otros fines: <br>
+	
+	<big><strong>. \ + * ? [] () {} = ! &lt;&gt; | : ^</strong> y <strong>$</strong></big> como hemos dicho.</p><pre><span class="coment">// Barra invertida, escapar carácter </span>
+function <strong>escapaCaracter</strong>( <em class="emfasverd">$valor</em> ) {
+    
+	<em>if</em> ( <em class="emfasverd">$valor</em> ){
+		
+        echo "Patron escapando carácter: <em>existe</em> en cadena.";
+		
+    } <em>else</em> {
+	
+        echo "Patron sin escapar carácter: <em>no existe</em> en cadena.";
+	
+	}
+		
+}
+
+<span class="coment">// Carácter que termine con 410 </span>
+$patrEscapar = '/410$/'; 
+$cadena = '410$';
+
+echo "Cadena a comparar: <strong>'<strong>410$</strong>' </strong>";
+
+<strong>escapaCaracter</strong>( <em class="emfasverd">preg_match</em> ($patrEscapar, <span class="textTaronja">$cadena</span> ) ); <span class="coment">// No existe
+
+// Escapar símbolo dolar <strong>$</strong> 
+// Carácter que termine con 410$ </span>
+$patrEscapar = <span class="textTaronja">'/410\$$/'</span>;
+$cadena = '410$';
+escapaCaracter( <em class="emfasverd">preg_match</em> ($patrEscapar, <span class="textTaronja">$cadena</span> ) ); <span class="coment">// Sí existe </span> </pre><p>Cadena a comparar: <strong>/410$/</strong></p><em class="emfasRed">Patron sin escapar carácter: <em>no existe</em> en cadena.</em> <br> <br><em class="emfasRed">Patron escapando carácter: <em>existe</em> en cadena.</em> <br> <br><a class="subir lliscar" href="http://meudiseny.com/miphp/ejmExpreRegul.php#ejemExpre" title="Subir">Subir</a><div id="punto"></div><a href="http://meudiseny.com/miphp/ejmExpreRegul.php#" name="punto"></a><p><strong>Punto (.)</strong> </p>
+
+	<p>El punto (<strong>.</strong>) entre el patrón puede representar a cualquier caracter, el único caracter que no puede representar es la <em>nueva línea</em> (<strong>\n</strong>).</p><pre><span class="coment">// Metacarácter punto (<strong>.</strong>) </span>
+function <strong>rsltPunto</strong>( <em class="emfasverd">$valor</em> ) {
+    
+	<em>if</em> ( <em class="emfasverd">$valor</em> ){
+		
+        echo "Patron <em>existe</em> en cadena.";
+		
+    } <em>else</em> {
+	
+        echo "Patron <em>no existe</em> en cadena.";
+	
+	}
+		
+}
+
+<span class="coment">// Un punto indica la búsqueda a partir del primer carácter. </span>
+$patrPunto = '<span class="textTaronja">/^<strong>.</strong>P/</span>';
+$cadena = '<strong>PHP</strong>';
+<strong>rsltPunto</strong>( <em class="emfasverd">preg_match</em> ( $patrPunto, <span class="textTaronja">$cadena</span> ) ); <span class="coment">// No existe, ya que apunta a la 'H'
+
+// Tres puntos indican la búsqueda a partir del tercer carácter.
+// Si el patrón contiene más de un carácter la comparación se
+// hará con el mismo orden en que están colocados en el patrón. </span>
+$patrPunto = '<span class="textTaronja">/^<strong>...</strong>ip/</span>';
+$cadena = '<strong>script</strong>';
+<strong>rsltPunto</strong>( <em class="emfasverd">preg_match</em> ( $patrPunto, <span class="textTaronja">$cadena</span> ) ); <span class="coment">// Sí existe, coinciden en orden y situación </span> </pre><em class="emfasRed">Patron <em>no existe</em> en cadena.</em> <br> <br><em class="emfasRed">Patron <em>existe</em> en cadena.</em> <br> <br><a class="subir lliscar" href="http://meudiseny.com/miphp/ejmExpreRegul.php#ejemExpre" title="Subir">Subir</a><div id="cuanti"></div><a href="http://meudiseny.com/miphp/ejmExpreRegul.php#" name="cuanti"></a><p><strong>Cuantificadores - * ? + n n, n,m</strong> </p><p>Indican en que número deben encontrarse presentes en la cadena para que haya una coincidencia. Estos son los más utilizados <strong>* ? +</strong> </p><pre><span class="coment">// Metacarácter cuantificador o multiplicador </span>
+function <strong>rsltCuanti</strong>( <em class="emfasverd">$valor</em> ) {
+    
+	<em>if</em> ( <em class="emfasverd">$valor</em> ){
+		
+        echo "Patron <em>existe</em> en cadena.";
+		
+    } <em>else</em> {
+	
+        echo "Patron <em>no existe</em> en cadena.";
+	
+	}
+		
+}
+ 
+<span class="coment">// * 0 o infinitas veces
+// ? una vez o ninguna
+// + Por lo menos una vez </span>
+ 
+$patrCuanti = '<span class="textTaronja">/ot*/</span>'; <span class="coment">// 0 o muchas veces </span>
+$cadena = 'otttt';
+<strong>rsltCuanti</strong>( <em class="emfasverd">preg_match</em> ($patrCuanti, <span class="textTaronja">$cadena</span>)); <span class="coment">// Existe </span>
+
+$patrCuanti = '<span class="textTaronja">/.*ot*/</span>'; <span class="coment">// Puede aparecer 0 o más veces en cualquier posición. </span>
+$cadena = 'por ejemplo otttt';
+<strong>rsltCuanti</strong>( <em class="emfasverd">preg_match</em> ($patrCuanti, \<span class="textTaronja">$cadena</span>)); <span class="coment">// Existe </span>
+
+$patrCuanti = '<span class="textTaronja">/j+ot*/</span>'; <span class="coment">// Puede aparecer después del carácter 'j' 1 o más veces, en cualquier posición. </span>
+$cadena = 'otttt';
+<strong>rsltCuanti</strong>( <em class="emfasverd">preg_match</em> ($patrCuanti, <span class="textTaronja">$cadena</span>)); <span class="coment">// No existe </span>
+
+$patrCuanti = '<span class="textTaronja">/j?ot*/</span>'; <span class="coment">// Puede aparecer después del carácter 'j' 0 o 1 vez, en cualquier posición. </span>
+$cadena = 'otttt';
+<strong>rsltCuanti</strong>( <em class="emfasverd">preg_match</em> ($patrCuanti, <span class="textTaronja">$cadena</span>)); <span class="coment">// Existe </span>
+</pre><em class="emfasRed">Patron <em>existe</em> en cadena.</em> <br> <br><em class="emfasRed">Patron <em>existe</em> en cadena.</em> <br> <br><em class="emfasRed">Patron <em>no existe</em> en cadena.</em> <br> <br><em class="emfasRed">Patron <em>existe</em> en cadena.</em> <br> <br><pre><span class="coment">// <strong>{ ... }</strong> Otra forma de representar los cuantificadores </span>
+
+function <strong>rsltCuanti2</strong>( <em class="emfasverd">$valor</em> ) {
+    
+	<em>if </em>( <em class="emfasverd">$valor</em> ){
+		
+        echo "Patron <em>existe</em> en cadena.";
+		
+    } <em>else</em> {
+	
+        echo "Patron <em>no existe</em> en cadena.";
+	
+	}
+		
+}
+
+
+<span class="coment">// {1,} Por lo menos una vez </span>
+
+$patrCuanti2 = '<span class="textTaronja">/ot{0,}/</span>'; <span class="coment">// 0 o muchas veces </span>
+$cadena = 'otttt';
+<strong>rsltCuanti2</strong>( <em class="emfasverd">preg_match</em> ($patrCuanti2, <span class="textTaronja">$cadena</span>)); <span class="coment">// Existe </span>
+
+<span class="coment">// Cualquier carácter (.) y 2 caracteres más adelante, puede aparecer, 3 veces el patrón indicado </span>  
+$patrCuanti2 = '<span class="textTaronja">/.{2,3}ot/</span>'; 
+$cadena = 'ooottt';
+<strong>rsltCuanti2</strong>( <em class="emfasverd">preg_match</em> ($patrCuanti2, <span class="textTaronja">$cadena</span>)); <span class="coment">// Existe </span>
+
+<span class="coment">// Puede aparecer después de 'H' o posición 0, 3 veces el patrón indicado o 0 o más veces con (*) </span>
+$patrCuanti2 = '<span class="textTaronja">/H{0,3}ot*/</span>';
+$cadena = 'otttttt';
+<strong>rsltCuanti2</strong>( <em class="emfasverd">preg_match</em> ($patrCuanti2, <span class="textTaronja">$cadena</span>)); <span class="coment">// Existe </span>
+
+<span class="coment">// Puede aparecer después de '1 f', 1 vez el patrón indicado o 0 o más veces con (*) </span>
+$patrCuanti2 = '<span class="textTaronja">/f{1,1}ot*/</span>';
+otttt = 'afotttt';
+<strong>rsltCuanti2</strong>( <em class="emfasverd">preg_match</em> ($patrCuanti2, <span class="textTaronja">$cadena</span>)); <span class="coment">// Existe </span>
+
+<span class="coment">// Puede aparecer después de '2 H', 2 veces el patrón indicado o 0 o más veces con (*) </span>
+$patrCuanti2 = '<span class="textTaronja">/H{2,2}ot*/</span>';
+$cadena = 'HHotototot';
+<strong>rsltCuanti2</strong>( <em class="emfasverd">preg_match</em> ($patrCuanti2, <span class="textTaronja">$cadena</span>)); <span class="coment">// Existe </span>
+
+<span class="coment">// Puede aparecer después de '3 H', 3 veces el patrón indicado o 0 o más veces con (*) </span>
+$patrCuanti2 = '<span class="textTaronja">/H{3,3}ot*/</span>';
+$cadena = 'HHHotttt';
+<strong>rsltCuanti2</strong>( <em class="emfasverd">preg_match</em> ($patrCuanti2, <span class="textTaronja">$cadena</span>)); <span class="coment">// Existe </span> </pre><p><strong>Otra forma de representar los cuantificadores:</strong></p><em class="emfasRed">Patron <em>existe</em> en cadena.</em> <br> <br><em class="emfasRed">Patron <em>existe</em> en cadena.</em> <br> <br><em class="emfasRed">Patron <em>existe</em> en cadena.</em> <br> <br><em class="emfasRed">Patron <em>existe</em> en cadena.</em> <br> <br><em class="emfasRed">Patron <em>existe</em> en cadena.</em> <br> <br><em class="emfasRed">Patron <em>existe</em> en cadena.</em> <br> <br><a class="subir lliscar" href="http://meudiseny.com/miphp/ejmExpreRegul.php#ejemExpre" title="Subir">Subir</a><div id="rango"></div><a href="http://meudiseny.com/miphp/ejmExpreRegul.php#" name="rango"></a><p><strong>Metacaracteres de rango [ ... ] corchetes</strong></p><p>Para especificar un rango de caracteres utilizaremos los corchetes <strong>[]</strong>, dentro de ellos indicamos un patrón, que será el rango válido a comparar. Basta que exista cualquiera de ellos para que se de la condición.</p><pre><span class="coment">// Metacaracteres de rango </span>
+function <strong>rslrRango</strong>( <em class="emfasverd">$valor</em> ) {
+    
+	<em>if</em> ( <em class="emfasverd">$valor</em> ){
+		
+        echo "Patron <em>existe</em> en cadena.";
+		
+    } <em>else</em> {
+	
+        echo "Patron <em>no existe</em> en cadena.";
+	
+	}
+		
+}
+ 
+<span class="coment">// |, un rango o el otro
+// ^, circunflejo dentro de [] corchetes es negación [^a] </span>
+
+$patrRango="<span class="textTaronja">/[a-z]/</span>"; <span class="coment">// Rango de la 'a' hasta la 'z'. </span>
+$cadena = "flash";
+<strong>rslrRango</strong>( <em class="emfasverd">preg_matche</em> ($patrRango, <span class="textTaronja">$cadena</span>)); <span class="coment">// Existe </span>
+
+$patrRango = "<span class="textTaronja">/[a-z]/</span>"; <span class="coment">// Rango de la 'a' hasta la 'z' minúsculas. </span>
+$cadena = "FLASH";
+<strong>rslrRango</strong>( <em class="emfasverd">preg_matche</em> ($patrRango, <span class="textTaronja">$cadena</span>)); <span class="coment">// No existe </span>
+
+$patrRango = "<span class="textTaronja">/[a-z]|[A-Z]/</span>"; <span class="coment">// Rango de la 'a' hasta la 'z' mayúsculas y minúsculas. </span>
+$cadena = "FLASH";
+<strong>rslrRango</strong>( <em class="emfasverd">preg_matche</em> ($patrRango, <span class="textTaronja">$cadena</span>)); <span class="coment">// Existe </span>
+
+$patrRango = "<span class="textTaronja">/[aA-zZ]/</span>"; <span class="coment">// Rango de la 'a' hasta la 'z' mayúsculas y minúsculas. </span>
+$cadena = "FlasH";
+<strong>rslrRango</strong>( <em class="emfasverd">preg_matche</em> ($patrRango, <span class="textTaronja">$cadena</span>)); <span class="coment">// Existe </span>
+
+$patrRango = "<span class="textTaronja">/Ros[ai]/</span>"; <span class="coment">// Rango que precede con 'a' o 'i'. </span>
+$cadena = "Rosa";
+<strong>rslrRango</strong>( <em class="emfasverd">preg_matche</em> ($patrRango, <span class="textTaronja">$cadena</span>)); <span class="coment">// Existe </span>
+
+$patrRango = "<span class="textTaronja">/[Rosa] <strong>|</strong> [Rosi]/</span>"; <span class="coment">// Puede aparecer uno de los dos rangos mediante '|' </span>
+$cadena = "Rosa";
+<strong>rslrRango</strong>( <em class="emfasverd">preg_matche</em> ($patrRango, <span class="textTaronja">$cadena</span>)); <span class="coment">// Existe </span>
+
+$patrRango = "<span class="textTaronja">/[rR][Oo][Ss][AaIi]/</span>"; <span class="coment">// Rango mayúsculas y minúsculas carácter a carácter. </span>
+$cadena = "Rosi";
+<strong>rslrRango</strong>( <em class="emfasverd">preg_matche</em> ($patrRango, <span class="textTaronja">$cadena</span>)); <span class="coment">// Existe </span>
+
+$patrRango = "<span class="textTaronja">/[rR][Oo][Ss][AaIi][Ss]/</span>"; <span class="coment">// Rango mayúsculas y minúsculas carácter a carácter. </span>
+$cadena = "Rosa";
+<strong>rslrRango</strong>( <em class="emfasverd">preg_matche</em> ($patrRango, <span class="textTaronja">$cadena</span>)); <span class="coment">// No existe </span>
+
+<span class="coment">// Rango mayúsculas y minúsculas carácter a carácter.
+// El último carácter indica que puede aparecer 0 o 1 vez. </span>
+$patrRango = "<span class="textTaronja">/[rR][Oo][Ss][Aa][Ss]?/</span>"; 
+$cadena = "Rosa\;
+<strong>rslrRango</strong>( <em class="emfasverd">preg_matche</em> ($patrRango, <span class="textTaronja">$cadena</span>)); <span class="coment">// Existe </span>
+
+<span class="coment">// Rango en cualquier posición, cadena sin el carácter 'a' mediante '^a'
+// e indicamos que la cadena termine con caracteres 'sa'. </span>
+$patrRango = "<span class="textTaronja">/.[^a]sa/</span>"; 
+$cadena = "casa";
+<strong>rslrRango</strong>( <em class="emfasverd">preg_matche</em> ($patrRango, <span class="textTaronja">$cadena</span>)); <span class="coment">// No existe </span> </pre><em class="emfasRed">Patron <em>existe</em> en cadena.</em> <br> <br><em class="emfasRed">Patron <em>no existe</em> en cadena.</em> <br> <br><em class="emfasRed">Patron <em>existe</em> en cadena.</em> <br> <br><em class="emfasRed">Patron <em>existe</em> en cadena.</em> <br> <br><em class="emfasRed">Patron <em>existe</em> en cadena.</em> <br> <br><em class="emfasRed">Patron <em>existe</em> en cadena.</em> <br> <br><em class="emfasRed">Patron <em>existe</em> en cadena.</em> <br> <br><em class="emfasRed">Patron <em>no existe</em> en cadena.</em> <br> <br><em class="emfasRed">Patron <em>existe</em> en cadena.</em> <br> <br><em class="emfasRed">Patron <em>no existe</em> en cadena.</em> <br> <br><p>Cuidado con las reglas de sintaxis de las expresiones regulares ya que no se aplican igual dentro de los corchetes que fuera. Un ejemplo es el metacarácter <strong>^</strong>, <em>dentro de corchetes</em> no sirve de ancla, sino de <strong>caracter negador</strong>. Dentro de corchetes solo debemos escapar los siguientes metacaracteres con <em>barra invertida</em> <strong>\</strong>: <br> <br>
+   
+    ___ \d dígitos decimales. <br>
+	___ \D cualquier carácter que no sea un dígitos. <br>
+    ___ \w cualquier carácter, tildes, ñ, _, digitos, etc … <br>
+    ___ \W cualquier carácter que no pueda ser parte de una palabra (letra, número, guión bajo). <br>
+	___ \s espacio en blanco, retorno, tabulación, nueva linea. <br>
+    ___ \S cualquier carácter que no sea espacio en blanco, retorno, tabulación, nueva linea.  <br>
+    ___ i Insensible a mayúsculas y minúsculas. <br> </p><a class="subir lliscar" href="http://meudiseny.com/miphp/ejmExpreRegul.php#ejemExpre" title="Subir">Subir</a><div id="nomHost"></div><a href="http://meudiseny.com/miphp/ejmExpreRegul.php#" name="nomHost"></a><p><strong>Obtener el nombre del host de una URL</strong></p><pre><span class="coment">// Obtiene el nombre del <em>host</em> de la <em>URL</em> mediante la comparación de dos patrones </span>
+<em class="emfasverd">preg_match</em> ('<span class="textTaronja">@^(?:http://)?([^/]+)@i</span>',
+    " <em>http://www.php.net/index.html</em> ", $coincidencias);
+<strong>$host</strong> = $coincidencias[1];  <span class="coment">// Este patrón obtiene 'www.meudiseny.com' y lo guarda en '<em>$host</em>' </span> 
+
+echo "Buscar coincidencias entre: &lt;br /&gt;
+<strong>Cadena</strong> ____ <em>http://www.php.net/index.html</em> &lt;br /&gt;
+<strong>Patrón</strong> _____ '<span class="textTaronja">/[^.]+\.[^.]+$/</span>'"; &lt;br /&gt;
+
+<span class="coment">// Obtiene los dos últimos segmentos del nombre del host </span>
+<em class="emfasverd">preg_match</em> ('<span class="textTaronja">/[^.]+\.[^.]+$/</span>', <strong>$host</strong>, <strong>$coincidencias</strong>);
+
+<span class="coment">// A partir del primer punto '<em class="verd">[^.]</em>', recoge los demás caracteres
+// '<span class="verd">+\.</span>' puede haber uno o más de un punto y desde el inicio de ese punto '<span class="verd">[\.]</span>'
+// '<em class="verd">+</em>' recoger todos los caracteres detrás del punto hasta el final de la cadena '<em class="verd">$</em>' </span> 
+echo "Nombre de dominio: { $coincidencias[<strong>0</strong>] }"; </pre><p>Buscar coincidencias entre: <br>
+Cadena ____<em class="emfasRed"> http://www.meudiseny.com/index.html </em> <br>
+Patrón _____<strong> '@^(?:http://)?([^/]+)@i' </strong> </p><p><em class="emfasRed">Nombre de dominio:</em> <strong>www.meudiseny.com</strong> </p><p>Buscar coincidencias entre: <br>
+Cadena ____<em class="emfasRed"> www.meudiseny.com </em> <br>
+Patrón _____<strong> '/[^.]+\.[^.]+$/' </strong> </p><p><em class="emfasRed">Nombre de dominio:</em> <strong>meudiseny.com</strong> </p><p>Si se pasa el tercer perámetro en <strong>preg_match()</strong>, entonces éste se llena con los resultados de la búsqueda. <strong>$coincidencias[<em>0</em>]</strong> contendrá el texto que coincidió con el patrón completo, <strong>$coincidencias[<em>1</em>]</strong> tendrá el texto que coincidió con el primer <em>subpatrón</em> entre paréntesis capturado, y así sucesivamente. </p>
+</div><!--info-->
+
+</div><!--contenedor-->
+
+
+
+</body></html>

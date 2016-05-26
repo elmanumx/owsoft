@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)http://php.net/manual/es/function.preg-match-all.php -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" class=" js flexbox flexboxlegacy datauri"><script id="tinyhippos-injected">if (window.top.ripple) { window.top.ripple("bootstrap").inject(window, document); }</script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+  <title>PHP: preg_match_all - Manual </title>
+
+ <link rel="shortcut icon" href="http://php.net/favicon.ico">
+ <link rel="search" type="application/opensearchdescription+xml" href="http://php.net/phpnetimprovedsearch.src" title="Add PHP.net search">
+ <link rel="alternate" type="application/atom+xml" href="http://php.net/releases/feed.php" title="PHP Release feed">
+ <link rel="alternate" type="application/atom+xml" href="http://php.net/feed.atom" title="PHP: Hypertext Preprocessor">
+
+ <link rel="canonical" href="http://php.net/manual/es/function.preg-match-all.php">
+ <link rel="shorturl" href="http://php.net/preg-match-all">
+ <link rel="alternate" href="http://php.net/preg-match-all" hreflang="x-default">
+
+ <link rel="contents" href="http://php.net/manual/es/index.php">
+ <link rel="index" href="http://php.net/manual/es/ref.pcre.php">
+ <link rel="prev" href="http://php.net/manual/es/function.preg-last-error.php">
+ <link rel="next" href="http://php.net/manual/es/function.preg-match.php">
+
+ <link rel="alternate" href="http://php.net/manual/en/function.preg-match-all.php" hreflang="en">
+ <link rel="alternate" href="http://php.net/manual/pt_BR/function.preg-match-all.php" hreflang="pt_BR">
+ <link rel="alternate" href="http://php.net/manual/zh/function.preg-match-all.php" hreflang="zh">
+ <link rel="alternate" href="http://php.net/manual/fr/function.preg-match-all.php" hreflang="fr">
+ <link rel="alternate" href="http://php.net/manual/de/function.preg-match-all.php" hreflang="de">
+ <link rel="alternate" href="http://php.net/manual/ja/function.preg-match-all.php" hreflang="ja">
+ <link rel="alternate" href="http://php.net/manual/kr/function.preg-match-all.php" hreflang="kr">
+ <link rel="alternate" href="http://php.net/manual/ro/function.preg-match-all.php" hreflang="ro">
+ <link rel="alternate" href="http://php.net/manual/ru/function.preg-match-all.php" hreflang="ru">
+ <link rel="alternate" href="http://php.net/manual/es/function.preg-match-all.php" hreflang="es">
+ <link rel="alternate" href="http://php.net/manual/tr/function.preg-match-all.php" hreflang="tr">
+
+<link rel="stylesheet" type="text/css" href="./PHP_ preg_match_all - Manual_files/cached.php" media="screen">
+<link rel="stylesheet" type="text/css" href="./PHP_ preg_match_all - Manual_files/cached(1).php" media="screen">
+<link rel="stylesheet" type="text/css" href="./PHP_ preg_match_all - Manual_files/cached(2).php" media="screen">
+<link rel="stylesheet" type="text/css" href="./PHP_ preg_match_all - Manual_files/cached(3).php" media="screen">
+
+ <!--[if lte IE 7]>
+ <link rel="stylesheet" type="text/css" href="http://php.net/styles/workarounds.ie7.css" media="screen">
+ <![endif]-->
+
+ <!--[if lte IE 8]>
+ <script type="text/javascript">
+  window.brokenIE = true;
+ </script>
+ <![endif]-->
+
+ <!--[if lte IE 9]>
+ <link rel="stylesheet" type="text/css" href="http://php.net/styles/workarounds.ie9.css" media="screen">
+ <![endif]-->
+
+ <!--[if IE]>
+ <script type="text/javascript" src="http://php.net/js/ext/html5.js"></script>
+ <![endif]-->
+
+ <!--<base href="http://php.net/manual/es/function.preg-match-all.php">--><base href=".">
+
+</head>
+<body class="docs ">
+
+<nav id="head-nav" class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <a href="http://php.net/" class="brand"><img src="./PHP_ preg_match_all - Manual_files/logo.php" width="48" height="24" alt="php"></a>
+    <div id="mainmenu-toggle-overlay"></div>
+    <input type="checkbox" id="mainmenu-toggle">
+    <ul class="nav">
+      <li class=""><a href="http://php.net/downloads">Downloads</a></li>
+      <li class="active"><a href="http://php.net/docs.php">Documentation</a></li>
+      <li class=""><a href="http://php.net/get-involved">Get Involved</a></li>
+      <li class=""><a href="http://php.net/support">Help</a></li>
+    </ul>
+    <form class="navbar-search" id="topsearch" action="http://php.net/search.php">
+      <input type="hidden" name="show" value="quickref">
+      <span class="twitter-typeahead" style="position: relative; display: inline-block;"><input class="tt-hint search-query" type="text" autocomplete="off" spellcheck="off" disabled="" style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);"><input type="search" name="pattern" class="search-query tt-query" placeholder="Search" accesskey="s" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: transparent;"><input type="submit" style="visibility: hidden; position: fixed"><span style="position: absolute; left: -9999px; visibility: hidden; white-space: nowrap; font-family: &#39;Fira Sans&#39;, &#39;Source Sans Pro&#39;, Helvetica, Arial, sans-serif; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></span><span class="tt-dropdown-menu" style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"></span></span>
+    </form>
+  </div>
+  <div id="flash-message"></div>
+</nav>
+<div class="headsup"><a href="http://php.net/index.php#id2016-03-03-3">PHP 5.6.19 is available</a></div>
+<nav id="trick"><div><dl>
+<dt><a href="http://php.net/manual/en/getting-started.php">Getting Started</a></dt>
+	<dd><a href="http://php.net/manual/en/introduction.php">Introduction</a></dd>
+	<dd><a href="http://php.net/manual/en/tutorial.php">A simple tutorial</a></dd>
+<dt><a href="http://php.net/manual/en/langref.php">Language Reference</a></dt>
+	<dd><a href="http://php.net/manual/en/language.basic-syntax.php">Basic syntax</a></dd>
+	<dd><a href="http://php.net/manual/en/language.types.php">Types</a></dd>
+	<dd><a href="http://php.net/manual/en/language.variables.php">Variables</a></dd>
+	<dd><a href="http://php.net/manual/en/language.constants.php">Constants</a></dd>
+	<dd><a href="http://php.net/manual/en/language.expressions.php">Expressions</a></dd>
+	<dd><a href="http://php.net/manual/en/language.operators.php">Operators</a></dd>
+	<dd><a href="http://php.net/manual/en/language.control-structures.php">Control Structures</a></dd>
+	<dd><a href="http://php.net/manual/en/language.functions.php">Functions</a></dd>
+	<dd><a href="http://php.net/manual/en/language.oop5.php">Classes and Objects</a></dd>
+	<dd><a href="http://php.net/manual/en/language.namespaces.php">Namespaces</a></dd>
+	<dd><a href="http://php.net/manual/en/language.errors.php">Errors</a></dd>
+	<dd><a href="http://php.net/manual/en/language.exceptions.php">Exceptions</a></dd>
+	<dd><a href="http://php.net/manual/en/language.generators.php">Generators</a></dd>
+	<dd><a href="http://php.net/manual/en/language.references.php">References Explained</a></dd>
+	<dd><a href="http://php.net/manual/en/reserved.variables.php">Predefined Variables</a></dd>
+	<dd><a href="http://php.net/manual/en/reserved.exceptions.php">Predefined Exceptions</a></dd>
+	<dd><a href="http://php.net/manual/en/reserved.interfaces.php">Predefined Interfaces and Classes</a></dd>
+	<dd><a href="http://php.net/manual/en/context.php">Context options and parameters</a></dd>
+	<dd><a href="http://php.net/manual/en/wrappers.php">Supported Protocols and Wrappers</a></dd>
+</dl>
+<dl>
+<dt><a href="http://php.net/manual/en/security.php">Security</a></dt>
+	<dd><a href="http://php.net/manual/en/security.intro.php">Introduction</a></dd>
+	<dd><a href="http://php.net/manual/en/security.general.php">General considerations</a></dd>
+	<dd><a href="http://php.net/manual/en/security.cgi-bin.php">Installed as CGI binary</a></dd>
+	<dd><a href="http://php.net/manual/en/security.apache.php">Installed as an Apache module</a></dd>
+	<dd><a href="http://php.net/manual/en/security.filesystem.php">Filesystem Security</a></dd>
+	<dd><a href="http://php.net/manual/en/security.database.php">Database Security</a></dd>
+	<dd><a href="http://php.net/manual/en/security.errors.php">Error Reporting</a></dd>
+	<dd><a href="http://php.net/manual/en/security.globals.php">Using Register Globals</a></dd>
+	<dd><a href="http://php.net/manual/en/security.variables.php">User Submitted Data</a></dd>
+	<dd><a href="http://php.net/manual/en/security.magicquotes.php">Magic Quotes</a></dd>
+	<dd><a href="http://php.net/manual/en/security.hiding.php">Hiding PHP</a></dd>
+	<dd><a href="http://php.net/manual/en/security.current.php">Keeping Current</a></dd>
+<dt><a href="http://php.net/manual/en/features.php">Features</a></dt>
+	<dd><a href="http://php.net/manual/en/features.http-auth.php">HTTP authentication with PHP</a></dd>
+	<dd><a href="http://php.net/manual/en/features.cookies.php">Cookies</a></dd>
+	<dd><a href="http://php.net/manual/en/features.sessions.php">Sessions</a></dd>
+	<dd><a href="http://php.net/manual/en/features.xforms.php">Dealing with XForms</a></dd>
+	<dd><a href="http://php.net/manual/en/features.file-upload.php">Handling file uploads</a></dd>
+	<dd><a href="http://php.net/manual/en/features.remote-files.php">Using remote files</a></dd>
+	<dd><a href="http://php.net/manual/en/features.connection-handling.php">Connection handling</a></dd>
+	<dd><a href="http://php.net/manual/en/features.persistent-connections.php">Persistent Database Connections</a></dd>
+	<dd><a href="http://php.net/manual/en/features.safe-mode.php">Safe Mode</a></dd>
+	<dd><a href="http://php.net/manual/en/features.commandline.php">Command line usage</a></dd>
+	<dd><a href="http://php.net/manual/en/features.gc.php">Garbage Collection</a></dd>
+	<dd><a href="http://php.net/manual/en/features.dtrace.php">DTrace Dynamic Tracing</a></dd>
+</dl>
+<dl>
+<dt><a href="http://php.net/manual/en/funcref.php">Function Reference</a></dt>
+	<dd><a href="http://php.net/manual/en/refs.basic.php.php">Affecting PHP's Behaviour</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.utilspec.audio.php">Audio Formats Manipulation</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.remote.auth.php">Authentication Services</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.utilspec.cmdline.php">Command Line Specific Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.compression.php">Compression and Archive Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.creditcard.php">Credit Card Processing</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.crypto.php">Cryptography Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.database.php">Database Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.calendar.php">Date and Time Related Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.fileprocess.file.php">File System Related Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.international.php">Human Language and Character Encoding Support</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.utilspec.image.php">Image Processing and Generation</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.remote.mail.php">Mail Related Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.math.php">Mathematical Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.utilspec.nontext.php">Non-Text MIME Output</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.fileprocess.process.php">Process Control Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.basic.other.php">Other Basic Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.remote.other.php">Other Services</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.search.php">Search Engine Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.utilspec.server.php">Server Specific Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.basic.session.php">Session Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.basic.text.php">Text Processing</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.basic.vartype.php">Variable and Type Related Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.webservice.php">Web Services</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.utilspec.windows.php">Windows Only Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.xml.php">XML Manipulation</a></dd>
+</dl>
+<dl>
+<dt>Keyboard Shortcuts</dt><dt>?</dt>
+<dd>This help</dd>
+<dt>j</dt>
+<dd>Next menu item</dd>
+<dt>k</dt>
+<dd>Previous menu item</dd>
+<dt>g p</dt>
+<dd>Previous man page</dd>
+<dt>g n</dt>
+<dd>Next man page</dd>
+<dt>G</dt>
+<dd>Scroll to bottom</dd>
+<dt>g g</dt>
+<dd>Scroll to top</dd>
+<dt>g h</dt>
+<dd>Goto homepage</dd>
+<dt>g s</dt>
+<dd>Goto search<br>(current page)</dd>
+<dt>/</dt>
+<dd>Focus search box</dd>
+</dl></div></nav>
+<div id="goto">
+    <div class="search">
+         <div class="text"></div>
+         <div class="results"><ul></ul></div>
+   </div>
+</div>
+
+  <div id="breadcrumbs" class="clearfix">
+    <div id="breadcrumbs-inner">
+          <div class="next">
+        <a href="http://php.net/manual/es/function.preg-match.php">
+          preg_match »
+        </a>
+      </div>
+              <div class="prev">
+        <a href="http://php.net/manual/es/function.preg-last-error.php">
+          « preg_last_error        </a>
+      </div>
+          <ul>
+            <li><a href="http://php.net/manual/es/index.php">Manual de PHP</a></li>      <li><a href="http://php.net/manual/es/funcref.php">Referencia de funciones</a></li>      <li><a href="http://php.net/manual/es/refs.basic.text.php">Procesamiento de texto</a></li>      <li><a href="http://php.net/manual/es/book.pcre.php">PCRE</a></li>      <li><a href="http://php.net/manual/es/ref.pcre.php">Funciones de PCRE</a></li>      </ul>
+    </div>
+  </div>
+
+
+
+
+<div id="layout" class="clearfix">
+  <section id="layout-content">
+  <div class="page-tools">
+    <div class="change-language">
+      <form action="http://php.net/manual/change.php" method="get" id="changelang" name="changelang">
+        <fieldset>
+          <label for="changelang-langs">Change language:</label>
+          <select onchange="document.changelang.submit()" name="page" id="changelang-langs">
+            <option value="en/function.preg-match-all.php">English</option>
+            <option value="pt_BR/function.preg-match-all.php">Brazilian Portuguese</option>
+            <option value="zh/function.preg-match-all.php">Chinese (Simplified)</option>
+            <option value="fr/function.preg-match-all.php">French</option>
+            <option value="de/function.preg-match-all.php">German</option>
+            <option value="ja/function.preg-match-all.php">Japanese</option>
+            <option value="kr/function.preg-match-all.php">Korean</option>
+            <option value="ro/function.preg-match-all.php">Romanian</option>
+            <option value="ru/function.preg-match-all.php">Russian</option>
+            <option value="es/function.preg-match-all.php" selected="selected">Spanish</option>
+            <option value="tr/function.preg-match-all.php">Turkish</option>
+            <option value="help-translate.php">Other</option>
+          </select>
+        </fieldset>
+      </form>
+    </div>
+    <div class="edit-bug">
+      <a href="https://edit.php.net/?project=PHP&amp;perm=es/function.preg-match-all.php">Edit</a>
+      <a href="https://bugs.php.net/report.php?bug_type=Documentation+problem&amp;manpage=function.preg-match-all">Report a Bug</a>
+    </div>
+  </div><div id="function.preg-match-all" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">preg_match_all</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">preg_match_all</span> — <span class="dc-title">Realiza una comparación global de una expresión regular</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.preg-match-all-description">
+  <h3 class="title">Descripción<a class="genanchor" href="http://php.net/manual/es/function.preg-match-all.php#refsect1-function.preg-match-all-description"> ¶</a></h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname"><strong>preg_match_all</strong></span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$pattern</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$subject</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter reference">&amp;$matches</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code><span class="initializer"> = <strong><code>PREG_PATTERN_ORDER</code></strong></span></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$offset</code><span class="initializer"> = 0</span></span>
+  ]]] )</div>
+
+  <p class="para rdfs-comment">
+   Busca en <code class="parameter">subject</code> todas las coincidencias de la expresión
+   regular dada en <code class="parameter">pattern</code> y las introduce en
+   <code class="parameter">matches</code> en el orden especificado por
+   <code class="parameter">flags</code>.
+  </p>
+  <p class="para">
+   Después haber encontrado la primera coincidencia, las búsquedas subsiguientes continuarán
+   desde el final de la dicha coincidencia.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.preg-match-all-parameters">
+  <h3 class="title">Parámetros<a class="genanchor" href="http://php.net/manual/es/function.preg-match-all.php#refsect1-function.preg-match-all-parameters"> ¶</a></h3>
+  <dl>
+
+    
+     <dt>
+<code class="parameter">pattern</code></dt>
+
+     <dd>
+
+      <p class="para">
+       El patrón de búsqueda, dado como string.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">subject</code></dt>
+
+     <dd>
+
+      <p class="para">
+       La cadena de entrada.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">matches</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Un array con todas las coincidencias en un array multi-dimensional ordenadas según
+       <code class="parameter">flags</code>.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">flags</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Puede ser una combinación de las siguientes banderas (observe que no tiene
+       sentido usar <strong><code>PREG_PATTERN_ORDER</code></strong> junto con
+       <strong><code>PREG_SET_ORDER</code></strong>):
+       </p><dl>
+
+        
+         <dt>
+<strong><code>PREG_PATTERN_ORDER</code></strong></dt>
+
+         <dd>
+
+          <p class="para">
+           Ordena los resultados de forma que <var class="varname"><var class="varname">$matches[0]</var></var> es un array de coincidencias
+           del patrón completo, <var class="varname"><var class="varname">$matches[1]</var></var> es un array de cadenas coincidentes por
+           el primer subpatrón entre paréntesis, y así sucesivamente.
+          </p>
+          <div class="informalexample">
+            <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>preg_match_all</span><span style="color: #007700">(</span><span style="color: #DD0000">"|&lt;[^&gt;]+&gt;(.*)&lt;/[^&gt;]+&gt;|U"</span><span style="color: #007700">,<br>&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"&lt;b&gt;ejemplo:&nbsp;&lt;/b&gt;&lt;div&nbsp;align=left&gt;esto&nbsp;es&nbsp;una&nbsp;prueba&lt;/div&gt;"</span><span style="color: #007700">,<br>&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$salida</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PREG_PATTERN_ORDER</span><span style="color: #007700">);<br>echo&nbsp;</span><span style="color: #0000BB">$salida</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">][</span><span style="color: #0000BB">0</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">",&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$salida</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">][</span><span style="color: #0000BB">1</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br>echo&nbsp;</span><span style="color: #0000BB">$salida</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">][</span><span style="color: #0000BB">0</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">",&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$salida</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">][</span><span style="color: #0000BB">1</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+            </div>
+
+            <p class="para">El resultado del ejemplo sería:</p>
+            <div class="example-contents screen">
+<div class="cdata"><pre>&lt;b&gt;ejemplo: &lt;/b&gt;, &lt;div align=left&gt;esto es una prueba&lt;/div&gt;
+ejemplo: , esto es una prueba
+</pre></div>
+            </div>
+            <p class="para">
+             Así, <var class="varname"><var class="varname">$salida[0]</var></var> contiene un array de cadenas que coinciden con el patrón completo,
+             y <var class="varname"><var class="varname">$salida[1]</var></var> contiene un array de cadenas encerradas entre etiquetas.
+            </p>
+           </div>
+          
+         </dd>
+
+        
+        
+         <dt>
+<strong><code>PREG_SET_ORDER</code></strong></dt>
+
+         <dd>
+
+          <p class="para">
+           Ordena los resultados de forma que <var class="varname"><var class="varname">$matches[0]</var></var> es un array del primer conjunto
+           de coincidencias, <var class="varname"><var class="varname">$matches[1]</var></var> es un array del segundo conjunto de coincidencias,
+           y así sucesivamente.
+           </p><div class="informalexample">
+            <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>preg_match_all</span><span style="color: #007700">(</span><span style="color: #DD0000">"|&lt;[^&gt;]+&gt;(.*)&lt;/[^&gt;]+&gt;|U"</span><span style="color: #007700">,<br>&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"&lt;b&gt;ejemplo:&nbsp;&lt;/b&gt;&lt;div&nbsp;align=\"left\"&gt;esto&nbsp;es&nbsp;una&nbsp;prueba&lt;/div&gt;"</span><span style="color: #007700">,<br>&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$salida</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PREG_SET_ORDER</span><span style="color: #007700">);<br>echo&nbsp;</span><span style="color: #0000BB">$salida</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">][</span><span style="color: #0000BB">0</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">",&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$salida</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">][</span><span style="color: #0000BB">1</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br>echo&nbsp;</span><span style="color: #0000BB">$salida</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">][</span><span style="color: #0000BB">0</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">",&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$salida</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">][</span><span style="color: #0000BB">1</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+            </div>
+
+            <p class="para">El resultado del ejemplo sería:</p>
+            <div class="example-contents screen">
+<div class="cdata"><pre>&lt;b&gt;ejemplo: &lt;/b&gt;, ejemplo:
+&lt;div align="left"&gt;esto es una prueba&lt;/div&gt;, esto es una prueba
+</pre></div>
+            </div>
+           </div>
+          
+         </dd>
+
+        
+        
+         <dt>
+<strong><code>PREG_OFFSET_CAPTURE</code></strong></dt>
+
+         <dd>
+
+          <p class="para">
+           Si se pasa esta bandera, por cada coincidencia producida, el índice de la cadena añadida
+           también será devulto. Observe que esto cambia el valor de
+           <code class="parameter">matches</code> dentro de un array donde cada elemento es un array
+           consistente en la cadena coincidente en el índice <em>0</em>
+           y su índice de cadena dentro de <code class="parameter">subject</code> en el índice
+           <em>1</em>.
+          </p>
+         </dd>
+
+        
+       </dl>
+
+      
+      <p class="para">
+       Si no se da un orden de bandera, se asume
+       <strong><code>PREG_PATTERN_ORDER</code></strong>.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">offset</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Normalmente, la búsqueda comienza por el principio de la cadena objetivo.
+       El parámetro opcional <code class="parameter">offset</code> se puede usar para
+       especificar el lugar alternativo desde el cual comenzar la búsqueda (en bytes).
+      </p>
+      <blockquote class="note"><p><strong class="note">Nota</strong>: 
+       </p><p class="para">
+        Usar <code class="parameter">offset</code> no es equivalente a pasar
+        <em>substr($sujeto, $índice)</em> a
+        <span class="function"><a href="http://php.net/manual/es/function.preg-match.php" class="function">preg_match()</a></span> en lugar de la cadena objetivo,
+        ya que <code class="parameter">pattern</code> puede contener declaraciones como
+        <em class="emphasis">^</em>, <em class="emphasis">$</em> o
+        <em class="emphasis">(?&lt;=x)</em>. Véase <span class="function"><a href="http://php.net/manual/es/function.preg-match.php" class="function">preg_match()</a></span>
+        para los ejemplos.
+       </p>
+      </blockquote>
+     </dd>
+
+    
+   </dl>
+
+  
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.preg-match-all-returnvalues">
+  <h3 class="title">Valores devueltos<a class="genanchor" href="http://php.net/manual/es/function.preg-match-all.php#refsect1-function.preg-match-all-returnvalues"> ¶</a></h3>
+  <p class="para">
+   Devuelve el número de coincidencias del patrón completo (el cual puede ser cero),
+   o <strong><code>FALSE</code></strong> si se produjo un error.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 changelog" id="refsect1-function.preg-match-all-changelog">
+  <h3 class="title">Historial de cambios<a class="genanchor" href="http://php.net/manual/es/function.preg-match-all.php#refsect1-function.preg-match-all-changelog"> ¶</a></h3>
+  <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Versión</th>
+       <th>Descripción</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>5.4.0</td>
+       <td>
+        El parámetro <code class="parameter">matches</code> ahora es opcional.
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.3.6</td>
+       <td>
+        Devuelve <strong><code>FALSE</code></strong> si <code class="parameter">offset</code>
+        es mayor que la longitud de
+        <code class="parameter">subject</code>.
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.2.2</td>
+       <td>
+        Los sub-patrones nominados ahora aceptan la
+        sintaxis <em>(?&lt;nombre&gt;)</em>
+        y <em>(?'nombre')</em> así como
+        <em>(?P&lt;nombre&gt;)</em>. Versiones anteriores
+        sólo aceptaban <em>(?P&lt;nombre&gt;)</em>.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.preg-match-all-examples">
+  <h3 class="title">Ejemplos<a class="genanchor" href="http://php.net/manual/es/function.preg-match-all.php#refsect1-function.preg-match-all-examples"> ¶</a></h3>
+  <div class="example" id="example-5337">
+    <p><strong>Ejemplo #1 Obtener todos los números de teléfono de algún texto.</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>preg_match_all</span><span style="color: #007700">(</span><span style="color: #DD0000">"/\(?&nbsp;&nbsp;(\d{3})?&nbsp;&nbsp;\)?&nbsp;&nbsp;(?(1)&nbsp;&nbsp;[\-\s]&nbsp;)&nbsp;\d{3}-\d{4}/x"</span><span style="color: #007700">,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"Llame&nbsp;al&nbsp;555-1212&nbsp;o&nbsp;al&nbsp;1-800-555-1212"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$teléfonos</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  
+  <div class="example" id="example-5338">
+    <p><strong>Ejemplo #2 Buscar coincidencias de etiquetas HTML (codicioso)</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #FF8000">//&nbsp;El&nbsp;\\2&nbsp;es&nbsp;un&nbsp;ejemplo&nbsp;de&nbsp;retro-referencia.&nbsp;Esto&nbsp;le&nbsp;dice&nbsp;a&nbsp;pcre&nbsp;que<br>//&nbsp;debe&nbsp;coincidir&nbsp;el&nbsp;segundo&nbsp;conjunto&nbsp;de&nbsp;paréntesis&nbsp;en&nbsp;la&nbsp;expresión&nbsp;regular<br>//&nbsp;misma,&nbsp;el&nbsp;cual&nbsp;sería&nbsp;el&nbsp;([\w]+)&nbsp;en&nbsp;este&nbsp;caso.&nbsp;La&nbsp;barra&nbsp;invertida&nbsp;extra&nbsp;es<br>//&nbsp;necesaria&nbsp;ya&nbsp;que&nbsp;la&nbsp;cadena&nbsp;está&nbsp;entre&nbsp;comilla&nbsp;dobles.<br></span><span style="color: #0000BB">$html&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"&lt;b&gt;texto&nbsp;en&nbsp;negrita&lt;/b&gt;&lt;a&nbsp;href=hola.html&gt;Haz&nbsp;clic&nbsp;sobre&nbsp;mí&lt;/a&gt;"</span><span style="color: #007700">;<br><br></span><span style="color: #0000BB">preg_match_all</span><span style="color: #007700">(</span><span style="color: #DD0000">"/(&lt;([\w]+)[^&gt;]*&gt;)(.*?)(&lt;\/\\2&gt;)/"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$html</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$coincidencias</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PREG_SET_ORDER</span><span style="color: #007700">);<br><br>foreach&nbsp;(</span><span style="color: #0000BB">$coincidencias&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$valor</span><span style="color: #007700">)&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"coindicido:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$valor</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br>&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"parte&nbsp;1:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$valor</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br>&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"parte&nbsp;2:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$valor</span><span style="color: #007700">[</span><span style="color: #0000BB">2</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br>&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"parte&nbsp;3:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$valor</span><span style="color: #007700">[</span><span style="color: #0000BB">3</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br>&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"parte&nbsp;4:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$valor</span><span style="color: #007700">[</span><span style="color: #0000BB">4</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n\n"</span><span style="color: #007700">;<br>}<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>coindicido: &lt;b&gt;texto en negrita&lt;/b&gt;
+parte 1: &lt;b&gt;
+parte 2: b
+parte 3: texto en negrita
+parte 4: &lt;/b&gt;
+
+coindicido: &lt;a href=hola.html&gt;Haz clic sobre mí&lt;/a&gt;
+parte 1: &lt;a href=hola.html&gt;
+parte 2: a
+parte 3: Haz clic sobre mí
+parte 4: &lt;/a&gt;
+</pre></div>
+    </div>
+   </div>
+  
+  <div class="example" id="example-5339">
+    <p><strong>Ejemplo #3 Usar sub-patrones nominados</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br><br>$cadena&nbsp;</span><span style="color: #007700">=&nbsp;&lt;&lt;&lt;FOO<br></span><span style="color: #DD0000">a:&nbsp;1<br>b:&nbsp;2<br>c:&nbsp;3<br></span><span style="color: #007700">FOO;<br><br></span><span style="color: #0000BB">preg_match_all</span><span style="color: #007700">(</span><span style="color: #DD0000">'/(?P&lt;nombre&gt;\w+):&nbsp;(?P&lt;dígito&gt;\d+)/'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$cadena</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$coincidencias</span><span style="color: #007700">);<br><br></span><span style="color: #FF8000">/*&nbsp;Esto&nbsp;también&nbsp;funciona&nbsp;en&nbsp;PHP&nbsp;5.2.2&nbsp;(PCRE&nbsp;7.0)&nbsp;y&nbsp;posteriores,&nbsp;sin&nbsp;embargo<br>&nbsp;*&nbsp;la&nbsp;forma&nbsp;de&nbsp;arriba&nbsp;es&nbsp;la&nbsp;recomendada&nbsp;por&nbsp;compatibilidad&nbsp;con&nbsp;versiones&nbsp;anteriores&nbsp;*/<br>//&nbsp;preg_match_all('/(?&lt;nombre&gt;\w+):&nbsp;(?&lt;dígito&gt;\d+)/',&nbsp;$cadena,&nbsp;$coincidencias);<br><br></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$coincidencias</span><span style="color: #007700">);<br><br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>Array
+(
+    [0] =&gt; Array
+        (
+            [0] =&gt; a: 1
+            [1] =&gt; b: 2
+            [2] =&gt; c: 3
+        )
+
+    [nombre] =&gt; Array
+        (
+            [0] =&gt; a
+            [1] =&gt; b
+            [2] =&gt; c
+        )
+
+    [1] =&gt; Array
+        (
+            [0] =&gt; a
+            [1] =&gt; b
+            [2] =&gt; c
+        )
+
+    [dígito] =&gt; Array
+        (
+            [0] =&gt; 1
+            [1] =&gt; 2
+            [2] =&gt; 3
+        )
+
+    [2] =&gt; Array
+        (
+            [0] =&gt; 1
+            [1] =&gt; 2
+            [2] =&gt; 3
+        )
+
+)
+</pre></div>
+    </div>
+   </div>
+  
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.preg-match-all-seealso">
+  <h3 class="title">Ver también<a class="genanchor" href="http://php.net/manual/es/function.preg-match-all.php#refsect1-function.preg-match-all-seealso"> ¶</a></h3>
+  <ul class="simplelist">
+    <li class="member"><a href="http://php.net/manual/es/pcre.pattern.php" class="link">Patrones de PCRE</a></li>
+    <li class="member"><span class="function"><a href="http://php.net/manual/es/function.preg-quote.php" class="function" rel="rdfs-seeAlso">preg_quote()</a> - Escapar caracteres en una expresión regular</span></li>
+    <li class="member"><span class="function"><a href="http://php.net/manual/es/function.preg-match.php" class="function" rel="rdfs-seeAlso">preg_match()</a> - Realiza una comparación con una expresión regular</span></li>
+    <li class="member"><span class="function"><a href="http://php.net/manual/es/function.preg-replace.php" class="function" rel="rdfs-seeAlso">preg_replace()</a> - Realiza una búsqueda y sustitución de una expresión regular</span></li>
+    <li class="member"><span class="function"><a href="http://php.net/manual/es/function.preg-split.php" class="function" rel="rdfs-seeAlso">preg_split()</a> - Divide un string mediante una expresión regular</span></li>
+    <li class="member"><span class="function"><a href="http://php.net/manual/es/function.preg-last-error.php" class="function" rel="rdfs-seeAlso">preg_last_error()</a> - Devuelve el código de error de la última ejecución de expresión regular de PCRE</span></li>
+   </ul>
+  
+ </div>
+
+ 
+</div>
+<section id="usernotes">
+ <div class="head">
+  <span class="action"><a href="http://php.net/manual/add-note.php?sect=function.preg-match-all&amp;redirect=http://php.net/manual/es/function.preg-match-all.php"><img src="./PHP_ preg_match_all - Manual_files/notes-add@2x.png" alt="add a note" width="12" height="12"> <small>add a note</small></a></span>
+  <h3 class="title">User Contributed Notes <span class="count">30 notes</span></h3>
+ </div><div id="allnotes">
+  <div class="note" id="102520">  <div class="votes">
+    <div id="Vu102520">
+    <a href="http://php.net/manual/vote-note.php?id=102520&amp;page=function.preg-match-all&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd102520">
+    <a href="http://php.net/manual/vote-note.php?id=102520&amp;page=function.preg-match-all&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V102520" title="75% like this...">
+    21
+    </div>
+  </div>
+  <a href="http://php.net/manual/es/function.preg-match-all.php#102520" class="name">
+  <strong class="user"><em>john at mccarthy dot net</em></strong></a><a class="genanchor" href="http://php.net/manual/es/function.preg-match-all.php#102520"> ¶</a><div class="date" title="2011-02-18 11:21"><strong>5 years ago</strong></div>
+  <div class="text" id="Hcom102520">
+<div class="phpcode"><code><span class="html">
+I needed a function to rotate the results of a preg_match_all query, and made this. Not sure if it exists.
+<br>
+<br><span class="default">&lt;?php
+<br></span><span class="keyword">function </span><span class="default">turn_array</span><span class="keyword">(</span><span class="default">$m</span><span class="keyword">)
+<br>{
+<br>&nbsp; &nbsp; for (</span><span class="default">$z </span><span class="keyword">= </span><span class="default">0</span><span class="keyword">;</span><span class="default">$z </span><span class="keyword">&lt; </span><span class="default">count</span><span class="keyword">(</span><span class="default">$m</span><span class="keyword">);</span><span class="default">$z</span><span class="keyword">++)
+<br>&nbsp; &nbsp; {
+<br>&nbsp; &nbsp; &nbsp; &nbsp; for (</span><span class="default">$x </span><span class="keyword">= </span><span class="default">0</span><span class="keyword">;</span><span class="default">$x </span><span class="keyword">&lt; </span><span class="default">count</span><span class="keyword">(</span><span class="default">$m</span><span class="keyword">[</span><span class="default">$z</span><span class="keyword">]);</span><span class="default">$x</span><span class="keyword">++)
+<br>&nbsp; &nbsp; &nbsp; &nbsp; {
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$rt</span><span class="keyword">[</span><span class="default">$x</span><span class="keyword">][</span><span class="default">$z</span><span class="keyword">] = </span><span class="default">$m</span><span class="keyword">[</span><span class="default">$z</span><span class="keyword">][</span><span class="default">$x</span><span class="keyword">];
+<br>&nbsp; &nbsp; &nbsp; &nbsp; }
+<br>&nbsp; &nbsp; }&nbsp; &nbsp; 
+<br>&nbsp; &nbsp; 
+<br>&nbsp; &nbsp; return </span><span class="default">$rt</span><span class="keyword">;
+<br>}
+<br></span><span class="default">?&gt;
+<br></span>
+<br>Example - Take results of some preg_match_all query:
+<br>
+<br>Array
+<br>(
+<br>&nbsp; &nbsp; [0] =&gt; Array
+<br>&nbsp; &nbsp; &nbsp; &nbsp; (
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [1] =&gt; Banff 
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [2] =&gt; Canmore
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [3] =&gt; Invermere
+<br>&nbsp; &nbsp; &nbsp; &nbsp; )
+<br> 
+<br>&nbsp; &nbsp; [1] =&gt; Array
+<br>&nbsp; &nbsp; &nbsp; &nbsp; (
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [1] =&gt; AB 
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [2] =&gt; AB
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [3] =&gt; BC
+<br>&nbsp; &nbsp; &nbsp; &nbsp; )
+<br> 
+<br>&nbsp; &nbsp; [2] =&gt; Array
+<br>&nbsp; &nbsp; &nbsp; &nbsp; (
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [1] =&gt; 51.1746254 
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [2] =&gt; 51.0938416
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [3] =&gt; 50.5065193
+<br>&nbsp; &nbsp; &nbsp; &nbsp; )
+<br> 
+<br>&nbsp; &nbsp; [3] =&gt; Array
+<br>&nbsp; &nbsp; &nbsp; &nbsp; (
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [1] =&gt; -115.5719757 
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [2] =&gt; -115.3517761
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [3] =&gt; -116.0321884
+<br>&nbsp; &nbsp; &nbsp; &nbsp; )
+<br> 
+<br>&nbsp; &nbsp; [4] =&gt; Array
+<br>&nbsp; &nbsp; &nbsp; &nbsp; (
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [1] =&gt; T1L 1B3 
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [2] =&gt; T1W 1N2
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [3] =&gt; V0B 2G0
+<br>&nbsp; &nbsp; &nbsp; &nbsp; )
+<br>
+<br>)
+<br>
+<br>Rotate it 90 degrees to group results as records:
+<br>
+<br>Array
+<br>(
+<br>&nbsp; &nbsp; [0] =&gt; Array
+<br>&nbsp; &nbsp; &nbsp; &nbsp; (
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [1] =&gt; Banff 
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [2] =&gt; AB
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [3] =&gt; 51.1746254
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [4] =&gt; -115.5719757
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [5] =&gt; T1L 1B3
+<br>&nbsp; &nbsp; &nbsp; &nbsp; )
+<br> 
+<br>&nbsp; &nbsp; [1] =&gt; Array
+<br>&nbsp; &nbsp; &nbsp; &nbsp; (
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [1] =&gt; Canmore
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [2] =&gt; AB
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [3] =&gt; 51.0938416
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [4] =&gt; -115.3517761
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [5] =&gt; T1W 1N2
+<br>&nbsp; &nbsp; &nbsp; &nbsp; )
+<br> 
+<br>&nbsp; &nbsp; [2] =&gt; Array
+<br>&nbsp; &nbsp; &nbsp; &nbsp; (
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [1] =&gt; Invermere
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [2] =&gt; BC
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [3] =&gt; 50.5065193
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [4] =&gt; -116.0321884
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [5] =&gt; V0B 2G0
+<br>&nbsp; &nbsp; &nbsp; &nbsp; )
+<br>)</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="81559">  <div class="votes">
+    <div id="Vu81559">
+    <a href="http://php.net/manual/vote-note.php?id=81559&amp;page=function.preg-match-all&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd81559">
+    <a href="http://php.net/manual/vote-note.php?id=81559&amp;page=function.preg-match-all&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V81559" title="83% like this...">
+    4
+    </div>
+  </div>
+  <a href="http://php.net/manual/es/function.preg-match-all.php#81559" class="name">
+  <strong class="user"><em>bruha</em></strong></a><a class="genanchor" href="http://php.net/manual/es/function.preg-match-all.php#81559"> ¶</a><div class="date" title="2008-03-04 12:13"><strong>8 years ago</strong></div>
+  <div class="text" id="Hcom81559">
+<div class="phpcode"><code><span class="html">
+To count str_length in UTF-8 string i use<br><br>$count = preg_match_all("/[[:print:]\pL]/u", $str, $pockets);<br><br>where<br>[:print:] - printing characters, including space<br>\pL - UTF-8 Letter<br>/u - UTF-8 string<br>other unicode character properties on <a href="http://www.pcre.org/pcre.txt" rel="nofollow" target="_blank">http://www.pcre.org/pcre.txt</a></span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="110147">  <div class="votes">
+    <div id="Vu110147">
+    <a href="http://php.net/manual/vote-note.php?id=110147&amp;page=function.preg-match-all&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd110147">
+    <a href="http://php.net/manual/vote-note.php?id=110147&amp;page=function.preg-match-all&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V110147" title="75% like this...">
+    6
+    </div>
+  </div>
+  <a href="http://php.net/manual/es/function.preg-match-all.php#110147" class="name">
+  <strong class="user"><em>fab</em></strong></a><a class="genanchor" href="http://php.net/manual/es/function.preg-match-all.php#110147"> ¶</a><div class="date" title="2012-09-24 09:14"><strong>3 years ago</strong></div>
+  <div class="text" id="Hcom110147">
+<div class="phpcode"><code><span class="html">
+Here is a function that replaces all occurrences of a number in a string by the number--<br><br><span class="default">&lt;?php<br></span><span class="keyword">function </span><span class="default">decremente_chaine</span><span class="keyword">(</span><span class="default">$chaine</span><span class="keyword">)<br>&nbsp; &nbsp; {<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="comment">//récupérer toutes les occurrences de nombres et leurs indices<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">preg_match_all</span><span class="keyword">(</span><span class="string">"/[0-9]+/"</span><span class="keyword">,</span><span class="default">$chaine</span><span class="keyword">,</span><span class="default">$out</span><span class="keyword">,</span><span class="default">PREG_OFFSET_CAPTURE</span><span class="keyword">);<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="comment">//parcourir les occurrences <br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="keyword">for(</span><span class="default">$i</span><span class="keyword">=</span><span class="default">0</span><span class="keyword">;</span><span class="default">$i</span><span class="keyword">&lt;</span><span class="default">sizeof</span><span class="keyword">(</span><span class="default">$out</span><span class="keyword">[</span><span class="default">0</span><span class="keyword">]);</span><span class="default">$i</span><span class="keyword">++)<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$longueurnombre </span><span class="keyword">= </span><span class="default">strlen</span><span class="keyword">((string)</span><span class="default">$out</span><span class="keyword">[</span><span class="default">0</span><span class="keyword">][</span><span class="default">$i</span><span class="keyword">][</span><span class="default">0</span><span class="keyword">]);<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$taillechaine </span><span class="keyword">= </span><span class="default">strlen</span><span class="keyword">(</span><span class="default">$chaine</span><span class="keyword">);<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="comment">// découper la chaine en 3 morceaux<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$debut </span><span class="keyword">= </span><span class="default">substr</span><span class="keyword">(</span><span class="default">$chaine</span><span class="keyword">,</span><span class="default">0</span><span class="keyword">,</span><span class="default">$out</span><span class="keyword">[</span><span class="default">0</span><span class="keyword">][</span><span class="default">$i</span><span class="keyword">][</span><span class="default">1</span><span class="keyword">]);<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$milieu </span><span class="keyword">= (</span><span class="default">$out</span><span class="keyword">[</span><span class="default">0</span><span class="keyword">][</span><span class="default">$i</span><span class="keyword">][</span><span class="default">0</span><span class="keyword">])-</span><span class="default">1</span><span class="keyword">;<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$fin </span><span class="keyword">= </span><span class="default">substr</span><span class="keyword">(</span><span class="default">$chaine</span><span class="keyword">,</span><span class="default">$out</span><span class="keyword">[</span><span class="default">0</span><span class="keyword">][</span><span class="default">$i</span><span class="keyword">][</span><span class="default">1</span><span class="keyword">]+</span><span class="default">$longueurnombre</span><span class="keyword">,</span><span class="default">$taillechaine</span><span class="keyword">);<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="comment">// si c'est 10,100,1000 etc. on décale tout de 1 car le résultat comporte un chiffre de moins<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="keyword">if(</span><span class="default">preg_match</span><span class="keyword">(</span><span class="string">'#[1][0]+$#'</span><span class="keyword">, </span><span class="default">$out</span><span class="keyword">[</span><span class="default">0</span><span class="keyword">][</span><span class="default">$i</span><span class="keyword">][</span><span class="default">0</span><span class="keyword">]))<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; {<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; for(</span><span class="default">$j </span><span class="keyword">= </span><span class="default">$i</span><span class="keyword">+</span><span class="default">1</span><span class="keyword">;</span><span class="default">$j</span><span class="keyword">&lt;</span><span class="default">sizeof</span><span class="keyword">(</span><span class="default">$out</span><span class="keyword">[</span><span class="default">0</span><span class="keyword">]);</span><span class="default">$j</span><span class="keyword">++)<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$out</span><span class="keyword">[</span><span class="default">0</span><span class="keyword">][</span><span class="default">$j</span><span class="keyword">][</span><span class="default">1</span><span class="keyword">] = </span><span class="default">$out</span><span class="keyword">[</span><span class="default">0</span><span class="keyword">][</span><span class="default">$j</span><span class="keyword">][</span><span class="default">1</span><span class="keyword">] -</span><span class="default">1</span><span class="keyword">;<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; }<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$chaine </span><span class="keyword">= </span><span class="default">$debut</span><span class="keyword">.</span><span class="default">$milieu</span><span class="keyword">.</span><span class="default">$fin</span><span class="keyword">;<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br>&nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">$chaine</span><span class="keyword">;<br>&nbsp; &nbsp; }<br></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="86366">  <div class="votes">
+    <div id="Vu86366">
+    <a href="http://php.net/manual/vote-note.php?id=86366&amp;page=function.preg-match-all&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd86366">
+    <a href="http://php.net/manual/vote-note.php?id=86366&amp;page=function.preg-match-all&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V86366" title="80% like this...">
+    3
+    </div>
+  </div>
+  <a href="http://php.net/manual/es/function.preg-match-all.php#86366" class="name">
+  <strong class="user"><em>meaneye at mail dot com</em></strong></a><a class="genanchor" href="http://php.net/manual/es/function.preg-match-all.php#86366"> ¶</a><div class="date" title="2008-10-15 02:56"><strong>7 years ago</strong></div>
+  <div class="text" id="Hcom86366">
+<div class="phpcode"><code><span class="html">
+Recently I had to write search engine in hebrew and ran into huge amount of problems. My data was stored in MySQL table with utf8_bin encoding.<br><br>So, to be able to write hebrew in utf8 table you need to do<br><span class="default">&lt;?php<br>$prepared_text </span><span class="keyword">= </span><span class="default">addslashes</span><span class="keyword">(</span><span class="default">urf8_encode</span><span class="keyword">(</span><span class="default">$text</span><span class="keyword">));<br></span><span class="default">?&gt;<br></span><br>But then I had to find if some word exists in stored text. This is the place I got stuck. Simple preg_match would not find text since hebrew doesnt work that easy. I've tried with /u and who kows what else.<br><br>Solution was somewhat logical and simple... <br><span class="default">&lt;?php<br>$db_text </span><span class="keyword">= </span><span class="default">bin2hex</span><span class="keyword">(</span><span class="default">stripslashes</span><span class="keyword">(</span><span class="default">utf8_decode</span><span class="keyword">(</span><span class="default">$db_text</span><span class="keyword">)));<br></span><span class="default">$word </span><span class="keyword">= </span><span class="default">bin2hex</span><span class="keyword">(</span><span class="default">$word</span><span class="keyword">);<br><br></span><span class="default">$found </span><span class="keyword">= </span><span class="default">preg_match_all</span><span class="keyword">(</span><span class="string">"/(</span><span class="default">$word</span><span class="string">)+/i"</span><span class="keyword">, </span><span class="default">$db_text</span><span class="keyword">, </span><span class="default">$matches</span><span class="keyword">);<br></span><span class="default">?&gt;<br></span><br>I've used preg_match_all since it returns number of occurences. So I could sort search results acording to that.<br><br>Hope someone finds this useful!</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="114192">  <div class="votes">
+    <div id="Vu114192">
+    <a href="http://php.net/manual/vote-note.php?id=114192&amp;page=function.preg-match-all&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd114192">
+    <a href="http://php.net/manual/vote-note.php?id=114192&amp;page=function.preg-match-all&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V114192" title="61% like this...">
+    6
+    </div>
+  </div>
+  <a href="http://php.net/manual/es/function.preg-match-all.php#114192" class="name">
+  <strong class="user"><em>ajeet dot nigam at icfaitechweb dot com</em></strong></a><a class="genanchor" href="http://php.net/manual/es/function.preg-match-all.php#114192"> ¶</a><div class="date" title="2014-01-22 06:34"><strong>2 years ago</strong></div>
+  <div class="text" id="Hcom114192">
+<div class="phpcode"><code><span class="html">
+Here <a href="http://tryphpregex.com/" rel="nofollow" target="_blank">http://tryphpregex.com/</a> is a&nbsp; php based online regex editor which helps you test your regular expressions with real-time highlighting of regex match on data input.</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="62104">  <div class="votes">
+    <div id="Vu62104">
+    <a href="http://php.net/manual/vote-note.php?id=62104&amp;page=function.preg-match-all&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd62104">
+    <a href="http://php.net/manual/vote-note.php?id=62104&amp;page=function.preg-match-all&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V62104" title="66% like this...">
+    3
+    </div>
+  </div>
+  <a href="http://php.net/manual/es/function.preg-match-all.php#62104" class="name">
+  <strong class="user"><em>phpnet at sinful-music dot com</em></strong></a><a class="genanchor" href="http://php.net/manual/es/function.preg-match-all.php#62104"> ¶</a><div class="date" title="2006-02-20 12:53"><strong>10 years ago</strong></div>
+  <div class="text" id="Hcom62104">
+<div class="phpcode"><code><span class="html">
+Here's some fleecy code to 1. validate RCF2822 conformity of address lists and 2. to extract the address specification (the part commonly known as 'email'). I wouldn't suggest using it for input form email checking, but it might be just what you want for other email applications. I know it can be optimized further, but that part I'll leave up to you nutcrackers. The total length of the resulting Regex is about 30000 bytes. That because it accepts comments. You can remove that by setting $cfws to $fws and it shrinks to about 6000 bytes. Conformity checking is absolutely and strictly referring to RFC2822. Have fun and email me if you have any enhancements!<br><br><span class="default">&lt;?php<br></span><span class="keyword">function </span><span class="default">mime_extract_rfc2822_address</span><span class="keyword">(</span><span class="default">$string</span><span class="keyword">)<br>{<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="comment">//rfc2822 token setup<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$crlf&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="keyword">= </span><span class="string">"(?:\r\n)"</span><span class="keyword">;<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$wsp&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="keyword">= </span><span class="string">"[\t ]"</span><span class="keyword">;<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$text&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="keyword">= </span><span class="string">"[\\x01-\\x09\\x0B\\x0C\\x0E-\\x7F]"</span><span class="keyword">;<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$quoted_pair&nbsp; &nbsp; </span><span class="keyword">= </span><span class="string">"(?:\\\\</span><span class="default">$text</span><span class="string">)"</span><span class="keyword">;<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$fws&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="keyword">= </span><span class="string">"(?:(?:</span><span class="default">$wsp</span><span class="string">*</span><span class="default">$crlf</span><span class="string">)?</span><span class="default">$wsp</span><span class="string">+)"</span><span class="keyword">;<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$ctext&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="keyword">= </span><span class="string">"[\\x01-\\x08\\x0B\\x0C\\x0E-\\x1F" </span><span class="keyword">.<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="string">"!-'*-[\\]-\\x7F]"</span><span class="keyword">;<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$comment&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="keyword">= </span><span class="string">"(\\((?:</span><span class="default">$fws</span><span class="string">?(?:</span><span class="default">$ctext</span><span class="string">|</span><span class="default">$quoted_pair</span><span class="string">|(?1)))*" </span><span class="keyword">.<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="string">"</span><span class="default">$fws</span><span class="string">?\\))"</span><span class="keyword">;<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$cfws&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="keyword">= </span><span class="string">"(?:(?:</span><span class="default">$fws</span><span class="string">?</span><span class="default">$comment</span><span class="string">)*(?:(?:</span><span class="default">$fws</span><span class="string">?</span><span class="default">$comment</span><span class="string">)|</span><span class="default">$fws</span><span class="string">))"</span><span class="keyword">;<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="comment">//$cfws&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; = $fws; //an alternative to comments<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$atext&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="keyword">= </span><span class="string">"[!#-'*+\\-\\/0-9=?A-Z\\^-~]"</span><span class="keyword">;<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$atom&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="keyword">= </span><span class="string">"(?:</span><span class="default">$cfws</span><span class="string">?</span><span class="default">$atext</span><span class="string">+</span><span class="default">$cfws</span><span class="string">?)"</span><span class="keyword">;<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$dot_atom_text&nbsp; </span><span class="keyword">= </span><span class="string">"(?:</span><span class="default">$atext</span><span class="string">+(?:\\.</span><span class="default">$atext</span><span class="string">+)*)"</span><span class="keyword">;<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$dot_atom&nbsp; &nbsp; &nbsp;&nbsp; </span><span class="keyword">= </span><span class="string">"(?:</span><span class="default">$cfws</span><span class="string">?</span><span class="default">$dot_atom_text$cfws</span><span class="string">?)"</span><span class="keyword">;<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$qtext&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="keyword">= </span><span class="string">"[\\x01-\\x08\\x0B\\x0C\\x0E-\\x1F!#-[\\]-\\x7F]"</span><span class="keyword">;<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$qcontent&nbsp; &nbsp; &nbsp;&nbsp; </span><span class="keyword">= </span><span class="string">"(?:</span><span class="default">$qtext</span><span class="string">|</span><span class="default">$quoted_pair</span><span class="string">)"</span><span class="keyword">;<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$quoted_string&nbsp; </span><span class="keyword">= </span><span class="string">"(?:</span><span class="default">$cfws</span><span class="string">?\"(?:</span><span class="default">$fws</span><span class="string">?</span><span class="default">$qcontent</span><span class="string">)*</span><span class="default">$fws</span><span class="string">?\"</span><span class="default">$cfws</span><span class="string">?)"</span><span class="keyword">;<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$dtext&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="keyword">= </span><span class="string">"[\\x01-\\x08\\x0B\\x0C\\x0E-\\x1F!-Z\\^-\\x7F]"</span><span class="keyword">;<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$dcontent&nbsp; &nbsp; &nbsp;&nbsp; </span><span class="keyword">= </span><span class="string">"(?:</span><span class="default">$dtext</span><span class="string">|</span><span class="default">$quoted_pair</span><span class="string">)"</span><span class="keyword">;<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$domain_literal </span><span class="keyword">= </span><span class="string">"(?:</span><span class="default">$cfws</span><span class="string">?\\[(?:</span><span class="default">$fws</span><span class="string">?</span><span class="default">$dcontent</span><span class="string">)*</span><span class="default">$fws</span><span class="string">?]</span><span class="default">$cfws</span><span class="string">?)"</span><span class="keyword">;<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$domain&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="keyword">= </span><span class="string">"(?:</span><span class="default">$dot_atom</span><span class="string">|</span><span class="default">$domain_literal</span><span class="string">)"</span><span class="keyword">;<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$local_part&nbsp; &nbsp;&nbsp; </span><span class="keyword">= </span><span class="string">"(?:</span><span class="default">$dot_atom</span><span class="string">|</span><span class="default">$quoted_string</span><span class="string">)"</span><span class="keyword">;<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$addr_spec&nbsp; &nbsp; &nbsp; </span><span class="keyword">= </span><span class="string">"(</span><span class="default">$local_part</span><span class="string">@</span><span class="default">$domain</span><span class="string">)"</span><span class="keyword">;<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$display_name&nbsp;&nbsp; </span><span class="keyword">= </span><span class="string">"(?:(?:</span><span class="default">$atom</span><span class="string">|</span><span class="default">$quoted_string</span><span class="string">)+)"</span><span class="keyword">;<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$angle_addr&nbsp; &nbsp;&nbsp; </span><span class="keyword">= </span><span class="string">"(?:</span><span class="default">$cfws</span><span class="string">?&lt;</span><span class="default">$addr_spec</span><span class="string">&gt;</span><span class="default">$cfws</span><span class="string">?)"</span><span class="keyword">;<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$name_addr&nbsp; &nbsp; &nbsp; </span><span class="keyword">= </span><span class="string">"(?:</span><span class="default">$display_name</span><span class="string">?</span><span class="default">$angle_addr</span><span class="string">)"</span><span class="keyword">;<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$mailbox&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="keyword">= </span><span class="string">"(?:</span><span class="default">$name_addr</span><span class="string">|</span><span class="default">$addr_spec</span><span class="string">)"</span><span class="keyword">;<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$mailbox_list&nbsp;&nbsp; </span><span class="keyword">= </span><span class="string">"(?:(?:(?:(?&lt;=:)|,)</span><span class="default">$mailbox</span><span class="string">)+)"</span><span class="keyword">;<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$group&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="keyword">= </span><span class="string">"(?:</span><span class="default">$display_name</span><span class="string">:(?:</span><span class="default">$mailbox_list</span><span class="string">|</span><span class="default">$cfws</span><span class="string">)?;</span><span class="default">$cfws</span><span class="string">?)"</span><span class="keyword">;<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$address&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="keyword">= </span><span class="string">"(?:</span><span class="default">$mailbox</span><span class="string">|</span><span class="default">$group</span><span class="string">)"</span><span class="keyword">;<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$address_list&nbsp;&nbsp; </span><span class="keyword">= </span><span class="string">"(?:(?:^|,)</span><span class="default">$address</span><span class="string">)+"</span><span class="keyword">;<br><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="comment">//output length of string (just so you see how f**king long it is)<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="keyword">echo(</span><span class="default">strlen</span><span class="keyword">(</span><span class="default">$address_list</span><span class="keyword">) . </span><span class="string">" "</span><span class="keyword">);<br><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="comment">//apply expression<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">preg_match_all</span><span class="keyword">(</span><span class="string">"/^</span><span class="default">$address_list</span><span class="string">$/"</span><span class="keyword">, </span><span class="default">$string</span><span class="keyword">, </span><span class="default">$array</span><span class="keyword">, </span><span class="default">PREG_SET_ORDER</span><span class="keyword">);<br><br>&nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">$array</span><span class="keyword">;<br>};<br></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="101259">  <div class="votes">
+    <div id="Vu101259">
+    <a href="http://php.net/manual/vote-note.php?id=101259&amp;page=function.preg-match-all&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd101259">
+    <a href="http://php.net/manual/vote-note.php?id=101259&amp;page=function.preg-match-all&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V101259" title="66% like this...">
+    2
+    </div>
+  </div>
+  <a href="http://php.net/manual/es/function.preg-match-all.php#101259" class="name">
+  <strong class="user"><em>buuh</em></strong></a><a class="genanchor" href="http://php.net/manual/es/function.preg-match-all.php#101259"> ¶</a><div class="date" title="2010-12-06 02:03"><strong>5 years ago</strong></div>
+  <div class="text" id="Hcom101259">
+<div class="phpcode"><code><span class="html">
+if you want to extract all {token}s from a string:<br><br><span class="default">&lt;?php<br>$pattern </span><span class="keyword">= </span><span class="string">"/{[^}]*}/"</span><span class="keyword">;<br></span><span class="default">$subject </span><span class="keyword">= </span><span class="string">"{token1} foo {token2} bar"</span><span class="keyword">;<br></span><span class="default">preg_match_all</span><span class="keyword">(</span><span class="default">$pattern</span><span class="keyword">, </span><span class="default">$subject</span><span class="keyword">, </span><span class="default">$matches</span><span class="keyword">);<br></span><span class="default">print_r</span><span class="keyword">(</span><span class="default">$matches</span><span class="keyword">);<br></span><span class="default">?&gt;<br></span><br>output:<br><br>Array<br>(<br>&nbsp; &nbsp; [0] =&gt; Array<br>&nbsp; &nbsp; &nbsp; &nbsp; (<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [0] =&gt; {token1}<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [1] =&gt; {token2}<br>&nbsp; &nbsp; &nbsp; &nbsp; )<br><br>)</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="61426">  <div class="votes">
+    <div id="Vu61426">
+    <a href="http://php.net/manual/vote-note.php?id=61426&amp;page=function.preg-match-all&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd61426">
+    <a href="http://php.net/manual/vote-note.php?id=61426&amp;page=function.preg-match-all&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V61426" title="63% like this...">
+    3
+    </div>
+  </div>
+  <a href="http://php.net/manual/es/function.preg-match-all.php#61426" class="name">
+  <strong class="user"><em>mnc at u dot nu</em></strong></a><a class="genanchor" href="http://php.net/manual/es/function.preg-match-all.php#61426"> ¶</a><div class="date" title="2006-02-02 10:05"><strong>10 years ago</strong></div>
+  <div class="text" id="Hcom61426">
+<div class="phpcode"><code><span class="html">
+PREG_OFFSET_CAPTURE always seems to provide byte offsets, rather than character position offsets, even when you are using the unicode /u modifier.</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="99817">  <div class="votes">
+    <div id="Vu99817">
+    <a href="http://php.net/manual/vote-note.php?id=99817&amp;page=function.preg-match-all&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd99817">
+    <a href="http://php.net/manual/vote-note.php?id=99817&amp;page=function.preg-match-all&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V99817" title="62% like this...">
+    2
+    </div>
+  </div>
+  <a href="http://php.net/manual/es/function.preg-match-all.php#99817" class="name">
+  <strong class="user"><em>no at bo dot dy</em></strong></a><a class="genanchor" href="http://php.net/manual/es/function.preg-match-all.php#99817"> ¶</a><div class="date" title="2010-09-08 11:23"><strong>5 years ago</strong></div>
+  <div class="text" id="Hcom99817">
+<div class="phpcode"><code><span class="html">
+For parsing queries with entities use:
+<br>
+<br><span class="default">&lt;?php
+<br>preg_match_all</span><span class="keyword">(</span><span class="string">"/(?:^|(?&lt;=\&amp;(?![a-z]+\;)))([^\=]+)=(.*?)(?:$|\&amp;(?![a-z]+\;))/i"</span><span class="keyword">,
+<br>&nbsp; </span><span class="default">$s</span><span class="keyword">, </span><span class="default">$m</span><span class="keyword">, </span><span class="default">PREG_SET_ORDER </span><span class="keyword">);
+<br></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="71572">  <div class="votes">
+    <div id="Vu71572">
+    <a href="http://php.net/manual/vote-note.php?id=71572&amp;page=function.preg-match-all&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd71572">
+    <a href="http://php.net/manual/vote-note.php?id=71572&amp;page=function.preg-match-all&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V71572" title="62% like this...">
+    2
+    </div>
+  </div>
+  <a href="http://php.net/manual/es/function.preg-match-all.php#71572" class="name">
+  <strong class="user"><em>chuckie</em></strong></a><a class="genanchor" href="http://php.net/manual/es/function.preg-match-all.php#71572"> ¶</a><div class="date" title="2006-12-06 06:20"><strong>9 years ago</strong></div>
+  <div class="text" id="Hcom71572">
+<div class="phpcode"><code><span class="html">
+This is a function to convert byte offsets into (UTF-8) character offsets (this is reagardless of whether you use /u modifier:<br><br><span class="default">&lt;?php<br><br></span><span class="keyword">function </span><span class="default">mb_preg_match_all</span><span class="keyword">(</span><span class="default">$ps_pattern</span><span class="keyword">, </span><span class="default">$ps_subject</span><span class="keyword">, &amp;</span><span class="default">$pa_matches</span><span class="keyword">, </span><span class="default">$pn_flags </span><span class="keyword">= </span><span class="default">PREG_PATTERN_ORDER</span><span class="keyword">, </span><span class="default">$pn_offset </span><span class="keyword">= </span><span class="default">0</span><span class="keyword">, </span><span class="default">$ps_encoding </span><span class="keyword">= </span><span class="default">NULL</span><span class="keyword">) {<br>&nbsp; </span><span class="comment">// WARNING! - All this function does is to correct offsets, nothing else:<br>&nbsp; //<br>&nbsp; </span><span class="keyword">if (</span><span class="default">is_null</span><span class="keyword">(</span><span class="default">$ps_encoding</span><span class="keyword">))<br>&nbsp; &nbsp; </span><span class="default">$ps_encoding </span><span class="keyword">= </span><span class="default">mb_internal_encoding</span><span class="keyword">();<br><br>&nbsp; </span><span class="default">$pn_offset </span><span class="keyword">= </span><span class="default">strlen</span><span class="keyword">(</span><span class="default">mb_substr</span><span class="keyword">(</span><span class="default">$ps_subject</span><span class="keyword">, </span><span class="default">0</span><span class="keyword">, </span><span class="default">$pn_offset</span><span class="keyword">, </span><span class="default">$ps_encoding</span><span class="keyword">));<br>&nbsp; </span><span class="default">$ret </span><span class="keyword">= </span><span class="default">preg_match_all</span><span class="keyword">(</span><span class="default">$ps_pattern</span><span class="keyword">, </span><span class="default">$ps_subject</span><span class="keyword">, </span><span class="default">$pa_matches</span><span class="keyword">, </span><span class="default">$pn_flags</span><span class="keyword">, </span><span class="default">$pn_offset</span><span class="keyword">);<br><br>&nbsp; if (</span><span class="default">$ret </span><span class="keyword">&amp;&amp; (</span><span class="default">$pn_flags </span><span class="keyword">&amp; </span><span class="default">PREG_OFFSET_CAPTURE</span><span class="keyword">))<br>&nbsp; &nbsp; foreach(</span><span class="default">$pa_matches </span><span class="keyword">as &amp;</span><span class="default">$ha_match</span><span class="keyword">)<br>&nbsp; &nbsp; &nbsp; foreach(</span><span class="default">$ha_match </span><span class="keyword">as &amp;</span><span class="default">$ha_match</span><span class="keyword">)<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$ha_match</span><span class="keyword">[</span><span class="default">1</span><span class="keyword">] = </span><span class="default">mb_strlen</span><span class="keyword">(</span><span class="default">substr</span><span class="keyword">(</span><span class="default">$ps_subject</span><span class="keyword">, </span><span class="default">0</span><span class="keyword">, </span><span class="default">$ha_match</span><span class="keyword">[</span><span class="default">1</span><span class="keyword">]), </span><span class="default">$ps_encoding</span><span class="keyword">);<br>&nbsp; &nbsp; </span><span class="comment">//<br>&nbsp; &nbsp; // (code is independent of PREG_PATTER_ORDER / PREG_SET_ORDER)<br><br>&nbsp; </span><span class="keyword">return </span><span class="default">$ret</span><span class="keyword">;<br>&nbsp; }<br><br></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="90000">  <div class="votes">
+    <div id="Vu90000">
+    <a href="http://php.net/manual/vote-note.php?id=90000&amp;page=function.preg-match-all&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd90000">
+    <a href="http://php.net/manual/vote-note.php?id=90000&amp;page=function.preg-match-all&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V90000" title="58% like this...">
+    2
+    </div>
+  </div>
+  <a href="http://php.net/manual/es/function.preg-match-all.php#90000" class="name">
+  <strong class="user"><em>ad</em></strong></a><a class="genanchor" href="http://php.net/manual/es/function.preg-match-all.php#90000"> ¶</a><div class="date" title="2009-04-01 05:18"><strong>6 years ago</strong></div>
+  <div class="text" id="Hcom90000">
+<div class="phpcode"><code><span class="html">
+i have made up a simple function to extract a number from a string..
+<br>
+<br>I am not sure how good it is, but it works.
+<br>
+<br>It gets only the numbers 0-9, the "-", " ", "(", ")", "."
+<br>
+<br>characters.. This is as far as I know the most widely used characters for a Phone number.
+<br>
+<br><span class="default">&lt;?php
+<br></span><span class="keyword">function </span><span class="default">clean_phone_number</span><span class="keyword">(</span><span class="default">$phone</span><span class="keyword">) {
+<br>&nbsp; &nbsp; &nbsp;&nbsp; if (!empty(</span><span class="default">$phone</span><span class="keyword">)) {
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="comment">//var_dump($phone);
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="default">preg_match_all</span><span class="keyword">(</span><span class="string">'/[0-9\(\)+.\- ]/s'</span><span class="keyword">, </span><span class="default">$phone</span><span class="keyword">, </span><span class="default">$cleaned</span><span class="keyword">);
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; foreach(</span><span class="default">$cleaned</span><span class="keyword">[</span><span class="default">0</span><span class="keyword">] as </span><span class="default">$k</span><span class="keyword">=&gt;</span><span class="default">$v</span><span class="keyword">) {
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="default">$ready </span><span class="keyword">.= </span><span class="default">$v</span><span class="keyword">;
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; }
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="default">var_dump</span><span class="keyword">(</span><span class="default">$ready</span><span class="keyword">);
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; die;
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; if (</span><span class="default">mb_strlen</span><span class="keyword">(</span><span class="default">$cleaned</span><span class="keyword">) &gt; </span><span class="default">4 </span><span class="keyword">&amp;&amp; </span><span class="default">mb_strlen</span><span class="keyword">(</span><span class="default">$cleaned</span><span class="keyword">) &lt;=</span><span class="default">25</span><span class="keyword">) {
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; return </span><span class="default">$cleaned</span><span class="keyword">;
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; }
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; else {
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; return </span><span class="default">false</span><span class="keyword">;
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; }
+<br>&nbsp; &nbsp; &nbsp;&nbsp; }
+<br>&nbsp; &nbsp; &nbsp;&nbsp; return </span><span class="default">false</span><span class="keyword">;
+<br>}
+<br></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="82661">  <div class="votes">
+    <div id="Vu82661">
+    <a href="http://php.net/manual/vote-note.php?id=82661&amp;page=function.preg-match-all&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd82661">
+    <a href="http://php.net/manual/vote-note.php?id=82661&amp;page=function.preg-match-all&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V82661" title="60% like this...">
+    1
+    </div>
+  </div>
+  <a href="http://php.net/manual/es/function.preg-match-all.php#82661" class="name">
+  <strong class="user"><em>spambegone at cratemedia dot com</em></strong></a><a class="genanchor" href="http://php.net/manual/es/function.preg-match-all.php#82661"> ¶</a><div class="date" title="2008-04-20 11:39"><strong>7 years ago</strong></div>
+  <div class="text" id="Hcom82661">
+<div class="phpcode"><code><span class="html">
+I found simpleXML to be useful only in cases where the XML was extremely small, otherwise the server would run out of memory (I suspect there is a memory leak or something?). So while searching for alternative parsers, I decided to try a simpler approach. I don't know how this compares with cpu usage, but I know it works with large XML structures. This is more a manual method, but it works for me since I always know what structure of data I will be receiving. 
+<br>
+<br>Essentially I just preg_match() unique nodes to find the values I am looking for, or I preg_match_all to find multiple nodes. This puts the results in an array and I can then process this data as I please.
+<br>
+<br>I was unhappy though, that preg_match_all() stores the data twice (requiring twice the memory), one array for all the full pattern matches, and one array for all the sub pattern matches. You could probably write your own function that overcame this. But for now this works for me, and I hope it saves someone else some time as well.
+<br>
+<br>// SAMPLE XML
+<br>&lt;RETS ReplyCode="0" ReplyText="Operation Successful"&gt;
+<br>&nbsp; &lt;COUNT Records="14" /&gt;
+<br>&nbsp; &lt;DELIMITER value="09" /&gt;
+<br>&nbsp; &lt;COLUMNS&gt;PropertyID&lt;/COLUMNS&gt;
+<br>&nbsp; &lt;DATA&gt;521897&lt;/DATA&gt;
+<br>&nbsp; &lt;DATA&gt;677208&lt;/DATA&gt;
+<br>&nbsp; &lt;DATA&gt;686037&lt;/DATA&gt;
+<br>&lt;/RETS&gt;
+<br>
+<br><span class="default">&lt;?PHP
+<br>
+<br></span><span class="comment">// SAMPLE FUNCTION
+<br></span><span class="keyword">function </span><span class="default">parse_xml</span><span class="keyword">(</span><span class="default">$xml</span><span class="keyword">) {
+<br>&nbsp; &nbsp; 
+<br>&nbsp; &nbsp; 
+<br>&nbsp; &nbsp; </span><span class="comment">// GET DELIMITER (single instance)
+<br>&nbsp; &nbsp; </span><span class="default">$match_res </span><span class="keyword">= </span><span class="default">preg_match</span><span class="keyword">(</span><span class="string">'/&lt;DELIMITER value ?= ?"(.*)" ?\/&gt;/'</span><span class="keyword">, </span><span class="default">$xml</span><span class="keyword">, </span><span class="default">$matches</span><span class="keyword">);
+<br>&nbsp; &nbsp; if(!empty(</span><span class="default">$matches</span><span class="keyword">[</span><span class="default">1</span><span class="keyword">])) {
+<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$results</span><span class="keyword">[</span><span class="string">"delimiter"</span><span class="keyword">] = </span><span class="default">chr</span><span class="keyword">(</span><span class="default">$matches</span><span class="keyword">[</span><span class="default">1</span><span class="keyword">]);
+<br>&nbsp; &nbsp; } else {
+<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="comment">// DEFAULT DELIMITER
+<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$results</span><span class="keyword">[</span><span class="string">"delimiter"</span><span class="keyword">] = </span><span class="string">"\t"</span><span class="keyword">;
+<br>&nbsp; &nbsp; }
+<br>&nbsp; &nbsp; unset(</span><span class="default">$match_res</span><span class="keyword">, </span><span class="default">$matches</span><span class="keyword">);
+<br>&nbsp; &nbsp; 
+<br>&nbsp; &nbsp; 
+<br>&nbsp; &nbsp; </span><span class="comment">// GET MULTIPLE DATA NODES (multiple instances)
+<br>&nbsp; &nbsp; </span><span class="default">$results</span><span class="keyword">[</span><span class="string">"data_count"</span><span class="keyword">] = </span><span class="default">preg_match_all</span><span class="keyword">(</span><span class="string">"/&lt;DATA&gt;(.*)&lt;\/DATA&gt;/"</span><span class="keyword">, </span><span class="default">$xml</span><span class="keyword">, </span><span class="default">$matches</span><span class="keyword">);
+<br>&nbsp; &nbsp; </span><span class="comment">// GET MATCHES OF SUB PATTERN, DISCARD THE REST
+<br>&nbsp; &nbsp; </span><span class="default">$results</span><span class="keyword">[</span><span class="string">"data"</span><span class="keyword">]=</span><span class="default">$matches</span><span class="keyword">[</span><span class="default">1</span><span class="keyword">];
+<br>&nbsp; &nbsp; unset(</span><span class="default">$match_res</span><span class="keyword">, </span><span class="default">$matches</span><span class="keyword">);
+<br>&nbsp; &nbsp; 
+<br>&nbsp; &nbsp; </span><span class="comment">// UNSET XML TO SAVE MEMORY (should unset outside the function as well)
+<br>&nbsp; &nbsp; </span><span class="keyword">unset(</span><span class="default">$xml</span><span class="keyword">);
+<br>
+<br>&nbsp; &nbsp; </span><span class="comment">// RETURN RESULTS ARRAY
+<br>&nbsp; &nbsp; </span><span class="keyword">return </span><span class="default">$results</span><span class="keyword">;
+<br>&nbsp; &nbsp; 
+<br>&nbsp; &nbsp; 
+<br>}
+<br>
+<br></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="92312">  <div class="votes">
+    <div id="Vu92312">
+    <a href="http://php.net/manual/vote-note.php?id=92312&amp;page=function.preg-match-all&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd92312">
+    <a href="http://php.net/manual/vote-note.php?id=92312&amp;page=function.preg-match-all&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V92312" title="57% like this...">
+    1
+    </div>
+  </div>
+  <a href="http://php.net/manual/es/function.preg-match-all.php#92312" class="name">
+  <strong class="user"><em>elyknosrac at gmail dot com</em></strong></a><a class="genanchor" href="http://php.net/manual/es/function.preg-match-all.php#92312"> ¶</a><div class="date" title="2009-07-18 03:51"><strong>6 years ago</strong></div>
+  <div class="text" id="Hcom92312">
+<div class="phpcode"><code><span class="html">
+Using preg_match_all I made a pretty handy function.
+<br>
+<br><span class="default">&lt;?php
+<br>
+<br></span><span class="keyword">function </span><span class="default">reg_smart_replace</span><span class="keyword">(</span><span class="default">$pattern</span><span class="keyword">, </span><span class="default">$replacement</span><span class="keyword">, </span><span class="default">$subject</span><span class="keyword">, </span><span class="default">$replacementChar </span><span class="keyword">= </span><span class="string">"$$$"</span><span class="keyword">, </span><span class="default">$limit </span><span class="keyword">= -</span><span class="default">1</span><span class="keyword">)
+<br>{
+<br>&nbsp; &nbsp; if (! </span><span class="default">$pattern </span><span class="keyword">|| ! </span><span class="default">$subject </span><span class="keyword">|| ! </span><span class="default">$replacement </span><span class="keyword">) { return </span><span class="default">false</span><span class="keyword">; }
+<br>&nbsp; &nbsp; 
+<br>&nbsp; &nbsp; </span><span class="default">$replacementChar </span><span class="keyword">= </span><span class="default">preg_quote</span><span class="keyword">(</span><span class="default">$replacementChar</span><span class="keyword">);
+<br>&nbsp; &nbsp; 
+<br>&nbsp; &nbsp; </span><span class="default">preg_match_all </span><span class="keyword">( </span><span class="default">$pattern</span><span class="keyword">, </span><span class="default">$subject</span><span class="keyword">, </span><span class="default">$matches</span><span class="keyword">);
+<br>&nbsp; &nbsp; 
+<br>&nbsp; &nbsp; if (</span><span class="default">$limit </span><span class="keyword">&gt; -</span><span class="default">1</span><span class="keyword">) {
+<br>&nbsp; &nbsp; &nbsp; &nbsp; foreach (</span><span class="default">$matches </span><span class="keyword">as </span><span class="default">$count </span><span class="keyword">=&gt; </span><span class="default">$value </span><span class="keyword">)
+<br>&nbsp; &nbsp; &nbsp; &nbsp; {
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (</span><span class="default">$count </span><span class="keyword">+ </span><span class="default">1 </span><span class="keyword">&gt; </span><span class="default">$limit </span><span class="keyword">) { unset(</span><span class="default">$matches</span><span class="keyword">[</span><span class="default">$count</span><span class="keyword">]); }
+<br>&nbsp; &nbsp; &nbsp; &nbsp; }
+<br>&nbsp; &nbsp; }
+<br>&nbsp; &nbsp; foreach (</span><span class="default">$matches</span><span class="keyword">[</span><span class="default">0</span><span class="keyword">] as </span><span class="default">$match</span><span class="keyword">) {
+<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$rep </span><span class="keyword">= </span><span class="default">ereg_replace</span><span class="keyword">(</span><span class="default">$replacementChar</span><span class="keyword">, </span><span class="default">$match</span><span class="keyword">, </span><span class="default">$replacement</span><span class="keyword">);
+<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$subject </span><span class="keyword">= </span><span class="default">ereg_replace</span><span class="keyword">(</span><span class="default">$match</span><span class="keyword">, </span><span class="default">$rep</span><span class="keyword">, </span><span class="default">$subject</span><span class="keyword">);
+<br>&nbsp; &nbsp; }
+<br>&nbsp; &nbsp; 
+<br>&nbsp; &nbsp; return </span><span class="default">$subject</span><span class="keyword">;
+<br>}
+<br></span><span class="default">?&gt;
+<br></span>
+<br>This function can turn blocks of text into clickable links or whatever.&nbsp; Example:
+<br>
+<br><span class="default">&lt;?php
+<br>reg_smart_replace</span><span class="keyword">(</span><span class="default">EMAIL_REGEX</span><span class="keyword">, </span><span class="string">'&lt;a href="<a href="mailto:$$$" rel="nofollow" target="_blank">mailto:$$$</a>"&gt;$$$&lt;/a&gt;'</span><span class="keyword">, </span><span class="default">$description</span><span class="keyword">)
+<br></span><span class="default">?&gt;
+<br></span>will turn all email addresses into actual links.
+<br>
+<br>Just substitute $$$ with the text that will be found by the regex.&nbsp; If you can't use $$$ then use the 4th parameter $replacementChar</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="86182">  <div class="votes">
+    <div id="Vu86182">
+    <a href="http://php.net/manual/vote-note.php?id=86182&amp;page=function.preg-match-all&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd86182">
+    <a href="http://php.net/manual/vote-note.php?id=86182&amp;page=function.preg-match-all&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V86182" title="57% like this...">
+    1
+    </div>
+  </div>
+  <a href="http://php.net/manual/es/function.preg-match-all.php#86182" class="name">
+  <strong class="user"><em>MonkeyMan</em></strong></a><a class="genanchor" href="http://php.net/manual/es/function.preg-match-all.php#86182"> ¶</a><div class="date" title="2008-10-07 01:25"><strong>7 years ago</strong></div>
+  <div class="text" id="Hcom86182">
+<div class="phpcode"><code><span class="html">
+Here is a way to match everything on the page, performing an action for each match as you go. I had used this idiom in other languages, where its use is customary, but in PHP it seems to be not quite as common.<br><br><span class="default">&lt;?php<br></span><span class="keyword">function </span><span class="default">custom_preg_match_all</span><span class="keyword">(</span><span class="default">$pattern</span><span class="keyword">, </span><span class="default">$subject</span><span class="keyword">)<br>{<br>&nbsp; &nbsp; </span><span class="default">$offset </span><span class="keyword">= </span><span class="default">0</span><span class="keyword">;<br>&nbsp; &nbsp; </span><span class="default">$match_count </span><span class="keyword">= </span><span class="default">0</span><span class="keyword">;<br>&nbsp; &nbsp; while(</span><span class="default">preg_match</span><span class="keyword">(</span><span class="default">$pattern</span><span class="keyword">, </span><span class="default">$subject</span><span class="keyword">, </span><span class="default">$matches</span><span class="keyword">, </span><span class="default">PREG_OFFSET_CAPTURE</span><span class="keyword">, </span><span class="default">$offset</span><span class="keyword">))<br>&nbsp; &nbsp; {<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="comment">// Increment counter<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$match_count</span><span class="keyword">++;<br>&nbsp; &nbsp; <br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="comment">// Get byte offset and byte length (assuming single byte encoded)<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$match_start </span><span class="keyword">= </span><span class="default">$matches</span><span class="keyword">[</span><span class="default">0</span><span class="keyword">][</span><span class="default">1</span><span class="keyword">];<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$match_length </span><span class="keyword">= </span><span class="default">strlen</span><span class="keyword">(</span><span class="default">matches</span><span class="keyword">[</span><span class="default">0</span><span class="keyword">][</span><span class="default">0</span><span class="keyword">]);<br><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="comment">// (Optional) Transform $matches to the format it is usually set as (without PREG_OFFSET_CAPTURE set)<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="keyword">foreach(</span><span class="default">$matches </span><span class="keyword">as </span><span class="default">$k </span><span class="keyword">=&gt; </span><span class="default">$match</span><span class="keyword">) </span><span class="default">$newmatches</span><span class="keyword">[</span><span class="default">$k</span><span class="keyword">] = </span><span class="default">$match</span><span class="keyword">[</span><span class="default">0</span><span class="keyword">];<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$matches </span><span class="keyword">= </span><span class="default">$new_matches</span><span class="keyword">;<br>&nbsp; &nbsp; <br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="comment">// Your code here<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="keyword">echo </span><span class="string">"Match number </span><span class="default">$match_count</span><span class="string">, at byte offset </span><span class="default">$match_start</span><span class="string">, </span><span class="default">$match_length</span><span class="string"> bytes long: "</span><span class="keyword">.</span><span class="default">$matches</span><span class="keyword">[</span><span class="default">0</span><span class="keyword">].</span><span class="string">"\r\n"</span><span class="keyword">;<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="comment">// Update offset to the end of the match<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$offset </span><span class="keyword">= </span><span class="default">$match_start </span><span class="keyword">+ </span><span class="default">$match_length</span><span class="keyword">;<br>&nbsp; &nbsp; }<br><br>&nbsp; &nbsp; return </span><span class="default">$match_count</span><span class="keyword">;<br>}<br></span><span class="default">?&gt;<br></span><br>Note that the offsets returned are byte values (not necessarily number of characters) so you'll have to make sure the data is single-byte encoded. (Or have a look at paolo mosna's strByte function on the strlen manual page).<br>I'd be interested to know how this method performs speedwise against using preg_match_all and then recursing through the results.</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="117285">  <div class="votes">
+    <div id="Vu117285">
+    <a href="http://php.net/manual/vote-note.php?id=117285&amp;page=function.preg-match-all&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd117285">
+    <a href="http://php.net/manual/vote-note.php?id=117285&amp;page=function.preg-match-all&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V117285" title="100% like this...">
+    2
+    </div>
+  </div>
+  <a href="http://php.net/manual/es/function.preg-match-all.php#117285" class="name">
+  <strong class="user"><em>Daniel Klein</em></strong></a><a class="genanchor" href="http://php.net/manual/es/function.preg-match-all.php#117285"> ¶</a><div class="date" title="2015-05-17 05:26"><strong>9 months ago</strong></div>
+  <div class="text" id="Hcom117285">
+<div class="phpcode"><code><span class="html">
+The code that john at mccarthy dot net posted is not necessary. If you want your results grouped by individual match simply use:<br><br>&lt;?<br>preg_match_all($pattern, $string, $matches, PREG_SET_ORDER);<br>?&gt;<br><br>E.g.<br><br>&lt;?<br>preg_match_all('/([GH])([12])([!?])/', 'G1? H2!', $matches); // Default PREG_PATTERN_ORDER<br>// $matches = array(0 =&gt; array(0 =&gt; 'G1?', 1 =&gt; 'H2!'),<br>//&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1 =&gt; array(0 =&gt; 'G', 1 =&gt; 'H'),<br>//&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 2 =&gt; array(0 =&gt; '1', 1 =&gt; '2'),<br>//&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 3 =&gt; array(0 =&gt; '?', 1 =&gt; '!'))<br><br>preg_match_all('/([GH])([12])([!?])/', 'G1? H2!', $matches, PREG_SET_ORDER);<br>// $matches = array(0 =&gt; array(0 =&gt; 'G1?', 1 =&gt; 'G', 2 =&gt; '1', 3 =&gt; '?'),<br>//&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1 =&gt; array(0 =&gt; 'H2!', 1 =&gt; 'H', 2 =&gt; '2', 3 =&gt; '!'))<br>?&gt;</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="118805">  <div class="votes">
+    <div id="Vu118805">
+    <a href="http://php.net/manual/vote-note.php?id=118805&amp;page=function.preg-match-all&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd118805">
+    <a href="http://php.net/manual/vote-note.php?id=118805&amp;page=function.preg-match-all&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V118805" title="100% like this...">
+    1
+    </div>
+  </div>
+  <a href="http://php.net/manual/es/function.preg-match-all.php#118805" class="name">
+  <strong class="user"><em>stamster at gmail dot com</em></strong></a><a class="genanchor" href="http://php.net/manual/es/function.preg-match-all.php#118805"> ¶</a><div class="date" title="2016-02-09 11:55"><strong>24 days ago</strong></div>
+  <div class="text" id="Hcom118805">
+<div class="phpcode"><code><span class="html">
+Be careful with this pattern match and large input buffer on preg_match_* functions.<br><br><span class="default">&lt;?php<br>$pattern </span><span class="keyword">= </span><span class="string">'/\{(?:[^{}]|(?R))*\}/'</span><span class="keyword">;<br><br></span><span class="default">preg_match_all</span><span class="keyword">(</span><span class="default">$pattern</span><span class="keyword">, </span><span class="default">$buffer</span><span class="keyword">, </span><span class="default">$matches</span><span class="keyword">); <br></span><span class="default">?&gt;<br></span><br>if $buffer is 80+ KB in size, you'll end up with segfault! <br><br>[89396.588854] php[4384]: segfault at 7ffd6e2bdeb0 ip 00007fa20c8d67ed sp 00007ffd6e2bde70 error 6 in libpcre.so.3.13.1[7fa20c8c3000+3c000]<br><br>This is due to the PCRE recursion. This is a known bug in PHP since 2008, but it's source is not PHP itself but PCRE library. <br><br>Rasmus Lerdorf has the answer: <a href="https://bugs.php.net/bug.php?id=45735#1365812629" rel="nofollow" target="_blank">https://bugs.php.net/bug.php?id=45735#1365812629</a><br><br>"The problem here is that there is no way to detect run-away regular expressions <br>here without huge performance and memory penalties. Yes, we could build PCRE in a <br>way that it wouldn't segfault and we could crank up the default backtrack limit <br>to something huge, but it would slow every regex call down by a lot. If PCRE <br>provided a way to handle this in a more graceful manner without the performance <br>hit we would of course use it."</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="118345">  <div class="votes">
+    <div id="Vu118345">
+    <a href="http://php.net/manual/vote-note.php?id=118345&amp;page=function.preg-match-all&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd118345">
+    <a href="http://php.net/manual/vote-note.php?id=118345&amp;page=function.preg-match-all&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V118345" title="no votes...">
+    0
+    </div>
+  </div>
+  <a href="http://php.net/manual/es/function.preg-match-all.php#118345" class="name">
+  <strong class="user"><em>matt at lvl99 dot com</em></strong></a><a class="genanchor" href="http://php.net/manual/es/function.preg-match-all.php#118345"> ¶</a><div class="date" title="2015-11-19 02:30"><strong>3 months ago</strong></div>
+  <div class="text" id="Hcom118345">
+<div class="phpcode"><code><span class="html">
+I had been crafting and testing some regexp patterns online using the tools Regex101 and a `preg_match_all()` tester and found that the regexp patterns I wrote worked fine on them, just not in my code.<br><br>My problem was not double-escaping backslash characters:<br><br><span class="default">&lt;?php<br></span><span class="comment">// Input test<br></span><span class="default">$input </span><span class="keyword">= </span><span class="string">"\"something\",\"something here\",\"some\nnew\nlines\",\"this is the end\""</span><span class="keyword">;<br><br></span><span class="comment">// Work with online regexp testers, doesn't work in PHP<br></span><span class="default">preg_match_all</span><span class="keyword">( </span><span class="string">"/(?:,|^)(?&lt;!\\)\".*?(?&lt;!\\)\"(?:(?=,)|$)/s"</span><span class="keyword">, </span><span class="default">$input</span><span class="keyword">, </span><span class="default">$matches </span><span class="keyword">);<br><br></span><span class="comment">/*<br>Outputs: NULL<br>*/<br><br>// Works with online regexp testers, does work in PHP<br></span><span class="default">preg_match_all</span><span class="keyword">( </span><span class="string">"/(?:,|^)(?&lt;!\\\\)\".*?(?&lt;!\\\\)\"(?:(?=,)|$)/s"</span><span class="keyword">, </span><span class="default">$input</span><span class="keyword">, </span><span class="default">$matches </span><span class="keyword">);<br><br></span><span class="comment">/*<br>Outputs:<br>array(2) {<br>&nbsp; [0]=&gt;<br>&nbsp; array(4) {<br>&nbsp; &nbsp; [0]=&gt;<br>&nbsp; &nbsp; string(11) ""something""<br>&nbsp; &nbsp; [1]=&gt;<br>&nbsp; &nbsp; string(17) ","something here""<br>&nbsp; &nbsp; [2]=&gt;<br>&nbsp; &nbsp; string(17) ","some<br>new<br>lines""<br>&nbsp; &nbsp; [3]=&gt;<br>&nbsp; &nbsp; string(18) ","this is the end""<br>&nbsp; }<br>&nbsp; [1]=&gt;<br>&nbsp; array(4) {<br>&nbsp; &nbsp; [0]=&gt;<br>&nbsp; &nbsp; string(9) "something"<br>&nbsp; &nbsp; [1]=&gt;<br>&nbsp; &nbsp; string(14) "something here"<br>&nbsp; &nbsp; [2]=&gt;<br>&nbsp; &nbsp; string(14) "some<br>new<br>lines"<br>&nbsp; &nbsp; [3]=&gt;<br>&nbsp; &nbsp; string(15) "this is the end"<br>&nbsp; }<br>}<br>*/<br></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="118289">  <div class="votes">
+    <div id="Vu118289">
+    <a href="http://php.net/manual/vote-note.php?id=118289&amp;page=function.preg-match-all&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd118289">
+    <a href="http://php.net/manual/vote-note.php?id=118289&amp;page=function.preg-match-all&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V118289" title="no votes...">
+    0
+    </div>
+  </div>
+  <a href="http://php.net/manual/es/function.preg-match-all.php#118289" class="name">
+  <strong class="user"><em>stas kuryan aka stafox</em></strong></a><a class="genanchor" href="http://php.net/manual/es/function.preg-match-all.php#118289"> ¶</a><div class="date" title="2015-11-09 08:57"><strong>3 months ago</strong></div>
+  <div class="text" id="Hcom118289">
+<div class="phpcode"><code><span class="html">
+Here is a awesome online regex editor <a href="https://regex101.com/" rel="nofollow" target="_blank">https://regex101.com/</a><br>which helps you test your regular expressions (prce, js, python) with real-time highlighting of regex match on data input.</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="117352">  <div class="votes">
+    <div id="Vu117352">
+    <a href="http://php.net/manual/vote-note.php?id=117352&amp;page=function.preg-match-all&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd117352">
+    <a href="http://php.net/manual/vote-note.php?id=117352&amp;page=function.preg-match-all&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V117352" title="50% like this...">
+    0
+    </div>
+  </div>
+  <a href="http://php.net/manual/es/function.preg-match-all.php#117352" class="name">
+  <strong class="user"><em>vojjov dot artem at ya dot ru</em></strong></a><a class="genanchor" href="http://php.net/manual/es/function.preg-match-all.php#117352"> ¶</a><div class="date" title="2015-05-26 03:40"><strong>9 months ago</strong></div>
+  <div class="text" id="Hcom117352">
+<div class="phpcode"><code><span class="html">
+// Here is function that allows you to preg_match_all array of patters<br><br>function getMatches($pattern, $subject) {<br>&nbsp; &nbsp; $matches = array();<br><br>&nbsp; &nbsp; if (is_array($pattern)) {<br>&nbsp; &nbsp; &nbsp; &nbsp; foreach ($pattern as $p) {<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $m = getMatches($p, $subject);<br><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; foreach ($m as $key =&gt; $match) {<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (isset($matches[$key])) {<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $matches[$key] = array_merge($matches[$key], $m[$key]);&nbsp; &nbsp; <br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; } else {<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $matches[$key] = $m[$key];<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br>&nbsp; &nbsp; &nbsp; &nbsp; }<br>&nbsp; &nbsp; } else {<br>&nbsp; &nbsp; &nbsp; &nbsp; preg_match_all($pattern, $subject, $matches);<br>&nbsp; &nbsp; }<br><br>&nbsp; &nbsp; return $matches;<br>}<br><br>$patterns = array(<br>&nbsp; &nbsp; '/&lt;span&gt;(.*?)&lt;\/span&gt;/',<br>&nbsp; &nbsp; '/&lt;a href=".*?"&gt;(.*?)&lt;\/a&gt;/'<br>);<br><br>$html = '&lt;span&gt;some text&lt;/span&gt;';<br>$html .= '&lt;span&gt;some text in another span&lt;/span&gt;';<br>$html .= '&lt;a href="path/"&gt;here is the link&lt;/a&gt;';<br>$html .= '&lt;address&gt;address is here&lt;/address&gt;';<br>$html .= '&lt;span&gt;here is one more span&lt;/span&gt;';<br><br>$matches = getMatches($patterns, $html);<br><br>print_r($matches); // result is below<br><br>/*<br>Array<br>(<br>&nbsp; &nbsp; [0] =&gt; Array<br>&nbsp; &nbsp; &nbsp; &nbsp; (<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [0] =&gt; &lt;span&gt;some text&lt;/span&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [1] =&gt; &lt;span&gt;some text in another span&lt;/span&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [2] =&gt; &lt;span&gt;here is one more span&lt;/span&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [3] =&gt; &lt;a href="path/"&gt;here is the link&lt;/a&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; )<br><br>&nbsp; &nbsp; [1] =&gt; Array<br>&nbsp; &nbsp; &nbsp; &nbsp; (<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [0] =&gt; some text<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [1] =&gt; some text in another span<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [2] =&gt; here is one more span<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [3] =&gt; here is the link<br>&nbsp; &nbsp; &nbsp; &nbsp; )<br><br>)<br>*/</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="108539">  <div class="votes">
+    <div id="Vu108539">
+    <a href="http://php.net/manual/vote-note.php?id=108539&amp;page=function.preg-match-all&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd108539">
+    <a href="http://php.net/manual/vote-note.php?id=108539&amp;page=function.preg-match-all&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V108539" title="50% like this...">
+    0
+    </div>
+  </div>
+  <a href="http://php.net/manual/es/function.preg-match-all.php#108539" class="name">
+  <strong class="user"><em>marc</em></strong></a><a class="genanchor" href="http://php.net/manual/es/function.preg-match-all.php#108539"> ¶</a><div class="date" title="2012-05-04 03:48"><strong>3 years ago</strong></div>
+  <div class="text" id="Hcom108539">
+<div class="phpcode"><code><span class="html">
+Better use preg_replace to convert text in a clickable link with tag &lt;a&gt; <br><br>$html = preg_replace('"\b(<a href="http:" rel="nofollow" target="_blank">http://</a>\S+)"', '&lt;a href="$1"&gt;$1&lt;/a&gt;', $text);</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="105853">  <div class="votes">
+    <div id="Vu105853">
+    <a href="http://php.net/manual/vote-note.php?id=105853&amp;page=function.preg-match-all&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd105853">
+    <a href="http://php.net/manual/vote-note.php?id=105853&amp;page=function.preg-match-all&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V105853" title="50% like this...">
+    0
+    </div>
+  </div>
+  <a href="http://php.net/manual/es/function.preg-match-all.php#105853" class="name">
+  <strong class="user"><em>satyavvd at ymail dot com</em></strong></a><a class="genanchor" href="http://php.net/manual/es/function.preg-match-all.php#105853"> ¶</a><div class="date" title="2011-09-20 04:08"><strong>4 years ago</strong></div>
+  <div class="text" id="Hcom105853">
+<div class="phpcode"><code><span class="html">
+Extract fields out of csv string : ( since before php5.3 you can't use str_getcsv function ) 
+<br>Here is the regex :
+<br>
+<br><span class="default">&lt;?php
+<br>
+<br>$csvData </span><span class="keyword">= &lt;&lt;&lt;EOF
+<br></span><span class="string">10,'20',"30","'40","'50'","\"60","70,80","09\\/18,/\"2011",'a,sdfcd'
+<br></span><span class="keyword">EOF
+<br>
+<br></span><span class="default">$reg </span><span class="keyword">= &lt;&lt;&lt;EOF
+<br></span><span class="string">/
+<br>&nbsp; &nbsp; (
+<br>&nbsp; &nbsp; &nbsp; &nbsp; (
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ([\'\"])
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; ( 
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [^\'\"]
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (\\\\.)
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; )*
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; )
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (\\3)
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [^,]
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (\\\\.)
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; )*
+<br>&nbsp; &nbsp; ),)
+<br>&nbsp; &nbsp; /x
+<br></span><span class="keyword">EOF;
+<br>
+<br></span><span class="default">preg_match_all</span><span class="keyword">(</span><span class="default">$reg</span><span class="keyword">,</span><span class="default">$csvData</span><span class="keyword">,</span><span class="default">$matches</span><span class="keyword">);
+<br>
+<br></span><span class="comment">// to extract csv fields
+<br></span><span class="default">print_r</span><span class="keyword">(</span><span class="default">$matches</span><span class="keyword">[</span><span class="default">2</span><span class="keyword">]);
+<br></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="93504">  <div class="votes">
+    <div id="Vu93504">
+    <a href="http://php.net/manual/vote-note.php?id=93504&amp;page=function.preg-match-all&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd93504">
+    <a href="http://php.net/manual/vote-note.php?id=93504&amp;page=function.preg-match-all&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V93504" title="50% like this...">
+    0
+    </div>
+  </div>
+  <a href="http://php.net/manual/es/function.preg-match-all.php#93504" class="name">
+  <strong class="user"><em>royaltm75 at gmail dot com</em></strong></a><a class="genanchor" href="http://php.net/manual/es/function.preg-match-all.php#93504"> ¶</a><div class="date" title="2009-09-13 02:44"><strong>6 years ago</strong></div>
+  <div class="text" id="Hcom93504">
+<div class="phpcode"><code><span class="html">
+I have received complains, that my html2a() code (see below) doesn't work in some cases. <br>It is however not the problem with algorithm or procedure, but with PCRE recursive stack limits.<br><br>If you use recursive PCRE (?R) you should remember to increase those two ini settings:<br><br>ini_set('pcre.backtrack_limit', 10000000);<br>ini_set('pcre.recursion_limit', 10000000);<br><br>But be warned: (from php.ini)<br><br>;Please note that if you set this value to a high number you may consume all<br>;the available process stack and eventually crash PHP (due to reaching the<br>;stack size limit imposed by the Operating System).<br><br>I have written this example mainly to demonstrate the power of PCRE LANGUAGE, not the power of it's implementation&nbsp; :) <br><br>But if you like it, use it, of course on your own risk.</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="89092">  <div class="votes">
+    <div id="Vu89092">
+    <a href="http://php.net/manual/vote-note.php?id=89092&amp;page=function.preg-match-all&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd89092">
+    <a href="http://php.net/manual/vote-note.php?id=89092&amp;page=function.preg-match-all&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V89092" title="50% like this...">
+    0
+    </div>
+  </div>
+  <a href="http://php.net/manual/es/function.preg-match-all.php#89092" class="name">
+  <strong class="user"><em>royaltm75 at NOSPAM dot gmail dot com</em></strong></a><a class="genanchor" href="http://php.net/manual/es/function.preg-match-all.php#89092"> ¶</a><div class="date" title="2009-02-21 02:55"><strong>7 years ago</strong></div>
+  <div class="text" id="Hcom89092">
+<div class="phpcode"><code><span class="html">
+The power of pregs is limited only by your *imagination* :)<br>I wrote this html2a() function using preg recursive match (?R) which provides quite safe and bulletproof html/xml extraction:<br><span class="default">&lt;?php<br></span><span class="keyword">function </span><span class="default">html2a </span><span class="keyword">( </span><span class="default">$html </span><span class="keyword">) {<br>&nbsp; if ( !</span><span class="default">preg_match_all</span><span class="keyword">( </span><span class="string">'<br>@<br>\&lt;\s*?(\w+)((?:\b(?:\'[^\']*\'|"[^"]*"|[^\&gt;])*)?)\&gt;<br>((?:(?&gt;[^\&lt;]*)|(?R))*)<br>\&lt;\/\s*?\\1(?:\b[^\&gt;]*)?\&gt;<br>|\&lt;\s*(\w+)(\b(?:\'[^\']*\'|"[^"]*"|[^\&gt;])*)?\/?\&gt;<br>@uxis'</span><span class="keyword">, </span><span class="default">$html </span><span class="keyword">= </span><span class="default">trim</span><span class="keyword">(</span><span class="default">$html</span><span class="keyword">), </span><span class="default">$m</span><span class="keyword">, </span><span class="default">PREG_OFFSET_CAPTURE </span><span class="keyword">| </span><span class="default">PREG_SET_ORDER</span><span class="keyword">) )<br>&nbsp; &nbsp; return </span><span class="default">$html</span><span class="keyword">;<br>&nbsp; </span><span class="default">$i </span><span class="keyword">= </span><span class="default">0</span><span class="keyword">;<br>&nbsp; </span><span class="default">$ret </span><span class="keyword">= array();<br>&nbsp; foreach (</span><span class="default">$m </span><span class="keyword">as </span><span class="default">$set</span><span class="keyword">) {<br>&nbsp; &nbsp; if ( </span><span class="default">strlen</span><span class="keyword">( </span><span class="default">$val </span><span class="keyword">= </span><span class="default">trim</span><span class="keyword">( </span><span class="default">substr</span><span class="keyword">(</span><span class="default">$html</span><span class="keyword">, </span><span class="default">$i</span><span class="keyword">, </span><span class="default">$set</span><span class="keyword">[</span><span class="default">0</span><span class="keyword">][</span><span class="default">1</span><span class="keyword">] - </span><span class="default">$i</span><span class="keyword">) ) ) )<br>&nbsp; &nbsp; &nbsp; </span><span class="default">$ret</span><span class="keyword">[] = </span><span class="default">$val</span><span class="keyword">;<br>&nbsp; &nbsp; </span><span class="default">$val </span><span class="keyword">= </span><span class="default">$set</span><span class="keyword">[</span><span class="default">1</span><span class="keyword">][</span><span class="default">1</span><span class="keyword">] &lt; </span><span class="default">0 <br>&nbsp; &nbsp; &nbsp; </span><span class="keyword">? array( </span><span class="string">'tag' </span><span class="keyword">=&gt; </span><span class="default">strtolower</span><span class="keyword">(</span><span class="default">$set</span><span class="keyword">[</span><span class="default">4</span><span class="keyword">][</span><span class="default">0</span><span class="keyword">]) )<br>&nbsp; &nbsp; &nbsp; : array( </span><span class="string">'tag' </span><span class="keyword">=&gt; </span><span class="default">strtolower</span><span class="keyword">(</span><span class="default">$set</span><span class="keyword">[</span><span class="default">1</span><span class="keyword">][</span><span class="default">0</span><span class="keyword">]), </span><span class="string">'val' </span><span class="keyword">=&gt; </span><span class="default">html2a</span><span class="keyword">(</span><span class="default">$set</span><span class="keyword">[</span><span class="default">3</span><span class="keyword">][</span><span class="default">0</span><span class="keyword">]) );<br>&nbsp; &nbsp; if ( </span><span class="default">preg_match_all</span><span class="keyword">( </span><span class="string">'<br>/(\w+)\s*(?:=\s*(?:"([^"]*)"|\'([^\']*)\'|(\w+)))?/usix<br>'</span><span class="keyword">, isset(</span><span class="default">$set</span><span class="keyword">[</span><span class="default">5</span><span class="keyword">]) &amp;&amp; </span><span class="default">$set</span><span class="keyword">[</span><span class="default">2</span><span class="keyword">][</span><span class="default">1</span><span class="keyword">] &lt; </span><span class="default">0<br>&nbsp; </span><span class="keyword">? </span><span class="default">$set</span><span class="keyword">[</span><span class="default">5</span><span class="keyword">][</span><span class="default">0</span><span class="keyword">]<br>&nbsp; : </span><span class="default">$set</span><span class="keyword">[</span><span class="default">2</span><span class="keyword">][</span><span class="default">0</span><span class="keyword">]<br>&nbsp; ,</span><span class="default">$attrs</span><span class="keyword">, </span><span class="default">PREG_SET_ORDER </span><span class="keyword">) ) {<br>&nbsp; &nbsp; &nbsp; foreach (</span><span class="default">$attrs </span><span class="keyword">as </span><span class="default">$a</span><span class="keyword">) {<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$val</span><span class="keyword">[</span><span class="string">'attr'</span><span class="keyword">][</span><span class="default">$a</span><span class="keyword">[</span><span class="default">1</span><span class="keyword">]]=</span><span class="default">$a</span><span class="keyword">[</span><span class="default">count</span><span class="keyword">(</span><span class="default">$a</span><span class="keyword">)-</span><span class="default">1</span><span class="keyword">];<br>&nbsp; &nbsp; &nbsp; }<br>&nbsp; &nbsp; }<br>&nbsp; &nbsp; </span><span class="default">$ret</span><span class="keyword">[] = </span><span class="default">$val</span><span class="keyword">;<br>&nbsp; &nbsp; </span><span class="default">$i </span><span class="keyword">= </span><span class="default">$set</span><span class="keyword">[</span><span class="default">0</span><span class="keyword">][</span><span class="default">1</span><span class="keyword">]+</span><span class="default">strlen</span><span class="keyword">( </span><span class="default">$set</span><span class="keyword">[</span><span class="default">0</span><span class="keyword">][</span><span class="default">0</span><span class="keyword">] );<br>&nbsp; }<br>&nbsp; </span><span class="default">$l </span><span class="keyword">= </span><span class="default">strlen</span><span class="keyword">(</span><span class="default">$html</span><span class="keyword">);<br>&nbsp; if ( </span><span class="default">$i </span><span class="keyword">&lt; </span><span class="default">$l </span><span class="keyword">)<br>&nbsp; &nbsp; if ( </span><span class="default">strlen</span><span class="keyword">( </span><span class="default">$val </span><span class="keyword">= </span><span class="default">trim</span><span class="keyword">( </span><span class="default">substr</span><span class="keyword">( </span><span class="default">$html</span><span class="keyword">, </span><span class="default">$i</span><span class="keyword">, </span><span class="default">$l </span><span class="keyword">- </span><span class="default">$i </span><span class="keyword">) ) ) )<br>&nbsp; &nbsp; &nbsp; </span><span class="default">$ret</span><span class="keyword">[] = </span><span class="default">$val</span><span class="keyword">;<br>&nbsp; return </span><span class="default">$ret</span><span class="keyword">;<br>}<br></span><span class="default">?&gt;<br></span><br>Now let's try it with this example: (there are some really nasty xhtml compliant bugs, but ... we shouldn't worry)<br><br><span class="default">&lt;?php<br>$html </span><span class="keyword">= &lt;&lt;&lt;EOT<br></span><span class="string">some leftover text...<br>&nbsp; &nbsp;&nbsp; &lt; DIV class=noCompliant style = "text-align:left;" &gt;<br>... and some other ...<br>&lt; dIv &gt; &lt; empty&gt;&nbsp; &lt;/ empty&gt;<br>&nbsp; &lt;p&gt; This is yet another text &lt;br&nbsp; &gt;<br>&nbsp; &nbsp;&nbsp; that wasn't &lt;b&gt;compliant&lt;/b&gt; too... &lt;br&nbsp;&nbsp; /&gt;<br>&nbsp; &nbsp;&nbsp; &lt;/p&gt;<br> &lt;div class="noClass" &gt; this one is better but we don't care anyway &lt;/div &gt;&lt;P&gt;<br>&nbsp; &nbsp; &lt;input&nbsp;&nbsp; type= "text"&nbsp; name ='my "name' value&nbsp; = "nothin really." readonly&gt;<br>end of paragraph &lt;/p&gt; &lt;/Div&gt;&nbsp;&nbsp; &lt;/div&gt;&nbsp;&nbsp; some trailing text <br></span><span class="keyword">EOT;<br><br></span><span class="default">$a </span><span class="keyword">= </span><span class="default">html2a</span><span class="keyword">(</span><span class="default">$html</span><span class="keyword">);<br></span><span class="comment">//now we will make some neat html out of it<br></span><span class="keyword">echo </span><span class="default">a2html</span><span class="keyword">(</span><span class="default">$a</span><span class="keyword">);<br><br>function </span><span class="default">a2html </span><span class="keyword">( </span><span class="default">$a</span><span class="keyword">, </span><span class="default">$in </span><span class="keyword">= </span><span class="string">"" </span><span class="keyword">) {<br>&nbsp; if ( </span><span class="default">is_array</span><span class="keyword">(</span><span class="default">$a</span><span class="keyword">) ) {<br>&nbsp; &nbsp; </span><span class="default">$s </span><span class="keyword">= </span><span class="string">""</span><span class="keyword">;<br>&nbsp; &nbsp; foreach (</span><span class="default">$a </span><span class="keyword">as </span><span class="default">$t</span><span class="keyword">)<br>&nbsp; &nbsp; &nbsp; if ( </span><span class="default">is_array</span><span class="keyword">(</span><span class="default">$t</span><span class="keyword">) ) {<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$attrs</span><span class="keyword">=</span><span class="string">""</span><span class="keyword">; <br>&nbsp; &nbsp; &nbsp; &nbsp; if ( isset(</span><span class="default">$t</span><span class="keyword">[</span><span class="string">'attr'</span><span class="keyword">]) )<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; foreach( </span><span class="default">$t</span><span class="keyword">[</span><span class="string">'attr'</span><span class="keyword">] as </span><span class="default">$k </span><span class="keyword">=&gt; </span><span class="default">$v </span><span class="keyword">)<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$attrs</span><span class="keyword">.=</span><span class="string">" </span><span class="keyword">${</span><span class="default">k</span><span class="keyword">}</span><span class="string">="</span><span class="keyword">.( </span><span class="default">strpos</span><span class="keyword">( </span><span class="default">$v</span><span class="keyword">, </span><span class="string">'"' </span><span class="keyword">)!==</span><span class="default">false </span><span class="keyword">? </span><span class="string">"'</span><span class="default">$v</span><span class="string">'" </span><span class="keyword">: </span><span class="string">"\"</span><span class="default">$v</span><span class="string">\"" </span><span class="keyword">);<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$s</span><span class="keyword">.= </span><span class="default">$in</span><span class="keyword">.</span><span class="string">"&lt;"</span><span class="keyword">.</span><span class="default">$t</span><span class="keyword">[</span><span class="string">'tag'</span><span class="keyword">].</span><span class="default">$attrs</span><span class="keyword">.( isset( </span><span class="default">$t</span><span class="keyword">[</span><span class="string">'val'</span><span class="keyword">] ) ? </span><span class="string">"&gt;\n"</span><span class="keyword">.</span><span class="default">a2html</span><span class="keyword">( </span><span class="default">$t</span><span class="keyword">[</span><span class="string">'val'</span><span class="keyword">], </span><span class="default">$in</span><span class="keyword">.</span><span class="string">"&nbsp; " </span><span class="keyword">).</span><span class="default">$in</span><span class="keyword">.</span><span class="string">"&lt;/"</span><span class="keyword">.</span><span class="default">$t</span><span class="keyword">[</span><span class="string">'tag'</span><span class="keyword">] : </span><span class="string">"/" </span><span class="keyword">).</span><span class="string">"&gt;\n"</span><span class="keyword">;<br>&nbsp; &nbsp; &nbsp; } else<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$s</span><span class="keyword">.= </span><span class="default">$in</span><span class="keyword">.</span><span class="default">$t</span><span class="keyword">.</span><span class="string">"\n"</span><span class="keyword">;<br>&nbsp; } else {<br>&nbsp; &nbsp; </span><span class="default">$s </span><span class="keyword">= empty(</span><span class="default">$a</span><span class="keyword">) ? </span><span class="string">"" </span><span class="keyword">: </span><span class="default">$in</span><span class="keyword">.</span><span class="default">$a</span><span class="keyword">.</span><span class="string">"\n"</span><span class="keyword">;<br>&nbsp; }<br>&nbsp; return </span><span class="default">$s</span><span class="keyword">;<br>}<br></span><span class="default">?&gt;<br></span>This produces:<br>some leftover text...<br>&lt;div class="noCompliant" style="text-align:left;"&gt;<br>&nbsp; ... and some other ...<br>&nbsp; &lt;div&gt;<br>&nbsp; &nbsp; &lt;empty&gt;<br>&nbsp; &nbsp; &lt;/empty&gt;<br>&nbsp; &nbsp; &lt;p&gt;<br>&nbsp; &nbsp; &nbsp; This is yet another text<br>&nbsp; &nbsp; &nbsp; &lt;br/&gt;<br>&nbsp; &nbsp; &nbsp; that wasn't<br>&nbsp; &nbsp; &nbsp; &lt;b&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; compliant<br>&nbsp; &nbsp; &nbsp; &lt;/b&gt;<br>&nbsp; &nbsp; &nbsp; too...<br>&nbsp; &nbsp; &nbsp; &lt;br/&gt;<br>&nbsp; &nbsp; &lt;/p&gt;<br>&nbsp; &nbsp; &lt;div class="noClass"&gt;<br>&nbsp; &nbsp; &nbsp; this one is better but we don't care anyway<br>&nbsp; &nbsp; &lt;/div&gt;<br>&nbsp; &nbsp; &lt;p&gt;<br>&nbsp; &nbsp; &nbsp; &lt;input type="text" name='my "name' value="nothin really." readonly="readonly"/&gt;<br>&nbsp; &nbsp; &nbsp; end of paragraph<br>&nbsp; &nbsp; &lt;/p&gt;<br>&nbsp; &lt;/div&gt;<br>&lt;/div&gt;<br>some trailing text</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="114857">  <div class="votes">
+    <div id="Vu114857">
+    <a href="http://php.net/manual/vote-note.php?id=114857&amp;page=function.preg-match-all&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd114857">
+    <a href="http://php.net/manual/vote-note.php?id=114857&amp;page=function.preg-match-all&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V114857" title="0% like this...">
+    -1
+    </div>
+  </div>
+  <a href="http://php.net/manual/es/function.preg-match-all.php#114857" class="name">
+  <strong class="user"><em>DarkSide</em></strong></a><a class="genanchor" href="http://php.net/manual/es/function.preg-match-all.php#114857"> ¶</a><div class="date" title="2014-04-15 02:03"><strong>1 year ago</strong></div>
+  <div class="text" id="Hcom114857" style="opacity: 0.75;">
+<div class="phpcode"><code><span class="html">
+This is very useful to combine matches:<br>$a = array_combine($matches[1], $matches[2]);</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="80681">  <div class="votes">
+    <div id="Vu80681">
+    <a href="http://php.net/manual/vote-note.php?id=80681&amp;page=function.preg-match-all&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd80681">
+    <a href="http://php.net/manual/vote-note.php?id=80681&amp;page=function.preg-match-all&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V80681" title="50% like this...">
+    0
+    </div>
+  </div>
+  <a href="http://php.net/manual/es/function.preg-match-all.php#80681" class="name">
+  <strong class="user"><em>dolbegraeb</em></strong></a><a class="genanchor" href="http://php.net/manual/es/function.preg-match-all.php#80681"> ¶</a><div class="date" title="2008-01-28 04:30"><strong>8 years ago</strong></div>
+  <div class="text" id="Hcom80681">
+<div class="phpcode"><code><span class="html">
+please note, that the function of "mail at SPAMBUSTER at milianw dot de" can result in invalid xhtml in some cases. think i used it in the right way but my result is sth like this:<br><br>&lt;img src="./img.jpg" alt="nice picture" /&gt;foo foo foo foo &lt;/img&gt;<br><br>correct me if i'm wrong. <br>i'll see when there's time to fix that. -.-</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="76027">  <div class="votes">
+    <div id="Vu76027">
+    <a href="http://php.net/manual/vote-note.php?id=76027&amp;page=function.preg-match-all&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd76027">
+    <a href="http://php.net/manual/vote-note.php?id=76027&amp;page=function.preg-match-all&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V76027" title="50% like this...">
+    0
+    </div>
+  </div>
+  <a href="http://php.net/manual/es/function.preg-match-all.php#76027" class="name">
+  <strong class="user"><em>phektus at gmail dot com</em></strong></a><a class="genanchor" href="http://php.net/manual/es/function.preg-match-all.php#76027"> ¶</a><div class="date" title="2007-06-26 11:22"><strong>8 years ago</strong></div>
+  <div class="text" id="Hcom76027">
+<div class="phpcode"><code><span class="html">
+If you'd like to include DOUBLE QUOTES on a regular expression for use with preg_match_all, try ESCAPING THRICE, as in: \\\"<br><br>For example, the pattern:<br>'/&lt;table&gt;[\s\w\/&lt;&gt;=\\\"]*&lt;\/table&gt;/'<br><br>Should be able to match:<br>&lt;table&gt;<br>&lt;row&gt;<br>&lt;col align="left" valign="top"&gt;a&lt;/col&gt;<br>&lt;col align="right" valign="bottom"&gt;b&lt;/col&gt;<br>&lt;/row&gt;<br>&lt;/table&gt;<br>.. with all there is under those table tags.<br><br>I'm not really sure why this is so, but I tried just the double quote and one or even two escape characters and it won't work. In my frustration I added another one and then it's cool.</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="83944">  <div class="votes">
+    <div id="Vu83944">
+    <a href="http://php.net/manual/vote-note.php?id=83944&amp;page=function.preg-match-all&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd83944">
+    <a href="http://php.net/manual/vote-note.php?id=83944&amp;page=function.preg-match-all&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V83944" title="42% like this...">
+    -1
+    </div>
+  </div>
+  <a href="http://php.net/manual/es/function.preg-match-all.php#83944" class="name">
+  <strong class="user"><em>sledge NOSPAM</em></strong></a><a class="genanchor" href="http://php.net/manual/es/function.preg-match-all.php#83944"> ¶</a><div class="date" title="2008-06-19 01:46"><strong>7 years ago</strong></div>
+  <div class="text" id="Hcom83944" style="opacity: 0.75;">
+<div class="phpcode"><code><span class="html">
+Perhaps you want to find the positions of all anchor tags.&nbsp; This will return a two dimensional array of which the starting and ending positions will be returned.<br><br><span class="default">&lt;?php<br></span><span class="keyword">function </span><span class="default">getTagPositions</span><span class="keyword">(</span><span class="default">$strBody</span><span class="keyword">)<br>{<br>&nbsp; &nbsp; </span><span class="default">define</span><span class="keyword">(</span><span class="default">DEBUG</span><span class="keyword">, </span><span class="default">false</span><span class="keyword">);<br>&nbsp; &nbsp; </span><span class="default">define</span><span class="keyword">(</span><span class="default">DEBUG_FILE_PREFIX</span><span class="keyword">, </span><span class="string">"/tmp/findlinks_"</span><span class="keyword">);<br>&nbsp; &nbsp; <br>&nbsp; &nbsp; </span><span class="default">preg_match_all</span><span class="keyword">(</span><span class="string">"/&lt;[^&gt;]+&gt;(.*)&lt;\/[^&gt;]+&gt;/U"</span><span class="keyword">, </span><span class="default">$strBody</span><span class="keyword">, </span><span class="default">$strTag</span><span class="keyword">, </span><span class="default">PREG_PATTERN_ORDER</span><span class="keyword">);<br>&nbsp; &nbsp; </span><span class="default">$intOffset </span><span class="keyword">= </span><span class="default">0</span><span class="keyword">;<br>&nbsp; &nbsp; </span><span class="default">$intIndex </span><span class="keyword">= </span><span class="default">0</span><span class="keyword">;<br>&nbsp; &nbsp; </span><span class="default">$intTagPositions </span><span class="keyword">= array();<br><br>&nbsp; &nbsp; foreach(</span><span class="default">$strTag</span><span class="keyword">[</span><span class="default">0</span><span class="keyword">] as </span><span class="default">$strFullTag</span><span class="keyword">) {<br>&nbsp; &nbsp; &nbsp; &nbsp; if(</span><span class="default">DEBUG </span><span class="keyword">== </span><span class="default">true</span><span class="keyword">) {<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$fhDebug </span><span class="keyword">= </span><span class="default">fopen</span><span class="keyword">(</span><span class="default">DEBUG_FILE_PREFIX</span><span class="keyword">.</span><span class="default">time</span><span class="keyword">(), </span><span class="string">"a"</span><span class="keyword">);<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">fwrite</span><span class="keyword">(</span><span class="default">$fhDebug</span><span class="keyword">, </span><span class="default">$fulltag</span><span class="keyword">.</span><span class="string">"\n"</span><span class="keyword">);<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">fwrite</span><span class="keyword">(</span><span class="default">$fhDebug</span><span class="keyword">, </span><span class="string">"Starting position: "</span><span class="keyword">.</span><span class="default">strpos</span><span class="keyword">(</span><span class="default">$strBody</span><span class="keyword">, </span><span class="default">$strFullTag</span><span class="keyword">, </span><span class="default">$intOffset</span><span class="keyword">).</span><span class="string">"\n"</span><span class="keyword">);<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">fwrite</span><span class="keyword">(</span><span class="default">$fhDebug</span><span class="keyword">, </span><span class="string">"Ending position: "</span><span class="keyword">.(</span><span class="default">strpos</span><span class="keyword">(</span><span class="default">$strBody</span><span class="keyword">, </span><span class="default">$strFullTag</span><span class="keyword">, </span><span class="default">$intOffset</span><span class="keyword">) + </span><span class="default">strlen</span><span class="keyword">(</span><span class="default">$strFullTag</span><span class="keyword">)).</span><span class="string">"\n"</span><span class="keyword">);<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">fwrite</span><span class="keyword">(</span><span class="default">$fhDebug</span><span class="keyword">, </span><span class="string">"Length: "</span><span class="keyword">.</span><span class="default">strlen</span><span class="keyword">(</span><span class="default">$strFullTag</span><span class="keyword">).</span><span class="string">"\n\n"</span><span class="keyword">);<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">fclose</span><span class="keyword">(</span><span class="default">$fhDebug</span><span class="keyword">);<br>&nbsp; &nbsp; &nbsp; &nbsp; }<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$intTagPositions</span><span class="keyword">[</span><span class="default">$intIndex</span><span class="keyword">] = array(</span><span class="string">'start' </span><span class="keyword">=&gt; (</span><span class="default">strpos</span><span class="keyword">(</span><span class="default">$strBody</span><span class="keyword">, </span><span class="default">$strFullTag</span><span class="keyword">, </span><span class="default">$intOffset</span><span class="keyword">)), </span><span class="string">'end' </span><span class="keyword">=&gt; (</span><span class="default">strpos</span><span class="keyword">(</span><span class="default">$strBody</span><span class="keyword">, </span><span class="default">$strFullTag</span><span class="keyword">, </span><span class="default">$intOffset</span><span class="keyword">) + </span><span class="default">strlen</span><span class="keyword">(</span><span class="default">$strFullTag</span><span class="keyword">)));<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$intOffset </span><span class="keyword">+= </span><span class="default">strlen</span><span class="keyword">(</span><span class="default">$strFullTag</span><span class="keyword">);<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$intIndex</span><span class="keyword">++;<br>&nbsp; &nbsp; }<br>&nbsp; &nbsp; return </span><span class="default">$intTagPositions</span><span class="keyword">;<br>}<br><br></span><span class="default">$strBody </span><span class="keyword">= </span><span class="string">'I have lots of &lt;a href="<a href="http://my.site.com/" rel="nofollow" target="_blank">http://my.site.com</a>"&gt;links&lt;/a&gt; on this &lt;a href="<a href="http://my.site.com/" rel="nofollow" target="_blank">http://my.site.com</a>"&gt;page&lt;/a&gt; that I want to &lt;a href="<a href="http://my.site.com/" rel="nofollow" target="_blank">http://my.site.com</a>"&gt;find&lt;/a&gt; the positions.'</span><span class="keyword">;<br><br></span><span class="default">$strBody </span><span class="keyword">= </span><span class="default">strip_tags</span><span class="keyword">(</span><span class="default">html_entity_decode</span><span class="keyword">(</span><span class="default">$strBody</span><span class="keyword">), </span><span class="string">'&lt;a&gt;'</span><span class="keyword">);<br></span><span class="default">$intTagPositions </span><span class="keyword">= </span><span class="default">getTagPositions</span><span class="keyword">(</span><span class="default">$strBody</span><span class="keyword">);<br></span><span class="default">print_r</span><span class="keyword">(</span><span class="default">$intTagPositions</span><span class="keyword">);<br><br></span><span class="comment">/*****<br>Output:<br><br>Array ( <br>&nbsp; &nbsp; [0] =&gt; Array ( <br>&nbsp; &nbsp; &nbsp; &nbsp; [start] =&gt; 15 <br>&nbsp; &nbsp; &nbsp; &nbsp; [end] =&gt; 53 ) <br>&nbsp; &nbsp; [1] =&gt; Array ( <br>&nbsp; &nbsp; &nbsp; &nbsp; [start] =&gt; 62 <br>&nbsp; &nbsp; &nbsp; &nbsp; [end] =&gt; 99 ) <br>&nbsp; &nbsp; [2] =&gt; Array ( <br>&nbsp; &nbsp; &nbsp; &nbsp; [start] =&gt; 115 <br>&nbsp; &nbsp; &nbsp; &nbsp; [end] =&gt; 152 )<br> ) <br>*****/<br></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="110129">  <div class="votes">
+    <div id="Vu110129">
+    <a href="http://php.net/manual/vote-note.php?id=110129&amp;page=function.preg-match-all&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd110129">
+    <a href="http://php.net/manual/vote-note.php?id=110129&amp;page=function.preg-match-all&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V110129" title="40% like this...">
+    -1
+    </div>
+  </div>
+  <a href="http://php.net/manual/es/function.preg-match-all.php#110129" class="name">
+  <strong class="user"><em>fseverin at free dot fr</em></strong></a><a class="genanchor" href="http://php.net/manual/es/function.preg-match-all.php#110129"> ¶</a><div class="date" title="2012-09-22 05:52"><strong>3 years ago</strong></div>
+  <div class="text" id="Hcom110129" style="opacity: 0.75;">
+<div class="phpcode"><code><span class="html">
+As I intended to create for my own purpose a clean PHP class to act on XML files, combining the use of DOM and simplexml functions, I had that small problem, but very annoying, that the offsets in a path is not numbered the same in both. 
+<br>
+<br>That is to say, for example, if i get a DOM xpath object it appears like:
+<br>/ANODE/ANOTHERNODE/SOMENODE[9]/NODE[2]
+<br>and as a simplexml object would be equivalent to:
+<br>ANODE-&gt;ANOTHERNODE-&gt;SOMENODE[8]-&gt;NODE[1]
+<br>
+<br>So u see what I mean? I used preg_match_all to solve that problem, and finally I got this after some hours of headlock (as I'm french the names of variables are in French sorry), hoping it could be useful to some of you:
+<br>
+<br><span class="default">&lt;?php
+<br></span><span class="keyword">function </span><span class="default">decrease_string</span><span class="keyword">(</span><span class="default">$string</span><span class="keyword">)
+<br>&nbsp; &nbsp; {
+<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="comment">/* retrieve all occurrences AND offsets of numbers in the original string: */
+<br>
+<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">preg_match_all</span><span class="keyword">(</span><span class="string">"/[0-9]+/"</span><span class="keyword">,</span><span class="default">$chaine</span><span class="keyword">,</span><span class="default">$out</span><span class="keyword">,</span><span class="default">PREG_OFFSET_CAPTURE</span><span class="keyword">);
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; for(</span><span class="default">$i</span><span class="keyword">=</span><span class="default">0</span><span class="keyword">;</span><span class="default">$i</span><span class="keyword">&lt;</span><span class="default">sizeof</span><span class="keyword">(</span><span class="default">$out</span><span class="keyword">[</span><span class="default">0</span><span class="keyword">]);</span><span class="default">$i</span><span class="keyword">++)
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$longueurnombre </span><span class="keyword">= </span><span class="default">strlen</span><span class="keyword">((string)</span><span class="default">$out</span><span class="keyword">[</span><span class="default">0</span><span class="keyword">][</span><span class="default">$i</span><span class="keyword">][</span><span class="default">0</span><span class="keyword">]);
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$taillechaine </span><span class="keyword">= </span><span class="default">strlen</span><span class="keyword">(</span><span class="default">$chaine</span><span class="keyword">);
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="comment">// cut the string in 3 pieces
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$debut </span><span class="keyword">= </span><span class="default">substr</span><span class="keyword">(</span><span class="default">$chaine</span><span class="keyword">,</span><span class="default">0</span><span class="keyword">,</span><span class="default">$out</span><span class="keyword">[</span><span class="default">0</span><span class="keyword">][</span><span class="default">$i</span><span class="keyword">][</span><span class="default">1</span><span class="keyword">]);
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$milieu </span><span class="keyword">= (</span><span class="default">$out</span><span class="keyword">[</span><span class="default">0</span><span class="keyword">][</span><span class="default">$i</span><span class="keyword">][</span><span class="default">0</span><span class="keyword">])-</span><span class="default">1</span><span class="keyword">;
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$fin </span><span class="keyword">= </span><span class="default">substr</span><span class="keyword">(</span><span class="default">$chaine</span><span class="keyword">,</span><span class="default">$out</span><span class="keyword">[</span><span class="default">0</span><span class="keyword">][</span><span class="default">$i</span><span class="keyword">][</span><span class="default">1</span><span class="keyword">]+</span><span class="default">$longueurnombre</span><span class="keyword">,</span><span class="default">$taillechaine</span><span class="keyword">);
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="comment">/* if it's 10,100,1000, the problem is that the string gets shorter and it shifts all the offsets, so we have to decrease them of 1 */
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="keyword">if(</span><span class="default">preg_match</span><span class="keyword">(</span><span class="string">'#[1][0]+$#'</span><span class="keyword">, </span><span class="default">$out</span><span class="keyword">[</span><span class="default">0</span><span class="keyword">][</span><span class="default">$i</span><span class="keyword">][</span><span class="default">0</span><span class="keyword">]))
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; {
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; for(</span><span class="default">$j </span><span class="keyword">= </span><span class="default">$i</span><span class="keyword">+</span><span class="default">1</span><span class="keyword">;</span><span class="default">$j</span><span class="keyword">&lt;</span><span class="default">sizeof</span><span class="keyword">(</span><span class="default">$out</span><span class="keyword">[</span><span class="default">0</span><span class="keyword">]);</span><span class="default">$j</span><span class="keyword">++)
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$out</span><span class="keyword">[</span><span class="default">0</span><span class="keyword">][</span><span class="default">$j</span><span class="keyword">][</span><span class="default">1</span><span class="keyword">] = </span><span class="default">$out</span><span class="keyword">[</span><span class="default">0</span><span class="keyword">][</span><span class="default">$j</span><span class="keyword">][</span><span class="default">1</span><span class="keyword">] -</span><span class="default">1</span><span class="keyword">;
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; }
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$chaine </span><span class="keyword">= </span><span class="default">$debut</span><span class="keyword">.</span><span class="default">$milieu</span><span class="keyword">.</span><span class="default">$fin</span><span class="keyword">;
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }
+<br>&nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">$chaine</span><span class="keyword">;
+<br>&nbsp; &nbsp; }
+<br></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="93694">  <div class="votes">
+    <div id="Vu93694">
+    <a href="http://php.net/manual/vote-note.php?id=93694&amp;page=function.preg-match-all&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd93694">
+    <a href="http://php.net/manual/vote-note.php?id=93694&amp;page=function.preg-match-all&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V93694" title="40% like this...">
+    -1
+    </div>
+  </div>
+  <a href="http://php.net/manual/es/function.preg-match-all.php#93694" class="name">
+  <strong class="user"><em>avengis at gmail dot com</em></strong></a><a class="genanchor" href="http://php.net/manual/es/function.preg-match-all.php#93694"> ¶</a><div class="date" title="2009-09-23 02:25"><strong>6 years ago</strong></div>
+  <div class="text" id="Hcom93694" style="opacity: 0.75;">
+<div class="phpcode"><code><span class="html">
+The next function works with almost any complex xml/xhtml string
+<br>
+<br><span class="default">&lt;?php
+<br></span><span class="comment">/**
+<br>* Find and close unclosed xml tags
+<br>**/
+<br></span><span class="keyword">function </span><span class="default">close_tags</span><span class="keyword">(</span><span class="default">$text</span><span class="keyword">) {
+<br>&nbsp; &nbsp; </span><span class="default">$patt_open&nbsp; &nbsp; </span><span class="keyword">= </span><span class="string">"%((?&lt;!&lt;/)(?&lt;=&lt;)[\s]*[^/!&gt;\s]+(?=&gt;|[\s]+[^&gt;]*[^/]&gt;)(?!/&gt;))%"</span><span class="keyword">;
+<br>&nbsp; &nbsp; </span><span class="default">$patt_close&nbsp; &nbsp; </span><span class="keyword">= </span><span class="string">"%((?&lt;=&lt;/)([^&gt;]+)(?=&gt;))%"</span><span class="keyword">;
+<br>&nbsp; &nbsp; if (</span><span class="default">preg_match_all</span><span class="keyword">(</span><span class="default">$patt_open</span><span class="keyword">,</span><span class="default">$text</span><span class="keyword">,</span><span class="default">$matches</span><span class="keyword">))
+<br>&nbsp; &nbsp; {
+<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$m_open </span><span class="keyword">= </span><span class="default">$matches</span><span class="keyword">[</span><span class="default">1</span><span class="keyword">];
+<br>&nbsp; &nbsp; &nbsp; &nbsp; if(!empty(</span><span class="default">$m_open</span><span class="keyword">))
+<br>&nbsp; &nbsp; &nbsp; &nbsp; {
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">preg_match_all</span><span class="keyword">(</span><span class="default">$patt_close</span><span class="keyword">,</span><span class="default">$text</span><span class="keyword">,</span><span class="default">$matches2</span><span class="keyword">);
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$m_close </span><span class="keyword">= </span><span class="default">$matches2</span><span class="keyword">[</span><span class="default">1</span><span class="keyword">];
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (</span><span class="default">count</span><span class="keyword">(</span><span class="default">$m_open</span><span class="keyword">) &gt; </span><span class="default">count</span><span class="keyword">(</span><span class="default">$m_close</span><span class="keyword">))
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$m_open </span><span class="keyword">= </span><span class="default">array_reverse</span><span class="keyword">(</span><span class="default">$m_open</span><span class="keyword">);
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; foreach (</span><span class="default">$m_close </span><span class="keyword">as </span><span class="default">$tag</span><span class="keyword">) </span><span class="default">$c_tags</span><span class="keyword">[</span><span class="default">$tag</span><span class="keyword">]++;
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; foreach (</span><span class="default">$m_open </span><span class="keyword">as </span><span class="default">$k </span><span class="keyword">=&gt; </span><span class="default">$tag</span><span class="keyword">)&nbsp; &nbsp; if (</span><span class="default">$c_tags</span><span class="keyword">[</span><span class="default">$tag</span><span class="keyword">]--&lt;=</span><span class="default">0</span><span class="keyword">) </span><span class="default">$text</span><span class="keyword">.=</span><span class="string">'&lt;/'</span><span class="keyword">.</span><span class="default">$tag</span><span class="keyword">.</span><span class="string">'&gt;'</span><span class="keyword">;
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }
+<br>&nbsp; &nbsp; &nbsp; &nbsp; }
+<br>&nbsp; &nbsp; }
+<br>&nbsp; &nbsp; return </span><span class="default">$text</span><span class="keyword">;
+<br>}
+<br></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="76388">  <div class="votes">
+    <div id="Vu76388">
+    <a href="http://php.net/manual/vote-note.php?id=76388&amp;page=function.preg-match-all&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd76388">
+    <a href="http://php.net/manual/vote-note.php?id=76388&amp;page=function.preg-match-all&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V76388" title="33% like this...">
+    -1
+    </div>
+  </div>
+  <a href="http://php.net/manual/es/function.preg-match-all.php#76388" class="name">
+  <strong class="user"><em>mr davin</em></strong></a><a class="genanchor" href="http://php.net/manual/es/function.preg-match-all.php#76388"> ¶</a><div class="date" title="2007-07-12 02:57"><strong>8 years ago</strong></div>
+  <div class="text" id="Hcom76388" style="opacity: 0.75;">
+<div class="phpcode"><code><span class="html">
+<span class="default">&lt;?php<br></span><span class="comment">// Returns an array of strings where the start and end are found<br>&nbsp; &nbsp; </span><span class="keyword">function </span><span class="default">findinside</span><span class="keyword">(</span><span class="default">$start</span><span class="keyword">, </span><span class="default">$end</span><span class="keyword">, </span><span class="default">$string</span><span class="keyword">) {<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">preg_match_all</span><span class="keyword">(</span><span class="string">'/' </span><span class="keyword">. </span><span class="default">preg_quote</span><span class="keyword">(</span><span class="default">$start</span><span class="keyword">, </span><span class="string">'/'</span><span class="keyword">) . </span><span class="string">'([^\.)]+)'</span><span class="keyword">. </span><span class="default">preg_quote</span><span class="keyword">(</span><span class="default">$end</span><span class="keyword">, </span><span class="string">'/'</span><span class="keyword">).</span><span class="string">'/i'</span><span class="keyword">, </span><span class="default">$string</span><span class="keyword">, </span><span class="default">$m</span><span class="keyword">);<br>&nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">$m</span><span class="keyword">[</span><span class="default">1</span><span class="keyword">];<br>&nbsp; &nbsp; }<br>&nbsp; &nbsp; <br>&nbsp; &nbsp; </span><span class="default">$start </span><span class="keyword">= </span><span class="string">"mary has"</span><span class="keyword">;<br>&nbsp; &nbsp; </span><span class="default">$end </span><span class="keyword">= </span><span class="string">"lambs."</span><span class="keyword">;<br>&nbsp; &nbsp; </span><span class="default">$string </span><span class="keyword">= </span><span class="string">"mary has 6 lambs. phil has 13 lambs. mary stole phil's lambs. now mary has all the lambs."</span><span class="keyword">;<br><br>&nbsp; &nbsp; </span><span class="default">$out </span><span class="keyword">= </span><span class="default">findinside</span><span class="keyword">(</span><span class="default">$start</span><span class="keyword">, </span><span class="default">$end</span><span class="keyword">, </span><span class="default">$string</span><span class="keyword">);<br><br>&nbsp; &nbsp; </span><span class="default">print_r </span><span class="keyword">(</span><span class="default">$out</span><span class="keyword">);<br><br></span><span class="comment">/* Results in <br>(<br>&nbsp; &nbsp; [0] =&gt;&nbsp; 6 <br>&nbsp; &nbsp; [1] =&gt;&nbsp; all the <br>)<br>*/ <br></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div></div>
+
+ <div class="foot"><a href="http://php.net/manual/add-note.php?sect=function.preg-match-all&amp;redirect=http://php.net/manual/es/function.preg-match-all.php"><img src="./PHP_ preg_match_all - Manual_files/notes-add@2x.png" alt="add a note" width="12" height="12"> <small>add a note</small></a></div>
+</section>    </section><!-- layout-content -->
+        <aside class="layout-menu">
+    
+        <ul class="parent-menu-list">
+                                    <li>
+                <a href="http://php.net/manual/es/ref.pcre.php">Funciones de PCRE</a>
+    
+                                    <ul class="child-menu-list">
+    
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/es/function.preg-filter.php" title="preg_​filter">preg_​filter</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/es/function.preg-grep.php" title="preg_​grep">preg_​grep</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/es/function.preg-last-error.php" title="preg_​last_​error">preg_​last_​error</a>
+                        </li>
+                          
+                        <li class="current">
+                            <a href="http://php.net/manual/es/function.preg-match-all.php" title="preg_​match_​all">preg_​match_​all</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/es/function.preg-match.php" title="preg_​match">preg_​match</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/es/function.preg-quote.php" title="preg_​quote">preg_​quote</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/es/function.preg-replace-callback-array.php" title="preg_​replace_​callback_​array">preg_​replace_​callback_​array</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/es/function.preg-replace-callback.php" title="preg_​replace_​callback">preg_​replace_​callback</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/es/function.preg-replace.php" title="preg_​replace">preg_​replace</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/es/function.preg-split.php" title="preg_​split">preg_​split</a>
+                        </li>
+                            
+                    </ul>
+                    
+            </li>
+                        
+                    </ul>
+    </aside>
+
+
+  </div><!-- layout -->
+         
+  <footer>
+    <div class="container footer-content">
+      <div class="row-fluid">
+      <ul class="footmenu">
+        <li><a href="http://php.net/copyright.php">Copyright © 2001-2016 The PHP Group</a></li>
+        <li><a href="http://php.net/my.php">My PHP.net</a></li>
+        <li><a href="http://php.net/contact.php">Contact</a></li>
+        <li><a href="http://php.net/sites.php">Other PHP.net sites</a></li>
+        <li><a href="http://php.net/mirrors.php">Mirror sites</a></li>
+        <li><a href="http://php.net/privacy.php">Privacy policy</a></li>
+      </ul>
+      </div>
+    </div>
+  </footer>
+
+    
+ <!-- External and third party libraries. -->
+ <script type="text/javascript" src="./PHP_ preg_match_all - Manual_files/jquery.min.js"></script>
+<script type="text/javascript" src="./PHP_ preg_match_all - Manual_files/cached(4).php"></script>
+<script type="text/javascript" src="./PHP_ preg_match_all - Manual_files/cached(5).php"></script>
+<script type="text/javascript" src="./PHP_ preg_match_all - Manual_files/cached(6).php"></script>
+<script type="text/javascript" src="./PHP_ preg_match_all - Manual_files/cached(7).php"></script>
+<script type="text/javascript" src="./PHP_ preg_match_all - Manual_files/cached(8).php"></script>
+<script type="text/javascript" src="./PHP_ preg_match_all - Manual_files/cached(9).php"></script>
+
+<a id="toTop" href="javascript:;" style="display: inline;"><span id="toTopHover"></span><img width="40" height="40" alt="To Top" src="./PHP_ preg_match_all - Manual_files/to-top@2x.png"></a>
+
+
+
+
+</body></html>
